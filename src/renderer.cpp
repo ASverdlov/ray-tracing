@@ -10,6 +10,9 @@ namespace disp {
 // initiate global constants
 Displayer* Displayer::instance = nullptr;
 
+Displayer::~Displayer()
+{}
+
 Displayer::Displayer()
     : title("Displayer window")
 {}
