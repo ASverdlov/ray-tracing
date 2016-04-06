@@ -14,6 +14,7 @@ namespace disp {
 
 class Displayer {
 public:
+    ~Displayer();
     Displayer();
     explicit Displayer(const Displayer& displayer) = default;
 
@@ -22,7 +23,7 @@ public:
     void start(int argc, char** argv, ui32 windowWidth, ui32 windowHeight);
     void setTitle(const std::string& title);
 
-private:
+protected:
     static Displayer* instance;
 
     ui32 windowWidth;
@@ -36,7 +37,6 @@ private:
 
     // implementation of glut wrappers
     void display();
-
 }; 
 
 } // namespace display_backend
