@@ -1,6 +1,7 @@
 namespace geom {
 
-struct SquareEquation {
+class SquareEquation {
+public:
     /*
      * A * x^2 + B * x + C = 0
      */
@@ -32,6 +33,7 @@ struct SquareEquation {
         float determinant = sqrt(squareDeterminant);
         return vector<float>{((-B - determinant) * .5 / A, (-B + determinant) * .5 / A};
     }
+private:
     float A, B, C;
 };
 
