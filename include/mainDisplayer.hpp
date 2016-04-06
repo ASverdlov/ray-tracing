@@ -4,6 +4,11 @@
 namespace disp {
 
 class MainDisplayer : public Displayer {
+public:
+    void display();
+
+private:
+    shared_ptr<Scene> scene;
 };
 
 } // namespace disp

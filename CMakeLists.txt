@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
 
 project(ray-tracing)
-add_executable(ray-tracing src/main.cpp src/renderer.cpp)
+add_executable(ray-tracing src/main.cpp src/renderer.cpp src/mathematics.cpp src/primitives.cpp)
 
 find_package(OpenGL REQUIRED)
 find_package(GLUT REQUIRED)
