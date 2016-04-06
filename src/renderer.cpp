@@ -43,8 +43,14 @@ void Displayer::start(int argc, char** argv, ui32 windowWidth, ui32 windowHeight
 
 void Displayer::display() {
     float* pixels = new float[windowWidth * windowHeight * 3];
-    for (int i = 0; i < windowWidth * windowHeight; ++i) {
-        pixels[i] = rand();
+    memset(pixels, 0, sizeof(float) * windowHeight * windowWidth * 3);
+
+    for (int y = 0; y < windowHeight / 2; ++y) {
+        for (int x = 0; x < windowWidth / 2; ++x) {
+            pixels[y * windowWidth * 3 + x * 3 + 0] = 255; // R
+            pixels[y * windowWidth * 3 + x * 3 + 1] = 0;   // G
+            pixels[y * windowWidth * 3 + x * 3 + 2] = 0;   // B
+        }
     }
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
