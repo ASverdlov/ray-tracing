@@ -14,14 +14,14 @@ namespace disp {
 
 class Displayer {
 public:
-    virtual ~Displayer();
+    ~Displayer();
     Displayer();
     explicit Displayer(const Displayer& displayer) = default;
 
-    virtual void setInstance() final;
+    void setInstance();
 
-    virtual void start(int argc, char** argv, ui32 windowWidth, ui32 windowHeight);
-    virtual void setTitle(const std::string& title);
+    void start(int argc, char** argv, ui32 windowWidth, ui32 windowHeight);
+    void setTitle(const std::string& title);
 
 protected:
     static Displayer* instance;
@@ -36,7 +36,7 @@ protected:
     static void displayWrapper();
 
     // implementation of glut wrappers
-    virtual void display();
+    void display();
 }; 
 
 } // namespace display_backend

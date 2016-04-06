@@ -4,9 +4,10 @@
 #include <GLUT/glut.h>
 
 #include <renderer.hpp>
+#include <mainDisplayer.hpp>
 
 int main(int argc, char** argv) {
-    disp::Displayer displayer;
+    disp::MainDisplayer displayer;
     displayer.start(argc, argv, 512, 512);
 
     return 0;
