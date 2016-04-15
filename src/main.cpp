@@ -3,7 +3,6 @@
 #endif
 #include <GLUT/glut.h>
 
-#include <renderer.hpp>
 #include <mainDisplayer.hpp>
 
 int main(int argc, char** argv) {
