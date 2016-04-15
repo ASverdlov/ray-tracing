@@ -1,4 +1,6 @@
 #include <camera.hpp>
+#include <iostream>
+#include <cassert>
 
 namespace rayt {
 

@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <cmath>
+#include <iostream>
 
 namespace geom {
 
@@ -11,7 +12,7 @@ public:
     /*
      * A * x^2 + B * x + C = 0
      */
-    
+
     static const float eps;
 
     SquareEquation(float A, float B, float C)
@@ -38,8 +39,12 @@ public:
 
     std::vector<float> solve() const {
         // x1,2 = (-B (+/-) det) / (2 * A)
+        std::cout << "Solving: " << A << " * x^2 + " <<
+                                    B << " * x + " <<
+                                    C << "\n";
         float squareDeterminant = B * B - 4.0 * A * C;
-        if (squareDeterminant < 0) return std::vector<float>();
+        std::cout << "Determinant: " << squareDeterminant << "\n\n";
+        if (squareDeterminant < 0) return {};
         float determinant = std::sqrt(squareDeterminant);
 
         std::vector<float> res(2);

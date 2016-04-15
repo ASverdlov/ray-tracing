@@ -12,26 +12,26 @@ struct Point {
     float operator*(const Point&) const;
 
     float len() const;
+    void printLog() const;
 
     float x, y, z;
 };
 
 class Transform {
 public:
-    Transform() = default;
+    Transform();
     Transform(const std::array<std::array<float, 3>, 3>&);
 
     Point operator*(const Point&) const;
-    //Point apply(const Point&) const;
 
     //Transform operator*(const Transform&) const;
     Transform T() const;
 
+    void printLog() const;
+
     //Transform getXRotation(float angle) const;
     //Transform getYRotation(float angle) const;
     //Transform getZRotation(float angle) const;
-
-    
 
 private:
     std::array<std::array<float, 3>, 3> matrix;
@@ -53,6 +53,7 @@ private:
 class IPrimitive {
 public:
     virtual bool intersects(const Line& line) const = 0;
+    virtual void printLog() const = 0;
 };
 
 
@@ -63,7 +64,9 @@ public:
 
     Point getCenter() const;
     float getRadius() const;
+
     bool intersects(const Line&) const;
+    void printLog() const;
 
 private:
     Point center;

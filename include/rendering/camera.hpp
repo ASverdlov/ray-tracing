@@ -7,11 +7,12 @@ namespace rayt {
 
 class Camera {
 public:
+    Camera() = default;
     Camera(geom::Point position,
            geom::Transform transform,
            float screenDistance = 5.0,
-           float screenWidth = 10.0,
-           float screenHeight = 10.0);
+           float screenWidth = 512.0,
+           float screenHeight = 512.0);
 
     geom::Line getRay(int screenX, int screenY);
 
