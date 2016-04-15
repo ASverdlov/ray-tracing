@@ -5,12 +5,12 @@
 
 namespace geom {
 
-Point Point::operator-(const Point& a) const { 
+Point Point::operator-(const Point& a) const {
     return Point{x - a.x, y - a.y, z - a.z};
 }
-Point Point::operator+(const Point& a) const { 
+Point Point::operator+(const Point& a) const {
     return Point{x + a.x, y + a.y, z + a.z};
-} 
+}
 float Point::operator*(const Point& a) const {
     return x * a.x + y * a.y + z * a.z;
 }
@@ -22,6 +22,13 @@ float operator*(const std::array<float, 3>& a, const Point& b) {
     return a[0] * b.x + a[1] * b.y + a[2] * b.z;
 }
 
+Transform::Transform()
+    : matrix({{
+        {{1, 0, 0}},
+        {{0, 1, 0}},
+        {{0, 0, 1}}
+    }})
+{}
 Transform::Transform(const std::array<std::array<float, 3>, 3>& matrix)
     : matrix(matrix)
 {}
@@ -47,6 +54,11 @@ Line::Line(const Point& start, const Point& direction)
 {}
 Point Line::getStart() const { return start; }
 Point Line::getDirection() const { return start; }
+
+Sphere::Sphere(const Point& center, float radius)
+    : center(center)
+    , radius(radius)
+{}
 
 float Sphere::getRadius() const { return radius; }
 Point Sphere::getCenter() const { return center; }

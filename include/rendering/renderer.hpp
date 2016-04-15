@@ -36,8 +36,8 @@ protected:
     static void displayWrapper();
 
     // implementation of glut wrappers
-    void display();
-}; 
+    virtual void display();
+};
 
 } // namespace display_backend
 

@@ -9,7 +9,10 @@ namespace disp {
 
 class MainDisplayer : public Displayer {
 public:
-    void display();
+    MainDisplayer();
+    MainDisplayer(rayt::Scene* scene, rayt::Camera* camera);
+
+    void display() override;
 
 private:
     rayt::Scene* scene;

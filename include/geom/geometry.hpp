@@ -18,7 +18,7 @@ struct Point {
 
 class Transform {
 public:
-    Transform() = default;
+    Transform();
     Transform(const std::array<std::array<float, 3>, 3>&);
 
     Point operator*(const Point&) const;
@@ -31,7 +31,7 @@ public:
     //Transform getYRotation(float angle) const;
     //Transform getZRotation(float angle) const;
 
-    
+
 
 private:
     std::array<std::array<float, 3>, 3> matrix;

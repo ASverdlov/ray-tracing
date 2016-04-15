@@ -7,6 +7,7 @@ namespace rayt {
 
 class Camera {
 public:
+    Camera() = default;
     Camera(geom::Point position,
            geom::Transform transform,
            float screenDistance = 5.0,

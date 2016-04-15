@@ -16,6 +16,8 @@ public:
 
     const std::vector<geom::IPrimitive*>& getObjects() const;
 
+    void addObject(geom::IPrimitive* object);
+
 private:
     std::vector<geom::IPrimitive*> objects;
 };
