@@ -48,6 +48,13 @@ Transform Transform::T() const {
     }};
     return Transform(x);
 }
+Transform Transform::getZRotation(float angle) const {
+    return {{{
+        {{ std::cos(angle), -std::sin(angle), 0.0f }},
+        {{ std::sin(angle), std::cos(angle),  0.0f }},
+        {{ 0.0f,            0.0f,             1.0f }}
+    }}};
+}
 void Transform::printLog() const {
     for (int i = 0; i < 3; ++i) {
         for (int j = 0; j < 3; ++j) {

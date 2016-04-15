@@ -31,7 +31,7 @@ public:
 
     //Transform getXRotation(float angle) const;
     //Transform getYRotation(float angle) const;
-    //Transform getZRotation(float angle) const;
+    Transform getZRotation(float angle) const;
 
 private:
     std::array<std::array<float, 3>, 3> matrix;
