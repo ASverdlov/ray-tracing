@@ -1,4 +1,5 @@
 #include <cmath>
+#include <iostream>
 
 #include <geometry.hpp>
 #include <mathematics.hpp>
@@ -16,6 +17,10 @@ float Point::operator*(const Point& a) const {
 }
 float Point::len() const {
     return sqrt(x * x + y * y + z * z);
+}
+
+void Point::printLog() const {
+    std::cout << "Point: " << x << ' ' << y << ' ' << z << '\n';
 }
 
 float operator*(const std::array<float, 3>& a, const Point& b) {
@@ -43,6 +48,14 @@ Transform Transform::T() const {
     }};
     return Transform(x);
 }
+void Transform::printLog() const {
+    for (int i = 0; i < 3; ++i) {
+        for (int j = 0; j < 3; ++j) {
+            std::cout << matrix[i][j] << ' ';
+        }
+        std::cout << "\n";
+    }
+}
 //Transform Transform::operator*(const Transform& a) const {
     //Transform TMatrix = T();
     //return {
@@ -53,7 +66,7 @@ Line::Line(const Point& start, const Point& direction)
     , direction(direction)
 {}
 Point Line::getStart() const { return start; }
-Point Line::getDirection() const { return start; }
+Point Line::getDirection() const { return direction; }
 
 Sphere::Sphere(const Point& center, float radius)
     : center(center)
@@ -79,6 +92,12 @@ bool Sphere::intersects(const Line& line) const {
                               (SquareEquation{0.0, d.z, s.z - center.z} ^ 2) +
                               SquareEquation{0.0, 0.0, -radius * radius};
     return !equation.solve().empty();
+}
+
+void Sphere::printLog() const {
+    std::cout << "Sphere:\n";
+    std::cout << "* radius = " << radius << "\n";
+    std::cout << "* center = (" << center.x << ", " << center.y << ")\n\n";
 }
 
 } // namespace geom

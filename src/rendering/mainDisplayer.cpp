@@ -1,4 +1,5 @@
 #include <mainDisplayer.hpp>
+#include <iostream>
 
 namespace disp {
 
@@ -13,6 +14,7 @@ MainDisplayer::MainDisplayer(rayt::Scene* scene, rayt::Camera* camera)
 {}
 
 void MainDisplayer::display() {
+
     float* pixels = new float[windowWidth * windowHeight * 3];
     memset(pixels, 0, sizeof(float) * windowHeight * windowWidth * 3);
 
@@ -21,7 +23,9 @@ void MainDisplayer::display() {
             geom::Line line = camera->getRay(x, y);
 
             bool anyIntersection = false;
-            for (const auto& primitive : scene->getObjects()) {
+            for (geom::IPrimitive* primitive : scene->getObjects()) {
+                //primitive->printLog();
+
                 anyIntersection |= primitive->intersects(line);
             }
 
