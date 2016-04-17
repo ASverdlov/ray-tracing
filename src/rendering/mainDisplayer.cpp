@@ -14,16 +14,15 @@ MainDisplayer::MainDisplayer(rayt::Scene* scene, rayt::Camera* camera)
 {}
 
 void MainDisplayer::display() {
-
     float* pixels = new float[windowWidth * windowHeight * 3];
     memset(pixels, 0, sizeof(float) * windowHeight * windowWidth * 3);
 
     for (int x = 0; x < windowWidth; ++x) {
         for (int y = 0; y < windowHeight; ++y) {
-            geom::Line line = camera->getRay(x, y);
+            geom::Line<float> line = camera->getRay(x, y);
 
             bool anyIntersection = false;
-            for (geom::IPrimitive* primitive : scene->getObjects()) {
+            for (geom::IPrimitive<float>* primitive : scene->getObjects()) {
                 //primitive->printLog();
 
                 anyIntersection |= primitive->intersects(line);

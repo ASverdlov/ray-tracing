@@ -7,56 +7,58 @@
 
 namespace geom {
 
+template<typename T>
 class SquareEquation {
 public:
     /*
      * A * x^2 + B * x + C = 0
      */
 
-    static const float eps;
+    static const T EPS;
 
-    SquareEquation(float A, float B, float C)
+    SquareEquation(T A, T B, T C)
         : A(A), B(B), C(C)
     {}
 
-    SquareEquation operator+(const SquareEquation& a) const {
-        return SquareEquation(A + a.A, B + a.B, C + a.C);
+    SquareEquation<T> operator+(const SquareEquation<T>& a) const {
+        return SquareEquation<T>(A + a.A, B + a.B, C + a.C);
     }
-    SquareEquation operator-(const SquareEquation& a) const {
-        return SquareEquation(A - a.A, B - a.A, C - a.C);
+    SquareEquation<T> operator-(const SquareEquation<T>& a) const {
+        return SquareEquation<T>(A - a.A, B - a.A, C - a.C);
     }
-    SquareEquation operator*(const SquareEquation& a) const {
-        return SquareEquation(A * a.C + C * a.A + B * a.B,
+    SquareEquation<T> operator*(const SquareEquation<T>& a) const {
+        return SquareEquation<T>(A * a.C + C * a.A + B * a.B,
                               B * a.C + C * a.B,
                               C * a.C);
     }
-    SquareEquation operator^(int n) const {
+    SquareEquation<T> operator^(int n) const {
         // TODO if (n < 0) throw...
-        if (n == 0) return SquareEquation(0.0, 0.0, 1.0);
+        if (n == 0) return SquareEquation<T>(0.0, 0.0, 1.0);
         if (n == 1) return *this;
         return *this * (*this ^ (n - 1));
     }
 
-    std::vector<float> solve() const {
+    std::vector<T> solve() const {
         // x1,2 = (-B (+/-) det) / (2 * A)
         std::cout << "Solving: " << A << " * x^2 + " <<
                                     B << " * x + " <<
                                     C << "\n";
-        float squareDeterminant = B * B - 4.0 * A * C;
+        T squareDeterminant = B * B - 4.0 * A * C;
         std::cout << "Determinant: " << squareDeterminant << "\n\n";
         if (squareDeterminant < 0) return {};
-        float determinant = std::sqrt(squareDeterminant);
+        T determinant = std::sqrt(squareDeterminant);
 
-        std::vector<float> res(2);
+        std::vector<T> res(2);
         res[0] = (-B - determinant) * .5 / A;
         res[1] = (-B + determinant) * .5 / A;
         return res;
     }
 private:
-    float A, B, C;
+    T A, B, C;
 };
 
-const float SquareEquation::eps = 1e-12;
+template<typename T>
+const T SquareEquation<T>::EPS = 1e-12;
 
 } // namespace geom
 
