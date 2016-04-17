@@ -3,7 +3,6 @@ project(ray-tracing)
 
 find_package(OpenGL REQUIRED)
 find_package(GLUT REQUIRED)
-find_package(X11 REQUIRED)
 
 file(GLOB SOURCE_FILES
      src/*.cpp
@@ -12,7 +11,7 @@ file(GLOB SOURCE_FILES
 add_executable(ray-tracing ${SOURCE_FILES})
 
 set(INCLUDE_DIRS
-    include/geom
+    include/geometry
     include/rendering
     include)
 include_directories( ${INCLUDE_DIRS} ${OPENGL_INCLUDE_DIRS}  ${GLUT_INCLUDE_DIRS} )
