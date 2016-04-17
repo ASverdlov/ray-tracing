@@ -9,7 +9,7 @@
 #include <geometry/transform.hpp>
 
 // These are in-development:
-//#include <geom/plane.hpp>
-//#include <geom/triangle.hpp>
+#include <geometry/plane.hpp>
+#include <geometry/triangle.hpp>
 
 #endif

@@ -13,6 +13,9 @@ struct Point {
     Point<T> operator*(T) const;
     T operator*(const Point<T>&) const;
 
+    // cross-product
+    Point<T> operator%(const Point<T>&) const;
+
     T len() const;
     void printLog() const;
 
@@ -54,6 +57,13 @@ void Point<T>::printLog() const {
 template<typename T>
 T operator*(const std::array<T, 3>& a, const Point<T>& b) {
     return a[0] * b.x + a[1] * b.y + a[2] * b.z;
+}
+
+template<typename T>
+Point<T> Point<T>::operator%(const Point<T>& other) const {
+    return {y * other.z - other.y * z,
+            x * other.z - other.x * z,
+            x * other.y - other.x * y};
 }
 
 } // namespace geom
