@@ -11,8 +11,13 @@ class Transform {
 public:
     Transform();
     Transform(const Transform<U>&) = default;
+    Transform(const std::array<std::array<U, 3>, 3>&);
+    Transform(U, U, U,
+              U, U, U,
+              U, U, U);
 
     Transform<U> operator*(U) const;
+    Transform<U> operator/(U) const;
     Point<U> operator*(const Point<U>&) const;
 
     //Transform operator*(const Transform&) const;
@@ -42,10 +47,31 @@ Transform<U>::Transform()
 {}
 
 template<typename U>
+Transform<U>::Transform(const std::array<std::array<U, 3>, 3>& matrix)
+    : matrix(matrix)
+{}
+
+template<typename U>
+Transform<U>::Transform(U r11, U r12, U r13,
+                        U r21, U r22, U r23,
+                        U r31, U r32, U r33)
+    : matrix{{ {{r11, r12, r13}},
+               {{r21, r22, r32}},
+               {{r31, r32, r33}} }}
+{}
+
+template<typename U>
 Transform<U> Transform<U>::operator*(U koefficient) const {
-    return Transform<U>{{ matrix[0] * koefficient,
-                          matrix[1] * koefficient,
-                          matrix[2] * koefficient }};
+    return Transform<U>(matrix[0][0] * koefficient, matrix[0][1] * koefficient, matrix[0][2] * koefficient,
+                        matrix[1][0] * koefficient, matrix[1][1] * koefficient, matrix[1][2] * koefficient,
+                        matrix[2][0] * koefficient, matrix[2][1] * koefficient, matrix[2][2] * koefficient);
+}
+
+template<typename U>
+Transform<U> Transform<U>::operator/(U koefficient) const {
+    return Transform<U>(matrix[0][0] / koefficient, matrix[0][1] / koefficient, matrix[0][2] / koefficient,
+                        matrix[1][0] / koefficient, matrix[1][1] / koefficient, matrix[1][2] / koefficient,
+                        matrix[2][0] / koefficient, matrix[2][1] / koefficient, matrix[2][2] / koefficient);
 }
 
 template<typename U>

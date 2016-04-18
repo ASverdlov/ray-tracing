@@ -11,10 +11,15 @@ struct Point {
     Point<T> operator+(const Point<T>&) const;
     Point<T> operator-(const Point<T>&) const;
     Point<T> operator*(T) const;
+    Point<T> operator/(T) const;
+
+    // scalar product
     T operator*(const Point<T>&) const;
 
-    // cross-product
+    // cross product
     Point<T> operator%(const Point<T>&) const;
+
+    operator std::array<T, 3>();
 
     T len() const;
     void printLog() const;
@@ -50,6 +55,11 @@ Point<T> Point<T>::operator*(T koefficient) const {
 }
 
 template<typename T>
+Point<T> Point<T>::operator/(T koefficient) const {
+    return Point<T>{x / koefficient, y / koefficient, z / koefficient};
+}
+
+template<typename T>
 void Point<T>::printLog() const {
     std::cout << "Point: " << x << ' ' << y << ' ' << z << '\n';
 }
@@ -64,6 +74,11 @@ Point<T> Point<T>::operator%(const Point<T>& other) const {
     return {y * other.z - other.y * z,
             x * other.z - other.x * z,
             x * other.y - other.x * y};
+}
+
+template<typename T>
+Point<T>::operator std::array<T, 3>() {
+    return {{ x, y, z }};
 }
 
 } // namespace geom

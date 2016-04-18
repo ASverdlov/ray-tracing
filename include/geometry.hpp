@@ -7,8 +7,6 @@
 #include <geometry/primitive.hpp>
 #include <geometry/sphere.hpp>
 #include <geometry/transform.hpp>
-
-// These are in-development:
 #include <geometry/plane.hpp>
 #include <geometry/triangle.hpp>
 
