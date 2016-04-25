@@ -2,11 +2,11 @@
 
 namespace rayt {
 
-const std::vector<geom::IPrimitive*>& Scene::getObjects() const {
+const std::vector<geom::IPrimitive<float>*>& Scene::getObjects() const {
     return objects;
 }
 
-void Scene::addObject(geom::IPrimitive* object) {
+void Scene::addObject(geom::IPrimitive<float>* object) {
     objects.push_back(object);
 }
 

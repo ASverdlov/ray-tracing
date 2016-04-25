@@ -30,8 +30,6 @@ protected:
     ui32 windowHeight;
     std::string title;
 
-    //unique_ptr<Scene> scene;
-
     // glut global functions
     static void displayWrapper();
 
