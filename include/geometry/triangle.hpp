@@ -1,10 +1,11 @@
 #ifndef TRIANGLE_HPP
 #define TRIANGLE_HPP
 
-#include <cmath>
-#include <cassert>
 #include <primitive.hpp>
 #include <plane.hpp>
+#include <cmath>
+#include <cassert>
+#include <array>
 
 namespace geom {
 
@@ -18,7 +19,6 @@ public:
     const std::array<Point<T>, 3>& getVertices() const;
     Plane<T> getPlane() const;
 
-    T area2() const;
     T area() const;
 
     bool intersects(const Line<T>&) const;
@@ -56,13 +56,8 @@ Plane<T> Triangle<T>::getPlane() const {
 }
 
 template<typename T>
-T Triangle<T>::area2() const {
-    return ((vertices[1] - vertices[0]) % (vertices[2] - vertices[0])).len();
-}
-
-template<typename T>
 T Triangle<T>::area() const {
-    return std::sqrt(area2());
+    return ((vertices[1] - vertices[0]) % (vertices[2] - vertices[0])).len() / 2;
 }
 
 template<typename T>
@@ -71,7 +66,10 @@ bool Triangle<T>::isInside(const Point<T>& point) const {
     T sum2 = Triangle<T>(vertices[0], vertices[1], point).area() +
              Triangle<T>(vertices[1], vertices[2], point).area() +
              Triangle<T>(vertices[2], vertices[0], point).area();
-    return std::abs(sum1 - sum2) < 1e-12;
+
+    //std::cout << "isInside??" << sum1 << ' ' << sum2 << '\n';
+    point.printLog();
+    return std::abs(sum1 - sum2) < 1e-3;
 }
 
 template<typename T>
@@ -84,8 +82,11 @@ bool Triangle<T>::intersects(const Line<T>& line) const {
                     SquareEquation<T>{0.0, plane.B * d.y, plane.B * s.y} +
                     SquareEquation<T>{0.0, plane.C * d.z, plane.C * s.z} +
                     SquareEquation<T>{0.0, 0.0,           plane.D};
+
     auto solutions = equation.solve();
-    assert(solutions.size() > 0 && "Solution must exist");
+    if (solutions.empty()) {
+        return false;
+    }
 
     T t = solutions[0];
     Point<T> onPlane = s + d * t;

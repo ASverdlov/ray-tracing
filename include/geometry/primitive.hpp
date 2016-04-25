@@ -8,6 +8,7 @@ namespace geom {
 template<typename T>
 class IPrimitive {
 public:
+    virtual ~IPrimitive() = default;
     virtual bool intersects(const Line<T>& line) const = 0;
     virtual void printLog() const = 0;
 };

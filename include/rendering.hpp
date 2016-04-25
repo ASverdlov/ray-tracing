@@ -4,6 +4,6 @@
 #include <rendering/camera.hpp>
 #include <rendering/mainDisplayer.hpp>
 #include <rendering/renderer.hpp>
-#include <rendering/scene.cpp>
+#include <rendering/scene.hpp>
 
 #endif
