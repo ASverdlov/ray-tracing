@@ -10,27 +10,34 @@ template<typename T>
 class Sphere : public IPrimitive<T> {
 public:
     Sphere() = default;
-    Sphere(const Point<T>&, T);
+    Sphere(const Point<T>&, T, rayt::Color color = rayt::Color::red);
 
     Point<T> getCenter() const;
-    T getRadius() const;
+    T        getRadius() const;
 
-    bool intersects(const Line<T>&) const;
-    void printLog() const;
+    bool        intersects(const Line<T>&) const override;
+    rayt::Color getColor() const override;
 
 private:
-    Point<T> center;
-    T        radius;
+    Point<T>    center;
+    T           radius;
+    rayt::Color color;
 };
 
 template<typename T>
-Sphere<T>::Sphere(const Point<T>& center, T radius)
+Sphere<T>::Sphere(const Point<T>& center, T radius, rayt::Color color)
     : center(center)
     , radius(radius)
+    , color(color)
 {}
-
+    
 template<typename T> T        Sphere<T>::getRadius() const { return radius; }
 template<typename T> Point<T> Sphere<T>::getCenter() const { return center; }
+
+template<typename T>
+rayt::Color Sphere<T>::getColor() const {
+    return color;
+}
 
 template<typename T>
 bool Sphere<T>::intersects(const Line<T>& line) const {
@@ -49,13 +56,6 @@ bool Sphere<T>::intersects(const Line<T>& line) const {
                               (SquareEquation<T>{0.0, d.z, s.z - center.z} ^ 2) +
                               SquareEquation<T>{0.0, 0.0, -radius * radius};
     return !equation.solve().empty();
-}
-
-template<typename T>
-void Sphere<T>::printLog() const {
-    std::cout << "Sphere:\n";
-    std::cout << "* radius = " << radius << "\n";
-    std::cout << "* center = (" << center.x << ", " << center.y << ")\n\n";
 }
 
 } // namespace geom

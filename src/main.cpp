@@ -13,11 +13,14 @@ int main(int argc, char** argv) {
                                     100.0f,                   // screenDistance
                                     512, 512);                // screenWidth, screenHeight
 
-    //auto* sphere = new geom::Sphere<float>({200.0f, 0.0f, 0.0f}, 58.00f);
+    auto* sphere = new geom::Sphere<float>({200.0f, -100.0f, 0.0f}, 58.00f, rayt::Color::blue);
     auto* triangle = new geom::Triangle<float>({200.0f, -50.0f, 50.0f},
                                                {200.0f, 0.0f, 0.0f},
-                                               {200.0f, 33.0f, 10.0f});
-    //scene->addObject(sphere);
+                                               {200.0f, 33.0f, 10.0f}, rayt::Color::green);
+    std::cout << sphere->getColor();
+    std::cout << triangle->getColor();
+
+    scene->addObject(sphere);
     scene->addObject(triangle);
 
     disp::MainDisplayer displayer(scene, camera);

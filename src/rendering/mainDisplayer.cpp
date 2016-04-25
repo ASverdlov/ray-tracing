@@ -21,22 +21,15 @@ void MainDisplayer::display() {
         for (int y = 0; y < windowHeight; ++y) {
             geom::Line<float> line = camera->getRay(x, y);
 
-            bool anyIntersection = false;
+            rayt::Color intersectionColor = {255, 255, 255};
             for (geom::IPrimitive<float>* primitive : scene->getObjects()) {
-                //primitive->printLog();
-
-                anyIntersection |= primitive->intersects(line);
+                if (primitive->intersects(line)) {
+                    intersectionColor = primitive->getColor();
+                }
             }
-
-            if (anyIntersection) {
-                pixels[y * windowWidth * 3 + x * 3 + 0] = 255;
-                pixels[y * windowWidth * 3 + x * 3 + 1] = 0;
-                pixels[y * windowWidth * 3 + x * 3 + 2] = 0;
-            } else {
-                pixels[y * windowWidth * 3 + x * 3 + 0] = 255;
-                pixels[y * windowWidth * 3 + x * 3 + 1] = 255;
-                pixels[y * windowWidth * 3 + x * 3 + 2] = 255;
-            }
+            pixels[y * windowWidth * 3 + x * 3 + 0] = intersectionColor.R;
+            pixels[y * windowWidth * 3 + x * 3 + 1] = intersectionColor.G;
+            pixels[y * windowWidth * 3 + x * 3 + 2] = intersectionColor.B;
         }
     }
 

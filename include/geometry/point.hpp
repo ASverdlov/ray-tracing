@@ -22,7 +22,6 @@ struct Point {
     operator std::array<T, 3>();
 
     T len() const;
-    void printLog() const;
 
     T x, y, z;
 };
@@ -57,11 +56,6 @@ Point<T> Point<T>::operator*(T koefficient) const {
 template<typename T>
 Point<T> Point<T>::operator/(T koefficient) const {
     return Point<T>{x / koefficient, y / koefficient, z / koefficient};
-}
-
-template<typename T>
-void Point<T>::printLog() const {
-    std::cout << "Point: " << x << ' ' << y << ' ' << z << '\n';
 }
 
 template<typename T>

@@ -13,31 +13,35 @@ template<typename T>
 class Triangle : public IPrimitive<T> {
 public:
     Triangle() = default;
-    Triangle(const std::array<Point<T>, 3>&);
-    Triangle(const Point<T>&, const Point<T>&, const Point<T>&);
+    Triangle(const std::array<Point<T>, 3>&, rayt::Color color = rayt::Color::red);
+    Triangle(const Point<T>&, const Point<T>&, const Point<T>&,
+             rayt::Color color = rayt::Color::red);
 
     const std::array<Point<T>, 3>& getVertices() const;
     Plane<T> getPlane() const;
 
     T area() const;
 
-    bool intersects(const Line<T>&) const;
-    void printLog() const;
+    bool        intersects(const Line<T>&) const override;
+    rayt::Color getColor() const override;
 
 private:
     bool isInside(const Point<T>&) const;
 
     std::array<Point<T>, 3> vertices;
+    rayt::Color color;
 };
 
 template<typename T>
-Triangle<T>::Triangle(const std::array<Point<T>, 3>& vertices)
+Triangle<T>::Triangle(const std::array<Point<T>, 3>& vertices, rayt::Color color)
     : vertices(vertices)
+    , color(color)
 {}
 
 template<typename T>
-Triangle<T>::Triangle(const Point<T>& v1, const Point<T>& v2, const Point<T>& v3)
+Triangle<T>::Triangle(const Point<T>& v1, const Point<T>& v2, const Point<T>& v3, rayt::Color color)
     : vertices({v1, v2, v3})
+    , color(color)
 {}
 
 template<typename T>
@@ -68,8 +72,12 @@ bool Triangle<T>::isInside(const Point<T>& point) const {
              Triangle<T>(vertices[2], vertices[0], point).area();
 
     //std::cout << "isInside??" << sum1 << ' ' << sum2 << '\n';
-    point.printLog();
     return std::abs(sum1 - sum2) < 1e-3;
+}
+
+template<typename T>
+rayt::Color Triangle<T>::getColor() const {
+    return color;
 }
 
 template<typename T>
@@ -91,13 +99,6 @@ bool Triangle<T>::intersects(const Line<T>& line) const {
     T t = solutions[0];
     Point<T> onPlane = s + d * t;
     return isInside(onPlane);
-}
-
-template<typename T>
-void Triangle<T>::printLog() const {
-    for (int i = 0; i < 3; ++i) {
-        vertices[i].printLog();
-    }
 }
 
 } // namespace geom
