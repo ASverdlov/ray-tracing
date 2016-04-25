@@ -6,7 +6,7 @@ namespace geom {
 template<typename T>
 struct Plane {
     T A, B, C, D;
-}
+};
 
 } // namespace geom
 

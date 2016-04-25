@@ -2,8 +2,8 @@
 #define MAIN_DISPLAYER_HPP
 
 #include <renderer.hpp>
-#include <camera.hpp>
 #include <scene.hpp>
+#include <camera.hpp>
 
 namespace disp {
 

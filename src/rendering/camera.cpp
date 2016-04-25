@@ -17,8 +17,8 @@ Camera::Camera(geom::Point<float> position,
 {}
 
 geom::Line<float> Camera::getRay(int screenX, int screenY) {
-    geom::Point<float> dir = geom::Point<float>{screenDistance, -screenWidth / 2 + screenX, screenHeight / 2 - screenY};
-    return geom::Line<float>{position, transform * dir};
+    auto dir = geom::Point<float>{screenDistance, -screenWidth / 2 + screenX, screenHeight / 2 - screenY};
+    return {position, transform * dir};
 }
 
 } // namespace rayt
