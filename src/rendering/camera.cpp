@@ -2,13 +2,13 @@
 #include <iostream>
 #include <cassert>
 
-namespace rayt {
+namespace rt {
 
-Camera::Camera(geom::Point<float> position,
-               geom::Transform<float> transform,
-               float screenDistance,
-               float screenWidth,
-               float screenHeight)
+Camera::Camera(Point<ftype> position,
+               Transform<ftype> transform,
+               ftype screenDistance,
+               ftype screenWidth,
+               ftype screenHeight)
     : position(position)
     , transform(transform)
     , screenDistance(screenDistance)
@@ -16,8 +16,8 @@ Camera::Camera(geom::Point<float> position,
     , screenHeight(screenHeight)
 {}
 
-geom::Line<float> Camera::getRay(int screenX, int screenY) {
-    auto dir = geom::Point<float>{screenDistance, -screenWidth / 2 + screenX, screenHeight / 2 - screenY};
+Line<ftype> Camera::getRay(int screenX, int screenY) {
+    auto dir = Point<ftype>{screenDistance, -screenWidth / 2 + screenX, screenHeight / 2 - screenY};
     return {position, transform * dir};
 }
 

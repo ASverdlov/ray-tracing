@@ -10,7 +10,7 @@
 #include <utility.hpp>
 
 
-namespace disp {
+namespace rt {
 
 class Displayer {
 public:
