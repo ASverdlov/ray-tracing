@@ -16,4 +16,8 @@ typedef uint32_t ui32;
 #define TEST_FRIENDS_DEFINITIONS
 #endif
 
+typedef float ftype;
+
+const ftype EPS = 1e-5;
+
 #endif

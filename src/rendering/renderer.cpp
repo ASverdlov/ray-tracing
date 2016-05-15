@@ -5,7 +5,7 @@
 #include <sstream>
 #include <cmath>
 
-namespace disp {
+namespace rt {
 
 // initiate global constants
 Displayer* Displayer::instance = nullptr;
@@ -65,4 +65,4 @@ void Displayer::displayWrapper() {
     instance->display();
 }
 
-} // namespace disp
+} // namespace rt

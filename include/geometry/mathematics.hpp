@@ -5,7 +5,7 @@
 #include <cmath>
 #include <iostream>
 
-namespace geom {
+namespace rt {
 
 template<typename T>
 class SquareEquation {

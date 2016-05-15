@@ -3,8 +3,11 @@
 
 #include <vector>
 #include <geometry.hpp>
+#include <intersection.hpp>
+#include <light.hpp>
+#include <utility.hpp>
 
-namespace rayt {
+namespace rt {
 
 class Scene {
 public:
@@ -14,12 +17,17 @@ public:
     Scene(const Scene&) = delete;
     Scene& operator=(const Scene&) = delete;
 
-    const std::vector<geom::IPrimitive<float>*>& getObjects() const;
+    std::vector<IPrimitive<ftype>*> getObjects() const;
+    std::vector<Light> getLightSources() const;
 
-    void addObject(geom::IPrimitive<float>* object);
+    void addObject(IPrimitive<ftype>* object);
+    void addLight(const Light&);
+
+    IntersectionInfo<ftype> pointsTo(const Line<ftype>& line) const;
 
 private:
-    std::vector<geom::IPrimitive<float>*> objects;
+    std::vector<IPrimitive<ftype>*> objects;
+    std::vector<Light> lights;
 };
 
 } // namespace rayt

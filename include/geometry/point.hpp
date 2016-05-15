@@ -4,10 +4,13 @@
 #include <cmath>
 #include <iostream>
 
-namespace geom {
+namespace rt {
 
 template<typename T>
 struct Point {
+    bool operator==(const Point<T>&) const;
+
+    Point<T> operator-() const;
     Point<T> operator+(const Point<T>&) const;
     Point<T> operator-(const Point<T>&) const;
     Point<T> operator*(T) const;
@@ -27,13 +30,25 @@ struct Point {
 };
 
 template<typename T>
+bool Point<T>::operator==(const Point<T>& other) const {
+    return fabs(x - other.x) < 1e-4 &&
+        fabs(y - other.y) < 1e-4 &&
+        fabs(z - other.z) < 1e-4;
+}
+
+template<typename T>
+Point<T> Point<T>::operator-() const {
+    return {-x, -y, -z};
+}
+
+template<typename T>
 Point<T> Point<T>::operator-(const Point<T>& a) const {
-    return Point<T>{x - a.x, y - a.y, z - a.z};
+    return {x - a.x, y - a.y, z - a.z};
 }
 
 template<typename T>
 Point<T> Point<T>::operator+(const Point<T>& a) const {
-    return Point<T>{x + a.x, y + a.y, z + a.z};
+    return {x + a.x, y + a.y, z + a.z};
 }
 
 // scalar product
