@@ -4,10 +4,13 @@
 #include <cmath>
 #include <iostream>
 
-namespace geom {
+namespace rt {
 
 template<typename T>
 struct Point {
+    bool operator==(const Point<T>&) const;
+
+    Point<T> operator-() const;
     Point<T> operator+(const Point<T>&) const;
     Point<T> operator-(const Point<T>&) const;
     Point<T> operator*(T) const;
@@ -22,19 +25,30 @@ struct Point {
     operator std::array<T, 3>();
 
     T len() const;
-    void printLog() const;
 
     T x, y, z;
 };
 
 template<typename T>
+bool Point<T>::operator==(const Point<T>& other) const {
+    return fabs(x - other.x) < 1e-4 &&
+        fabs(y - other.y) < 1e-4 &&
+        fabs(z - other.z) < 1e-4;
+}
+
+template<typename T>
+Point<T> Point<T>::operator-() const {
+    return {-x, -y, -z};
+}
+
+template<typename T>
 Point<T> Point<T>::operator-(const Point<T>& a) const {
-    return Point<T>{x - a.x, y - a.y, z - a.z};
+    return {x - a.x, y - a.y, z - a.z};
 }
 
 template<typename T>
 Point<T> Point<T>::operator+(const Point<T>& a) const {
-    return Point<T>{x + a.x, y + a.y, z + a.z};
+    return {x + a.x, y + a.y, z + a.z};
 }
 
 // scalar product
@@ -57,11 +71,6 @@ Point<T> Point<T>::operator*(T koefficient) const {
 template<typename T>
 Point<T> Point<T>::operator/(T koefficient) const {
     return Point<T>{x / koefficient, y / koefficient, z / koefficient};
-}
-
-template<typename T>
-void Point<T>::printLog() const {
-    std::cout << "Point: " << x << ' ' << y << ' ' << z << '\n';
 }
 
 template<typename T>

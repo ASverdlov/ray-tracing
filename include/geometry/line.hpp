@@ -3,7 +3,7 @@
 
 #include <point.hpp>
 
-namespace geom {
+namespace rt {
 
 template<typename T>
 class Line {

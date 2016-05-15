@@ -1,7 +1,7 @@
 #ifndef PLANE_HPP
 #define PLANE_HPP
 
-namespace geom {
+namespace rt {
 
 template<typename T>
 struct Plane {

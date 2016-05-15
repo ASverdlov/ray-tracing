@@ -2,27 +2,27 @@
 #define CAMERA_HPP
 
 #include <geometry.hpp>
+#include <utility.hpp>
 
-namespace rayt {
-
+namespace rt {
 
 class Camera {
 public:
     Camera() = default;
-    Camera(geom::Point<float> position,
-           geom::Transform<float> transform,
-           float screenDistance = 5.0,
-           float screenWidth = 512.0,
-           float screenHeight = 512.0);
+    Camera(Point<ftype> position,
+           Transform<ftype> transform,
+           ftype screenDistance = 5.0,
+           ftype screenWidth = 512.0,
+           ftype screenHeight = 512.0);
 
-    geom::Line<float> getRay(int screenX, int screenY);
+    Line<ftype> getRay(int screenX, int screenY);
 
 private:
-    geom::Point<float> position;
-    geom::Transform<float> transform;
-    float screenDistance;
-    float screenWidth;
-    float screenHeight;
+    Point<ftype> position;
+    Transform<ftype> transform;
+    ftype screenDistance;
+    ftype screenWidth;
+    ftype screenHeight;
 };
 
 } // namespace rayt

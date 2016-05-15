@@ -6,13 +6,13 @@
 
 TEST_FRIENDS_DEFINITIONS;
 
-namespace geom {
+namespace rt {
 
 template<typename U>
 class Transform;
 
 template<typename U>
-std::ostream& operator<<(std::ostream&, const geom::Transform<U>&);
+std::ostream& operator<<(std::ostream&, const Transform<U>&);
 
 template<typename U>
 class Transform {
@@ -86,7 +86,6 @@ Transform<U>::Transform(U r11, U r12, U r13,
 
 template<typename U>
 bool Transform<U>::operator==(const Transform<U>& other) const {
-    bool areSame = true;
     for (int i = 0; i < 3; ++i) {
         for (int j = 0; j < 3; ++j) {
             if (fabs(matrix[i][j] - other.matrix[i][j]) >= 1e-4) {
@@ -182,7 +181,7 @@ Transform<U> Transform<U>::getZRotation(U angle) const {
 }
 
 template<typename U>
-std::ostream& operator<<(std::ostream& os, const geom::Transform<U>& transform) {
+std::ostream& operator<<(std::ostream& os, const Transform<U>& transform) {
     os << '\n';
     for (int i = 0; i < 3; ++i) {
         for (int j = 0; j < 3; ++j) {
@@ -193,6 +192,5 @@ std::ostream& operator<<(std::ostream& os, const geom::Transform<U>& transform) 
     return os;
 }
 
-} // namespace geom
-
+} // namespace rt
 #endif

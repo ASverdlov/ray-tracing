@@ -4,21 +4,24 @@
 #include <renderer.hpp>
 #include <scene.hpp>
 #include <camera.hpp>
+#include <utility.hpp>
 
-namespace disp {
+namespace rt {
 
 class MainDisplayer : public Displayer {
 public:
-    MainDisplayer();
-    MainDisplayer(rayt::Scene* scene, rayt::Camera* camera);
+    MainDisplayer() = delete;
+    MainDisplayer(Scene* scene, Camera* camera);
 
     void display() override;
 
 private:
-    rayt::Scene* scene;
-    rayt::Camera* camera;
+    Color getPixelColor(size_t x, size_t y) const;
+
+    Scene* scene;
+    Camera* camera;
 };
 
-} // namespace disp
+} // namespace rt
 
 #endif

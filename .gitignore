@@ -2,3 +2,5 @@ build/*
 *.swp
 *.swo
 tags
+.atom-build.json
+.clang_complete

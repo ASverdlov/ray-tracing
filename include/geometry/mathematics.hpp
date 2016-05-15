@@ -5,7 +5,7 @@
 #include <cmath>
 #include <iostream>
 
-namespace geom {
+namespace rt {
 
 template<typename T>
 class SquareEquation {
@@ -41,9 +41,6 @@ public:
     std::vector<T> solve() const {
         // A * x^2 + B * x + C = 0
         // x1,2 = (-B (+/-) det) / (2 * A)
-        std::cout << "Solving: " << A << " * x^2 + " <<
-                                    B << " * x + " <<
-                                    C << "\n";
         if (std::abs(A) < 1e-6) {
             if (std::abs(B) < 1e-6) {
                 return {};
@@ -52,7 +49,6 @@ public:
             }
         }
         T squareDeterminant = B * B - 4.0 * A * C;
-        std::cout << "Determinant: " << squareDeterminant << "\n\n";
         if (squareDeterminant < 0) return {};
         T determinant = std::sqrt(squareDeterminant);
 
