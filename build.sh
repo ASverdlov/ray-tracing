@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Install googletest from github, if it doesn't exist
+# Install Google.Test from Github
 if [ ! -d googletest ]; then
     echo "Installing googletest.."
     git clone https://github.com/google/googletest.git

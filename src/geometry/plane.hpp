@@ -3,9 +3,8 @@
 
 namespace rt {
 
-template<typename T>
 struct Plane {
-    T A, B, C, D;
+    double A, B, C, D;
 };
 
 } // namespace geom

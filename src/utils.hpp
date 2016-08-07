@@ -20,4 +20,8 @@ typedef float ftype;
 
 const ftype EPS = 1e-5;
 
+#define DISABLE_COPYING(ClassName) \
+    ClassName(const ClassName&); \
+    void operator=(const ClassName&);
+
 #endif

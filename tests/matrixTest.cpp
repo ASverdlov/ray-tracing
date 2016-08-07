@@ -15,8 +15,8 @@ using rt::Transform;
 
 TEST(matrix, matrixMultipliedByInversedMatrix) {
     Transform<float> m(1, 2, 3.11,
-                             5, 1, 2.3,
-                             -2, 3, 5.5);
+                       5, 1, 2.3,
+                       -2, 3, 5.5);
     EXPECT_EQ(m * m.inv(), Transform<float>::identity);
 }
 
@@ -27,21 +27,21 @@ TEST(matrix, inverseToIdentity) {
 
 TEST(matrix, multiplyByIdentity) {
     Transform<float> m(1, 2, 3.11,
-                             5, 1, 2.3,
-                             -2, 3, 5.5);
+                       5, 1, 2.3,
+                       -2, 3, 5.5);
     EXPECT_EQ(m * Transform<float>::identity, m);
 }
 
 TEST(matrix, associativity) {
     Transform<float> m1(2, 5, -2,
-                              5, -2, 4,
-                              -3.2, 4, 2);
+                        5, -2, 4,
+                        -3.2, 4, 2);
     Transform<float> m2(1, 2, 3.11,
-                              5, 1, 2.3,
-                              -2, 3, 5.5);
+                        5, 1, 2.3,
+                        -2, 3, 5.5);
     Transform<float> m3(7, 22, -2.31,
-                              -5.6, 0, 7.3,
-                              1, 2.3, -20);
+                        -5.6, 0, 7.3,
+                        1, 2.3, -20);
     EXPECT_EQ((m1 * m2) * m3, m1 * (m2 * m3));
 }
 
@@ -51,7 +51,7 @@ TEST(matrix, determinantOfIdentity) {
 
 TEST(matrix, determinantOfInversedMatrix) {
     Transform<float> m3(7, 22, -2.31,
-                              -5.6, 0, 7.3,
-                              1, 2.3, -20);
+                        -5.6, 0, 7.3,
+                        1, 2.3, -20);
     EXPECT_EQ(m3.det(), 1 / m3.inv().det());
 }
