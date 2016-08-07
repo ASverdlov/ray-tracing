@@ -1,5 +1,8 @@
 #!/bin/sh
 
+export PROJECT_ROOT="$(dirname $0)/.."
+cd $PROJECT_ROOT
+
 # Install Google.Test from Github
 if [ ! -d googletest ]; then
     echo "Installing googletest.."
