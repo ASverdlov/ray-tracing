@@ -10,15 +10,15 @@ namespace rt {
 
 class Renderer {
  public:
-   virtual ~Renderer() {};
-   virtual Run() = 0;
+  virtual ~Renderer() {};
+  virtual Run() = 0;
 };
 
 // Default implementation, that uses OpenGL to render graphics
 class DefaultRenderer : public Renderer {
  public:
   explicit DefaultRenderer(unique_ptr<Scene> scene, unique_ptr<Camera> camera)
-    : scene_(std::move(scene)),camera_(std::move(camera))
+    : scene_(std::move(scene)), camera_(std::move(camera))
   {}
 
   void Run() override;
