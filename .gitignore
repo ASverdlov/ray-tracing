@@ -5,3 +5,4 @@ tags
 .atom-build.json
 .clang_complete
 trash/*
+googletest
