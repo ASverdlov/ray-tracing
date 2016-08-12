@@ -38,7 +38,7 @@ target_link_libraries(ray-tracing ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} )
 ###########################################
 set(TEST_EXECUTABLE_NAME "tests")
 
-file(GLOB TEST_SOURCE_FILES "test/*.cpp")
+file(GLOB TEST_SOURCE_FILES "tests/*.cpp")
 
 add_executable(${TEST_EXECUTABLE_NAME} ${TEST_SOURCE_FILES})
 
