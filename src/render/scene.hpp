@@ -14,19 +14,17 @@ using std::vector;
 
 class Scene {
 public:
-    vector<Object*> getObjects() const;
-    vector<Light> getLightSources() const;
+  vector<Model*> GetModels() const;
+  vector<Light*> GetLights() const;
 
-    void AddObject(Primitive* object);
-    void AddLight(const Light&);
-
-    CollisionInfo<ftype> pointsTo(const Line<ftype>& line) const;
+  void AddModel(Model* model);
+  void AddLight(Light* light);
 
 private:
-    vector<Object*> objects;
-    vector<Light> lights;
+  vector<Model*> models_;
+  vector<Light*> lights_;
 
-    DELETE_EVIL_CONSTRUCTORS(Scene);
+  DISABLE_COPYING(Scene);
 };
 
 } // namespace rayt
