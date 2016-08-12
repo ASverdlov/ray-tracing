@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export PROJECT_ROOT="$(dirname $0)/.."
+PROJECT_ROOT="$(dirname $0)/.."
 cd $PROJECT_ROOT
 
 # Install Google.Test from Github
