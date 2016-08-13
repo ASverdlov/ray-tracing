@@ -7,7 +7,6 @@
 // Every object has color
 class Object {
  public:
-  Object() {}
   virtual ~Object() {}
 
   void SetColor(Color color);
