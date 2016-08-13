@@ -91,14 +91,14 @@ bool Transform::operator==(const Transform& other) const {
 
 Transform Transform::operator*(double koefficient) const {
     return Transform(matrix[0][0] * koefficient, matrix[0][1] * koefficient, matrix[0][2] * koefficient,
-                        matrix[1][0] * koefficient, matrix[1][1] * koefficient, matrix[1][2] * koefficient,
-                        matrix[2][0] * koefficient, matrix[2][1] * koefficient, matrix[2][2] * koefficient);
+                     matrix[1][0] * koefficient, matrix[1][1] * koefficient, matrix[1][2] * koefficient,
+                     matrix[2][0] * koefficient, matrix[2][1] * koefficient, matrix[2][2] * koefficient);
 }
 
 Transform Transform::operator/(double koefficient) const {
     return Transform(matrix[0][0] / koefficient, matrix[0][1] / koefficient, matrix[0][2] / koefficient,
-                        matrix[1][0] / koefficient, matrix[1][1] / koefficient, matrix[1][2] / koefficient,
-                        matrix[2][0] / koefficient, matrix[2][1] / koefficient, matrix[2][2] / koefficient);
+                     matrix[1][0] / koefficient, matrix[1][1] / koefficient, matrix[1][2] / koefficient,
+                     matrix[2][0] / koefficient, matrix[2][1] / koefficient, matrix[2][2] / koefficient);
 }
 
 Transform Transform::operator*(const Transform& other) const {
