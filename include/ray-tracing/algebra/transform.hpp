@@ -35,7 +35,7 @@ public:
     Transform inv() const;
     double det() const;
 
-    friend std::ostream& operator<< <double> (std::ostream&, const Transform&);
+    friend std::ostream& operator<<(std::ostream&, const Transform&);
 
     //Transform getXRotation(float angle) const;
     //Transform getYRotation(float angle) const;
@@ -48,9 +48,9 @@ private:
     double matrix[3][3];
 };
 
-const Transform<T> Transform<T>::identity = {1, 0, 0,
-                                             0, 1, 0,
-                                             0, 0, 1};
+const Transform Transform::identity = {1, 0, 0,
+                                       0, 1, 0,
+                                       0, 0, 1};
 
 Transform::Transform()
     : matrix{
