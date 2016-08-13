@@ -55,7 +55,7 @@ struct Vector {
   }
 
   // Cross product
-  Vector operator%(const Vector&) const {
+  Vector operator%(const Vector& other) const {
     return Vector(y * other.z - other.y * z,
                   x * other.z - other.x * z,
                   x * other.y - other.x * y);
