@@ -1,3 +1,6 @@
+#ifndef APPLICATION_HPP
+#define APPLICAION_HPP
+
 #include <render.hpp>
 #include <scene.hpp>
 #include <window.hpp>
@@ -11,3 +14,5 @@ class Application {
   Window window_;
   Scene scene_; 
 };
+
+#endif
