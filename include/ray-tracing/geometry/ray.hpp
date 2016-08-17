@@ -3,10 +3,10 @@
 
 #include <vector.hpp>
 
-class Line {
+class Ray {
  public:
-  Line() {}
-  Line(const Vector& origin, const Vector& direction)
+  Ray() {}
+  Ray(const Vector& origin, const Vector& direction)
     : origin_(origin), direction_(direction)
   {}
 
