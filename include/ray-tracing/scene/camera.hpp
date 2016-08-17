@@ -6,12 +6,10 @@
 
 namespace rt {
 
-class Camera {
+class Camera : public Placeable {
  public:
-
-
+  void SetTransform(const Transform& transform) { transform_ = transform; }
  private:
-  Vec3d position_;
   Transform transform_;
   double focus_distance_;
   double frame_width_;
