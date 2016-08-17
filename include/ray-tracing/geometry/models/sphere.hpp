@@ -2,7 +2,7 @@
 #define SPHERE_HPP
 
 #include <object.hpp>
-#include <utils.hpp>
+#include <utility.hpp>
 
 class Sphere : public Object {
  public:
