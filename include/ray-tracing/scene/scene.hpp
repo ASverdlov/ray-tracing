@@ -19,10 +19,14 @@ class Scene {
 
   vector<Model*> GetModels();
   vector<Light*> GetLights();
+
+  void SetCamera(unique_ptr<Camera> camera) { camera_ = std::move(camera); }
+  Camera* GetCamera() { return camera_; }
+
  private:
   vector<Model*> models_;
   vector<Light*> lights_;
-  Camera camera;
+  unique_ptr<Camera> camera_;
 
   DISABLE_COPYING(Scene);
 };
