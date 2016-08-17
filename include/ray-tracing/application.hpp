@@ -2,12 +2,10 @@
 #include <scene.hpp>
 #include <window.hpp>
 
-class Application {
- public:
-  void Run();
+struct Application {
+  Renderer renderer;
+  Window window;
+  Scene scene; 
 
- private:
-  Renderer renderer_;
-  Window window_;
-  Scene scene_; 
+  void Run();
 };
