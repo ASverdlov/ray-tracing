@@ -35,7 +35,7 @@ public:
     Transform inv() const;
     double det() const;
 
-    friend std::ostream& operator<< <double> (std::ostream&, const Transform&);
+    friend std::ostream& operator<<(std::ostream&, const Transform&);
 
     //Transform getXRotation(float angle) const;
     //Transform getYRotation(float angle) const;
@@ -48,9 +48,9 @@ private:
     double matrix[3][3];
 };
 
-const Transform<T> Transform<T>::identity = {1, 0, 0,
-                                             0, 1, 0,
-                                             0, 0, 1};
+const Transform Transform::identity = {1, 0, 0,
+                                       0, 1, 0,
+                                       0, 0, 1};
 
 Transform::Transform()
     : matrix{
@@ -91,14 +91,14 @@ bool Transform::operator==(const Transform& other) const {
 
 Transform Transform::operator*(double koefficient) const {
     return Transform(matrix[0][0] * koefficient, matrix[0][1] * koefficient, matrix[0][2] * koefficient,
-                        matrix[1][0] * koefficient, matrix[1][1] * koefficient, matrix[1][2] * koefficient,
-                        matrix[2][0] * koefficient, matrix[2][1] * koefficient, matrix[2][2] * koefficient);
+                     matrix[1][0] * koefficient, matrix[1][1] * koefficient, matrix[1][2] * koefficient,
+                     matrix[2][0] * koefficient, matrix[2][1] * koefficient, matrix[2][2] * koefficient);
 }
 
 Transform Transform::operator/(double koefficient) const {
     return Transform(matrix[0][0] / koefficient, matrix[0][1] / koefficient, matrix[0][2] / koefficient,
-                        matrix[1][0] / koefficient, matrix[1][1] / koefficient, matrix[1][2] / koefficient,
-                        matrix[2][0] / koefficient, matrix[2][1] / koefficient, matrix[2][2] / koefficient);
+                     matrix[1][0] / koefficient, matrix[1][1] / koefficient, matrix[1][2] / koefficient,
+                     matrix[2][0] / koefficient, matrix[2][1] / koefficient, matrix[2][2] / koefficient);
 }
 
 Transform Transform::operator*(const Transform& other) const {
