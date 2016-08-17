@@ -1,22 +1,30 @@
 #ifndef OBJECT_HPP
 #define OBJECT_HPP
 
+#include <ray.hpp>
+#include <vector.hpp>
 #include <color.hpp>
-#include <utils.hpp>
+#include <utility.hpp>
+
+struct CollisionDescription {
+  double angle;
+  Vector touching;
+  Vector normal;
+};
 
 // Every object has color
-class Object {
+// and can be attached to any position
+// in space.
+class Object : public Placeable {
  public:
   virtual ~Object() {}
 
-  void SetColor(Color color);
+  void SetColor(const Color& color) { color_ = color; };
 
-  void SetPosition(Vec3d position);
-  void SetPosition(double x, double y, double z);
+  virtual CollisionDescription trace(const Ray& ray) = 0;
 
  private:
   Color color_;
-  Vec3d position_;
 };
 
 #endif
