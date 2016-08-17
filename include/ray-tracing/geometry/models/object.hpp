@@ -6,10 +6,14 @@
 #include <color.hpp>
 #include <utility.hpp>
 
+// Forward declaration
+class Object;
+
 struct CollisionDescription {
-  double angle;
+  Object *object;
+  double trace_distance;
+  double cosinus;
   Vector touching;
-  Vector normal;
 };
 
 // Every object has color
@@ -21,7 +25,7 @@ class Object : public Placeable {
 
   void SetColor(const Color& color) { color_ = color; };
 
-  virtual CollisionDescription trace(const Ray& ray) = 0;
+  virtual CollisionDescription Trace(const Ray& ray) = 0;
 
  private:
   Color color_;

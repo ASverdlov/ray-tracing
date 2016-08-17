@@ -10,6 +10,8 @@ class Sphere : public Object {
     radius_ = radius;
   };
 
+  CollisionDescription Trace(const Ray&) override;
+
  private:
   double radius_;
 };
