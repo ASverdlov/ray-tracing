@@ -1,17 +1,12 @@
 #ifndef LIGHT_HPP
 #define LIGHT_HPP
 
-#include <point.hpp>
+#include <vector.hpp>
 #include <utility.hpp>
 
 namespace rt {
 
-class Light {
- public:
-  Vec3d GetPosition() const;
-
- private:
-  Vec3d position_;
+class Light : public Placeable {
 };
 
 } // namespace rt
