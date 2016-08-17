@@ -8,8 +8,6 @@ namespace rt {
 
 class Light {
  public:
-  Light(const Vec3d&);
-
   Vec3d GetPosition() const;
 
  private:

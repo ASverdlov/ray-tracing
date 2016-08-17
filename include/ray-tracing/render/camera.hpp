@@ -17,8 +17,7 @@ class Camera {
                     double x3, double y3, double z3);
 
   void SetFocusDistance(double distance);
-
-  void SetFrameSize(double width, double height);
+  void SetShape(double width, double height);
 
   Line GetRay(double physical_x, double physical_y);
 
@@ -26,8 +25,8 @@ class Camera {
   Vec3d position_;
   Transform transform_;
   double focus_distance_;
-  double frame_width_;
-  double frame_height_;
+  double screen_width_;
+  double screen_height_;
 };
 
 } // namespace rayt
