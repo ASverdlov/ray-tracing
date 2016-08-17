@@ -1,52 +1,44 @@
-#ifdef _WIN32
-#include <windows.h>
-#endif
-#include <GLUT/glut.h>
-
 #include <rendering.hpp>
 #include <geometry.hpp>
 
 using namespace rt;
 
-unique_ptr<Scene> CreateScene() {
-  unique_ptr<Scene> scene(new Scene());
-
-  // Sphere model
+// Sphere model
+unique_ptr<Sphere> CreateSphere() {
   unique_ptr<Sphere> sphere(new Sphere());
   sphere->SetPosition(170, -100, 0);
   sphere->SetRadius(58);
   sphere->SetColor(1, 0, 0);
+  return sphere;
+}
 
-  // Triangle model
+// Triangle model
+unique_ptr<Triangle> CreateTriangle() {
   unique_ptr<Triangle> triangle(new Triangle());
   triangle->SetVertices(170, -50, 50,
                         290,   0,  0,
                         290, 330, 10);
   triangle->SetColor(Color::green);
-
-  // Light
-  Light light(0, 0, 0);
-
-  // Attach objects to the scene
-  scene->AddObject(std::move(sphere));
-  scene->AddObject(std::move(triangle));
-  scene->AddLight(std::move(light));
-
-  return scene;
+  return triangle;
 }
 
 int main(int argc, char** argv) {
-  // Scene object
-  unique_ptr<Scene> scene = CreateScene();
+  Application app;
+  
+  // Set up window resolution
+  app.window.SetResolution(512, 512);
+
+  // Attach needed entities to scene
+  app.scene.AddModel(CreateSphere());
+  app.scene.AddModel(CreateTriangle());
+  app.scene.AddLight(Light(0, 0, 0));
 
   // Camera entity
   unique_ptr<Camera> camera(new Camera());
   camera->SetPosition(0, 0, 0);
   camera->SetDistance(100);
-  camera->SetResolution(512, 512);
-  
-  Renderer renderer(std::move(scene), std::move(camera));
-  renderer.Run(argc, argv, 512, 512);
+  camera->SetShape(512, 512);
+  app.scene.SetCamera(camera);
 
-  return 0;
+  return app.Run();
 }
