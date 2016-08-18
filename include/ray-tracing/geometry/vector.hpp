@@ -3,8 +3,7 @@
 
 #include <cmath>
 
-#include <point.hpp>
-#include <utils.hpp>
+#include <utility.hpp>
 
 namespace rt {
 
