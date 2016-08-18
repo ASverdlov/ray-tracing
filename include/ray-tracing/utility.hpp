@@ -36,6 +36,11 @@ class Placeable {
   Vector position_;
 }
 
+struct Resolution {
+  size_t width;
+  size_t height;
+};
+
 typedef std::string Label;
 
 #endif
