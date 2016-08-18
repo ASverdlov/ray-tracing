@@ -6,9 +6,6 @@
 #include <color.hpp>
 #include <utility.hpp>
 
-// Forward declaration
-class Object;
-
 struct CollisionDescription {
   double trace_distance;
   double cosinus;
