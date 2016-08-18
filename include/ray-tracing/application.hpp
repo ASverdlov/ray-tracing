@@ -1,3 +1,6 @@
+#ifndef APPLICATION_HPP
+#define APPLICAION_HPP
+
 #include <render.hpp>
 #include <scene.hpp>
 #include <window.hpp>
@@ -9,3 +12,5 @@ struct Application {
 
   void Run();
 };
+
+#endif
