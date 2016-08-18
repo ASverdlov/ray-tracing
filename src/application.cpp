@@ -30,8 +30,7 @@ Light* Application::CreateLight(const Label& label) {
 template<typename EntityType, typename StorageType>
 EntityType* Application::CreateEntity(StorageType& storage, const Label& label) {
   auto entity = std::make_unique<EntityType>();
-  auto new_entry = std::make_pair(label, std::move(entity))
-  auto insertion_result = storage.insert(std::move(new_entry));
+  auto insertion_result = storage.emplace(label, std::move(entity));
 
   auto iterator = insertion_result.first;
   bool was_inserted = insertion_result.second;
