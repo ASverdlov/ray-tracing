@@ -34,7 +34,6 @@ CollisionDescription Sphere::Trace(const Ray& ray) {
           cosinus <= 0) {
           continue;
       }
-      collision.object = this;
       collision.touching = touching;
       collision.trace_distance = trace_distance;
       collision.cosinus = cosinus;
