@@ -1,5 +1,5 @@
 #ifndef APPLICATION_HPP
-#define APPLICAION_HPP
+#define APPLICATION_HPP
 
 #include <render.hpp>
 #include <scene.hpp>
