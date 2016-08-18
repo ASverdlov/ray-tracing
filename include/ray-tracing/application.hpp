@@ -7,6 +7,8 @@
 #include <window.hpp>
 #include <utility.hpp>
 
+namespace rt {
+
 class Application {
  public:
   void Run();
@@ -26,5 +28,7 @@ class Application {
   Window window;
   Scene scene; 
 };
+
+} // namespace rt
 
 #endif

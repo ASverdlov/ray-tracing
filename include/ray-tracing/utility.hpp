@@ -28,6 +28,8 @@ const ftype EPS = 1e-5;
     ClassName(const ClassName&); \
     void operator=(const ClassName&);
 
+namespace rt {
+
 class Placeable {
  public:
   void SetPosition(const Vector& position) { position_ = position; }
@@ -42,5 +44,7 @@ struct Resolution {
 };
 
 typedef std::string Label;
+
+} // namespace rt
 
 #endif

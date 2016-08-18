@@ -1,5 +1,7 @@
 #include <application.hpp>
 
+namespace rt {
+
 void Application::Run() {
   
 }
@@ -31,3 +33,5 @@ bool Application::RemoveModel(const Label& label) {
 bool Application::RemoveLight(const Label& label) {
 
 }
+
+} // namespace rt
