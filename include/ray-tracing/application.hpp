@@ -24,9 +24,9 @@ class Application {
   bool RemoveLight(const Label& label);
 
  private:
-  Renderer renderer;
-  Window window;
-  Scene scene; 
+  Renderer renderer_;
+  Window window_;
+  Scene scene_; 
 };
 
 } // namespace rt
