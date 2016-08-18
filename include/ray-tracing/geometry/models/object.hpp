@@ -10,7 +10,6 @@
 class Object;
 
 struct CollisionDescription {
-  Object *object;
   double trace_distance;
   double cosinus;
   Vector touching;
