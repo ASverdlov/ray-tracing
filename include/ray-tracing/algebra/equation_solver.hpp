@@ -1,5 +1,5 @@
-#ifndef MATHEMATICS_HPP
-#define MATHEMATICS_HPP
+#ifndef EQUATION_SOLVER_HPP
+#define EQUATION_SOLVER_HPP
 
 #include <vector>
 #include <cmath>

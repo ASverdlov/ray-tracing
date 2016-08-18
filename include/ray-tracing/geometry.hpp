@@ -1,5 +1,5 @@
-#ifndef GEOM_HPP
-#define GEOM_HPP
+#ifndef ALL_GEOMETRY_HPP
+#define ALL_GEOMETRY_HPP
 
 #include <geometry/models/object.hpp>
 #include <geometry/models/sphere.hpp>

@@ -1,5 +1,5 @@
-#ifndef ALGEBRA_HPP
-#define ALGEBRA_HPP
+#ifndef ALL_ALGEBRA_HPP
+#define ALL_ALGEBRA_HPP
 
 #include <algebra/equation_solver.hpp>
 #include <algebra/transform.hpp>

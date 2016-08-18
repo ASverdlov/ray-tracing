@@ -1,5 +1,5 @@
-#ifndef MAIN_DISPLAYER_HPP
-#define MAIN_DISPLAYER_HPP
+#ifndef RENDERER_HPP
+#define RENDERER_HPP
 
 #include <renderer.hpp>
 #include <scene.hpp>

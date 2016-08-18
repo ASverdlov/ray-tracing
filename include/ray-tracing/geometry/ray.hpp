@@ -1,5 +1,5 @@
-#ifndef LINE_HPP
-#define LINE_HPP
+#ifndef RAY_HPP
+#define RAY_HPP
 
 #include <vector.hpp>
 
