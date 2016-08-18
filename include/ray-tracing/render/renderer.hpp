@@ -1,28 +1,28 @@
 #ifndef RENDERER_HPP
 #define RENDERER_HPP
 
+#include <vector>
+
 #include <renderer.hpp>
 #include <scene.hpp>
-#include <camera.hpp>
+#include <color.hpp>
 #include <utility.hpp>
 
 namespace rt {
 
+typedef std::vector<float> Frame;
+
 class Renderer {
  public:
-  explicit DefaultRenderer(unique_ptr<Scene> scene, unique_ptr<Camera> camera)
-    : scene_(std::move(scene)), camera_(std::move(camera))
-  {}
-
-  void Run() override;
+  Frame RenderScene(Scene* scene, Resolution* resolution);
 
  private:
-  Color GetPixelColor(size_t x, size_t y) const;
+  Color RenderPixel(size_t x, size_t y) const;
 
-  unique_ptr<Scene> scene_;
-  unique_ptr<Camera> camera_;
+  Scene* scene;
+  Resolution* resolution;
 
-  DISABLE_COPYING(MainDisplayer);
+  DISABLE_COPYING(Renderer);
 };
 
 } // namespace rt
