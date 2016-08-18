@@ -26,7 +26,7 @@ struct Equation {
                     C * rhs.C);
   }
   Equation operator^(int n) const {
-    if (n < 0) throw std::logic_error("Can't exponentiate in negative power");
+    assert(n >= 0 && "Can't exponentiate in negative power");
     if (n == 0) return one;
     if (n == 1) return *this;
     return *this * (*this ^ (n - 1));
