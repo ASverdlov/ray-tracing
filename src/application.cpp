@@ -27,9 +27,9 @@ Light* Application::CreateLight(const Label& label) {
   return CreateEntity<Light, LightStorage>(light_storage_, label);
 }
 
-template<typename EntityType, typename StorageType>
-EntityType* Application::CreateEntity(StorageType& storage, const Label& label) {
-  auto entity = std::make_unique<EntityType>();
+template<typename Entity, typename Storage>
+Entity* Application::CreateEntity(Storage& storage, const Label& label) {
+  auto entity = std::make_unique<Entity>();
   auto insertion_result = storage.emplace(label, std::move(entity));
 
   auto iterator = insertion_result.first;
@@ -46,8 +46,8 @@ bool Application::RemoveLight(const Label& label) {
   return RemoveEntity<Light, LightStorage>(light_storage_, label);
 }
 
-template<typename EntityType, typename StorageType>
-bool Application::RemoveEntity(StorageType& storage, const Label& label) {
+template<typename Entity, typename Storage>
+bool Application::RemoveEntity(Storage& storage, const Label& label) {
   return storage.erase(label) > 0;
 }
 

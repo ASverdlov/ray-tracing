@@ -38,11 +38,11 @@ class Application {
   ModelStorage model_storage_;
   LightStorage light_storage_;
 
-  template<typename EntityType, typename StorageType>
-  EntityType* CreateEntity(StorageType& storage, const Label& label);
+  template<typename Entity, typename Storage>
+  Entity* CreateEntity(Storage& storage, const Label& label);
 
-  template<typename EntityType, typename StorageType>
-  bool RemoveEntity(StorageType& storage, const Label& label);
+  template<typename Entity, typename Storage>
+  bool RemoveEntity(Storage& storage, const Label& label);
 };
 
 } // namespace rt
