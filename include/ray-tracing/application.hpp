@@ -8,7 +8,7 @@
 #include <utility.hpp>
 
 // For labeling
-#include <map>
+#include <unordered_map>
 #include <unique_ptr>
 
 namespace rt {
@@ -32,8 +32,8 @@ class Application {
   Window window_;
   Scene scene_;
 
-  typedef std::map<Label, std::unique_ptr<Model>> ModelStorage;
-  typedef std::map<Label, std::unique_ptr<Light>> LightStorage;
+  typedef std::unordered_map<Label, std::unique_ptr<Model>> ModelStorage;
+  typedef std::unordered_map<Label, std::unique_ptr<Light>> LightStorage;
 
   ModelStorage model_storage_;
   LightStorage light_storage_;
