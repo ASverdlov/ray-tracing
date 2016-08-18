@@ -3,14 +3,28 @@
 
 #include <render.hpp>
 #include <scene.hpp>
+#include <geometry.hpp>
 #include <window.hpp>
+#include <utility.hpp>
 
-struct Application {
+class Application {
+ public:
+  void Run();
+
+  void SetResolution(int width, int height);
+  void SetResolution(const Reolution& resolution);
+
+  Triangle* CreateTriangle(const Label& label);
+  Sphere* CreateSphere(const Label& label);
+  Light* CreateLight(const Label& label);
+
+  bool RemoveModel(const Label& label);
+  bool RemoveLight(const Label& label);
+
+ private:
   Renderer renderer;
   Window window;
   Scene scene; 
-
-  void Run();
 };
 
 #endif
