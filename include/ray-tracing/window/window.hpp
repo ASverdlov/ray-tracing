@@ -2,6 +2,9 @@
 #define WINDOW_HPP
 
 struct Resolution {
+  Resolution() {}
+  Resolution(int width, int height) {}
+
   int width;
   int height;
 };
