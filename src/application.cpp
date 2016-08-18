@@ -39,11 +39,16 @@ EntityType* Application::CreateEntity(StorageType& storage, const Label& label) 
 }
 
 bool Application::RemoveModel(const Label& label) {
-
+  return RemoveEntity<Model, ModelStorage>(model_storage_, label);
 }
 
 bool Application::RemoveLight(const Label& label) {
+  return RemoveEntity<Light, LightStorage>(light_storage_, label);
+}
 
+template<typename EntityType, typename StorageType>
+bool Application::RemoveEntity(StorageType& storage, const Label& label) {
+  return storage.erase(label) > 0;
 }
 
 } // namespace rt

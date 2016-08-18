@@ -40,6 +40,9 @@ class Application {
 
   template<typename EntityType, typename StorageType>
   EntityType* CreateEntity(StorageType& storage, const Label& label);
+
+  template<typename EntityType, typename StorageType>
+  bool RemoveEntity(StorageType& storage, const Label& label);
 };
 
 } // namespace rt
