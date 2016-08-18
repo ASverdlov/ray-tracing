@@ -3,10 +3,10 @@
 
 #include <vector>
 
-#include <scene/camera.hpp>
 #include <geometry.hpp>
 #include <light.hpp>
 #include <utility.hpp>
+#include <scene/camera.hpp>
 
 namespace rt {
 
@@ -14,19 +14,22 @@ using std::vector;
 
 class Scene {
  public:
-  void AddModel(Model* model);
-  void AddLight(Light* light);
+  bool AttachModel(Model* model);
+  bool AttachLight(Light* light);
 
-  vector<Model*> GetModels();
-  vector<Light*> GetLights();
+  bool DetachModel(Model* model);
+  bool DetachLight(Light* light);
 
-  void SetCamera(unique_ptr<Camera> camera) { camera_ = std::move(camera); }
+  const unordered_set<Model*>& GetModels() const;
+  const unordered_set<Light*>& GetLights() const;
+
+  void SetCamera(Camera* camera) { camera_ = camera; }
   Camera* GetCamera() { return camera_; }
 
  private:
-  vector<Model*> models_;
-  vector<Light*> lights_;
-  unique_ptr<Camera> camera_;
+  unordered_set<Model*> models_;
+  unordered_set<Light*> lights_;
+  Camera* camera_;
 
   DISABLE_COPYING(Scene);
 };
