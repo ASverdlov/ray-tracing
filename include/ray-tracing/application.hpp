@@ -14,7 +14,7 @@ class Application {
   void Run();
 
   void SetResolution(int width, int height);
-  void SetResolution(const Reolution& resolution);
+  void SetResolution(const Resolution& resolution);
 
   Triangle* CreateTriangle(const Label& label);
   Sphere* CreateSphere(const Label& label);
