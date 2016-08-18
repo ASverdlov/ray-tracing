@@ -25,7 +25,7 @@ class Object : public Placeable {
 
   void SetColor(const Color& color) { color_ = color; };
 
-  virtual CollisionDescription Trace(const Ray& ray) = 0;
+  virtual CollisionDescription Trace(const Ray& ray) const = 0;
 
  private:
   Color color_;
