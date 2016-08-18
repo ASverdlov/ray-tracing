@@ -27,6 +27,8 @@ class Application {
   Renderer renderer_;
   Window window_;
   Scene scene_; 
+
+  Resolution resolution_;
 };
 
 } // namespace rt
