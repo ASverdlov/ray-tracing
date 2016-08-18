@@ -19,8 +19,11 @@ CollisionDescription Sphere::Trace(const Ray& ray) {
                       (Equation(0.0, direction.z, origin.z - center.z} ^ 2) +
                        Equation(0.0, 0.0, -radius * radius);
 
+  vector<double> solutions;
+  Solve(equation, back_inserter(solutions));
+
   CollisionDescription collision;
-  for (double solution : Solve(equation)) {
+  for (double solution : solutions) {
       double trace_distance = solution * direction.GetLength();
       Vector touching = origin + direction * solution;
 
