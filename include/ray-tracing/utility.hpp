@@ -36,6 +36,6 @@ class Placeable {
   Vector position_;
 }
 
-typedef std::string label;
+typedef std::string Label;
 
 #endif
