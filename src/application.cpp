@@ -20,19 +20,19 @@ Triangle* Application::CreateTriangle(const Label& label) {
 }
 
 Sphere* Application::CreateSphere(const Label& label) {
-  return CreateEntity<Sphere, ModelStorage>(model_storage_, label); 
+  return CreateEntity<Sphere, ModelStorage>(model_storage_, label);
 }
 
 Light* Application::CreateLight(const Label& label) {
   return CreateEntity<Light, LightStorage>(light_storage_, label);
 }
 
-template<typename EntityType, typename StorageType> 
+template<typename EntityType, typename StorageType>
 EntityType* Application::CreateEntity(StorageType& storage, const Label& label) {
   auto entity = std::make_unique<EntityType>();
   auto insertion_result = storage.insert(std::move(entity));
 
-  auto iterator = insertion_result.first; 
+  auto iterator = insertion_result.first;
   bool was_inserted = insertion_result.second;
 
   return was_inserted ? iterator->get() : nullptr;

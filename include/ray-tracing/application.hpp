@@ -30,7 +30,7 @@ class Application {
  private:
   Renderer renderer_;
   Window window_;
-  Scene scene_; 
+  Scene scene_;
 
   typedef std::map<Label, std::unique_ptr<Model>> ModelStorage;
   typedef std::map<Label, std::unique_ptr<Light>> LightStorage;
