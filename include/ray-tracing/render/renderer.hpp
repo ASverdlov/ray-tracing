@@ -3,14 +3,13 @@
 
 #include <vector>
 
-#include <renderer.hpp>
+#include <frame.hpp>
 #include <scene.hpp>
+#include <window.hpp>
 #include <color.hpp>
 #include <utility.hpp>
 
 namespace rt {
-
-typedef std::vector<float> Frame;
 
 class Renderer {
  public:
