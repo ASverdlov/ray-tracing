@@ -4,6 +4,9 @@
 #include <cstdlib>
 #include <Vector>
 
+// For model's labeling
+#include <string> 
+
 typedef uint32_t ui32;
 
 #define STRINGIFY2(X) #X
@@ -32,5 +35,7 @@ class Placeable {
  private:
   Vector position_;
 }
+
+typedef std::string label;
 
 #endif
