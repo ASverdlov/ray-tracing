@@ -34,6 +34,6 @@ class Scene {
   DISABLE_COPYING(Scene);
 };
 
-} // namespace rayt
+} // namespace rt
 
 #endif
