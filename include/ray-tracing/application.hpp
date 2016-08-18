@@ -28,7 +28,6 @@ class Application {
   Window window_;
   Scene scene_; 
 
-  Resolution resolution_;
 };
 
 } // namespace rt
