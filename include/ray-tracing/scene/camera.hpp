@@ -30,6 +30,7 @@ class Camera : public Placeable {
 
   Vector direction_;
   Size size_;
+  double distance_;
 };
 
 }  // namespace rt
