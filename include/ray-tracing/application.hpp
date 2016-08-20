@@ -38,6 +38,6 @@ class Application {
   Entity* CreateEntity(const Label& label);
 };
 
-} // namespace rt
+}  // namespace rt
 
 #endif
