@@ -19,4 +19,12 @@ class Camera : public Placeable {
 
 } // namespace rt
 
+struct Plane {
+  // Left up corner
+  Vector origin;
+  // That's a basis
+  Vector x;
+  Vector y;
+}
+
 #endif
