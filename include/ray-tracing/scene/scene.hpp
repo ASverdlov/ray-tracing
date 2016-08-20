@@ -49,6 +49,6 @@ class Scene {
   DISABLE_COPYING(Scene);
 };
 
-} // namespace rt
+}  // namespace rt
 
 #endif

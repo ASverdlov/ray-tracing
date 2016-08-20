@@ -12,7 +12,7 @@ bool Scene::AttachLight(Light* light) {
 
 template<typename Entity>
 bool Scene::AttachEntity(Entity* entity) {
-  auto storage = GetEntities<Entity>(); 
+  auto storage = GetEntities<Entity>();
   auto insertion_result = storage.insert(entity);
 
   bool was_inserted = insertion_result.second;
@@ -29,7 +29,7 @@ bool Scene::DetachLight(Light* light) {
 
 template<typename Entity>
 bool DetachEntity(Entity* entity) {
-  auto storage = GetEntities<Entity>(); 
+  auto storage = GetEntities<Entity>();
   return storage.erase(entity) > 0;
 }
 
@@ -43,22 +43,22 @@ const typename Scene::Storage<Light*> GetLights() const {
 
 template
 typename Scene::Storage<Model*> GetEntities<Model>() {
-  return models_; 
+  return models_;
 }
 
 template
 typename Scene::Storage<Light*> GetEntities<Light>() {
-  return lights_; 
+  return lights_;
 }
 
 template
 const typename Scene::Storage<Model*> GetEntities<Model>() const {
-  return models_; 
+  return models_;
 }
 
 template
 const typename Scene::Storage<Light*> GetEntities<Light>() const {
-  return lights_; 
+  return lights_;
 }
 
-} // namespace rt
+}  // namespace rt
