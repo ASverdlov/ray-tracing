@@ -1,7 +1,7 @@
 #ifndef RAY_HPP
 #define RAY_HPP
 
-#include <vector.hpp>
+#include "geometry/vector.hpp"
 
 class Ray {
  public:

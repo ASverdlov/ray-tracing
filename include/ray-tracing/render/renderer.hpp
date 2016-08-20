@@ -1,13 +1,13 @@
 #ifndef RENDERER_HPP
 #define RENDERER_HPP
 
-#include <frame.hpp>
-#include <scene.hpp>
-#include <window.hpp>
-#include <color.hpp>
-#include <utility.hpp>
-
 #include <vector>
+
+#include "render/frame.hpp"
+#include "render/color.hpp"
+#include "scene/scene.hpp"
+#include "window/window.hpp"
+#include "utility.hpp"
 
 namespace rt {
 

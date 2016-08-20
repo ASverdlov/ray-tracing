@@ -1,5 +1,6 @@
-#include <triangle.hpp>
-#include <vector.hpp>
+#include "geometry/models/triangle.hpp"
+
+#include "geometry/vector.hpp"
 
 namespace rt {
 

@@ -1,4 +1,6 @@
-#include <scene.hpp>
+#include "scene/scene.hpp"
+
+#include "geometry.hpp"
 
 namespace rt {
 

@@ -1,9 +1,9 @@
 #ifndef VECTOR_HPP
 #define VECTOR_HPP
 
-#include <utility.hpp>
-
 #include <cmath>
+
+#include "utility.hpp"
 
 namespace rt {
 

@@ -1,10 +1,10 @@
-#ifndef OBJECT_HPP
-#define OBJECT_HPP
+#ifndef MODEL_HPP
+#define MODEL_HPP
 
-#include <ray.hpp>
-#include <vector.hpp>
-#include <color.hpp>
-#include <utility.hpp>
+#include "geometry/ray.hpp"
+#include "geometry/vector.hpp"
+#include "render/color.hpp"
+#include "utility.hpp"
 
 struct CollisionDescription {
   static const double INFINITY = 1e300;
@@ -25,12 +25,12 @@ struct CollisionDescription {
   }
 };
 
-// Every object has color
+// Every model has color
 // and can be attached to any position
 // in space.
-class Object : public Placeable {
+class Model : public Placeable {
  public:
-  virtual ~Object() {}
+  virtual ~Model() {}
 
   void SetColor(const Color& color) { color_ = color; }
   Color GetColor() { return color_; }

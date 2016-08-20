@@ -4,9 +4,9 @@
 #include <unordered_set>
 
 #include "geometry.hpp"
-#include "light.hpp"
-#include "utility.hpp"
+#include "render/light.hpp"
 #include "scene/camera.hpp"
+#include "utility.hpp"
 
 namespace rt {
 

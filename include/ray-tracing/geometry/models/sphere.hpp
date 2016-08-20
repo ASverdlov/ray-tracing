@@ -1,10 +1,11 @@
 #ifndef SPHERE_HPP
 #define SPHERE_HPP
 
-#include <object.hpp>
-#include <utility.hpp>
+#include "geometry/models/model.hpp"
+#include "geometry/ray.hpp"
+#include "utility.hpp"
 
-class Sphere : public Object {
+class Sphere : public Model {
  public:
   void SetRadius(double radius) {
     radius_ = radius;

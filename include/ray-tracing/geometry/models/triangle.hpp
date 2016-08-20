@@ -1,10 +1,11 @@
 #ifndef TRIANGLE_HPP
 #define TRIANGLE_HPP
 
-#include <object.hpp>
-#include <vector.hpp>
+#include "geometry/models/model.hpp"
+#include "geometry/ray.hpp"
+#include "geometry/vector.hpp"
 
-class Triangle : public Object {
+class Triangle : public Model {
  public:
   void SetVertices(const Vector& v1, const Vector& v2, const Vector& v3);
   void SetVertices(double x1, double y1, double z1,

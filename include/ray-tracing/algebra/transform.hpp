@@ -1,8 +1,7 @@
 #ifndef TRANSFORM_HPP
 #define TRANSFORM_HPP
 
-#include <utility.hpp>
-#include <point.hpp>
+#include "utility.hpp"
 
 TEST_FRIENDS_DEFINITIONS;
 
