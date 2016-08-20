@@ -8,7 +8,8 @@ namespace rt {
 
 class Camera : public Placeable {
  public:
-  void SetTransform(const Transform& transform) { transform_ = transform; }
+  Ray GetRay(double x, double y);  // physical coordinates
+  void Rotate(const Transform& transform) { transform_ = transform; }
  private:
   Transform transform_;
   double focus_distance_;
