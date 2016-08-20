@@ -1,8 +1,12 @@
 language: cpp
 
 compiler:
-  - gcc 
+  - gcc
   - clang
 
-before_script:
+script:
   - ./scripts/check_syntax.sh
+
+notifications:
+    email:
+      on_failure: change
