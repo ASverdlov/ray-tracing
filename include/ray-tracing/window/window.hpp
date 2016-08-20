@@ -11,9 +11,9 @@ struct Resolution {
 
 class Window {
  public:
-   Window() {}
-   Window(int width, int height) : resolution_(width, height) {}
-   Window(const Resolution& resolution) : resolution_(resolution) {}
+  Window() {}
+  Window(int width, int height) : resolution_(width, height) {}
+  Window(const Resolution& resolution) : resolution_(resolution) {}
 
  private:
   Resolution resolution_;

@@ -2,7 +2,11 @@
 #define UTILITY_HPP
 
 #include <cstdlib>
-#include <Vector>
+
+// For model's labeling
+#include <string>
+
+#include "geometry/vector.hpp"
 
 typedef uint32_t ui32;
 
@@ -25,6 +29,8 @@ const ftype EPS = 1e-5;
     ClassName(const ClassName&); \
     void operator=(const ClassName&);
 
+namespace rt {
+
 class Placeable {
  public:
   void SetPosition(const Vector& position) { position_ = position; }
@@ -34,5 +40,14 @@ class Placeable {
  private:
   Vector position_;
 }
+
+struct Resolution {
+  size_t width;
+  size_t height;
+};
+
+typedef std::string Label;
+
+}  // namespace rt
 
 #endif

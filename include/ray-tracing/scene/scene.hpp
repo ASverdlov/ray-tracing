@@ -1,16 +1,16 @@
 #ifndef SCENE_HPP
 #define SCENE_HPP
 
-#include <vector>
+#include <unordered_set>
 
-#include <geometry.hpp>
-#include <light.hpp>
-#include <utility.hpp>
-#include <scene/camera.hpp>
+#include "geometry.hpp"
+#include "light.hpp"
+#include "utility.hpp"
+#include "scene/camera.hpp"
 
 namespace rt {
 
-using std::vector;
+using std::unordered_set;
 
 class Scene {
  public:
@@ -20,8 +20,11 @@ class Scene {
   bool DetachModel(Model* model);
   bool DetachLight(Light* light);
 
-  const unordered_set<Model*>& GetModels() const;
-  const unordered_set<Light*>& GetLights() const;
+  template<typename T>
+  class Storage: unordered_set<T> {};
+
+  const Storage<Model*>& GetModels() const;
+  const Storage<Light*>& GetLights() const;
 
   void SetCamera(Camera* camera) { camera_ = camera; }
   Camera* GetCamera() { return camera_; }
@@ -34,14 +37,41 @@ class Scene {
   }
 
  private:
-  unordered_set<Model*> models_;
-  unordered_set<Light*> lights_;
+  Storage<Model*> models_;
+  Storage<Light*> lights_;
   Camera* camera_;
   double ambient_light_brightness_;
+
+  template<typename Entity>
+  bool AttachEntity(Entity* entity);
+
+  template<typename Entity>
+  bool DetachEntity(Entity* entity);
+
+  template<typename Entity>
+  Storage<Entity*>& GetEntities();
+
+  template<typename Entity>
+  const Storage<Entity*>& GetEntities() const;
 
   DISABLE_COPYING(Scene);
 };
 
-} // namespace rayt
+template<typename Entity>
+bool Scene::AttachEntity(Entity* entity) {
+  auto storage = GetEntities<Entity>();
+  auto insertion_result = storage.insert(entity);
+
+  bool was_inserted = insertion_result.second;
+  return was_inserted;
+}
+
+template<typename Entity>
+bool DetachEntity(Entity* entity) {
+  auto storage = GetEntities<Entity>();
+  return storage.erase(entity) > 0;
+}
+
+}  // namespace rt
 
 #endif

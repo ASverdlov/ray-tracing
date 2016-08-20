@@ -1,8 +1,8 @@
 #ifndef CAMERA_HPP
 #define CAMERA_HPP
 
-#include <geometry.hpp>
-#include <utility.hpp>
+#include "geometry.hpp"
+#include "utility.hpp"
 
 namespace rt {
 
@@ -16,6 +16,6 @@ class Camera : public Placeable {
   double frame_height_;
 };
 
-} // namespace rayt
+} // namespace rt
 
 #endif
