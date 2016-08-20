@@ -1,9 +1,9 @@
 #ifndef VECTOR_HPP
 #define VECTOR_HPP
 
-#include <cmath>
-
 #include <utility.hpp>
+
+#include <cmath>
 
 namespace rt {
 
@@ -39,7 +39,7 @@ struct Vector {
   Vector& operator/=(double koefficient) {
     *this = *this / koefficient;
   }
-  
+
   // Comparison operators
   bool operator==(const Vector& other) const {
     return x == other.x && y == other.y && z == other.z;
@@ -69,6 +69,6 @@ struct Vector {
   double x, y, z;
 };
 
-} // namespace rt
+}  // namespace rt
 
 #endif

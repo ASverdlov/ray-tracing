@@ -7,6 +7,6 @@ struct Plane {
     double A, B, C, D;
 };
 
-} // namespace geom
+}  // namespace rt
 
 #endif

@@ -6,9 +6,9 @@
 
 class Sphere : public Object {
  public:
-  void SetRadius(double radius) { 
+  void SetRadius(double radius) {
     radius_ = radius;
-  };
+  }
 
   CollisionDescription Trace(const Ray&) override;
 

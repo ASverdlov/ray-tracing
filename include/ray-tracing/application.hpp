@@ -1,15 +1,15 @@
 #ifndef APPLICATION_HPP
 #define APPLICATION_HPP
 
-// For labeling
+#include <render.hpp>
+#include <scene.hpp>
+#include <geometry.hpp>
+#include <window.hpp>
+#include <utility.hpp>
+
 #include <unordered_map>
 #include <memory>
-
-#include "render.hpp"
-#include "scene.hpp"
-#include "geometry.hpp"
-#include "window.hpp"
-#include "utility.hpp"
+#include <utility>
 
 namespace rt {
 

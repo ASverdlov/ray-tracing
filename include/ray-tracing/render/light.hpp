@@ -9,6 +9,6 @@ namespace rt {
 class Light : public Placeable {
 };
 
-} // namespace rt
+}  // namespace rt
 
 #endif

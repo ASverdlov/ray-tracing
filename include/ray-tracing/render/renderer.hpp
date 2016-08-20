@@ -1,13 +1,13 @@
 #ifndef RENDERER_HPP
 #define RENDERER_HPP
 
-#include <vector>
-
 #include <frame.hpp>
 #include <scene.hpp>
 #include <window.hpp>
 #include <color.hpp>
 #include <utility.hpp>
+
+#include <vector>
 
 namespace rt {
 
@@ -24,6 +24,6 @@ class Renderer {
   DISABLE_COPYING(Renderer);
 };
 
-} // namespace rt
+}  // namespace rt
 
 #endif

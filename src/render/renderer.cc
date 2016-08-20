@@ -1,6 +1,6 @@
-#include <cmath>
-
 #include <renderer.hpp>
+
+#include <cmath>
 
 namespace rt {
 

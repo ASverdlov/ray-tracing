@@ -32,7 +32,7 @@ class Object : public Placeable {
  public:
   virtual ~Object() {}
 
-  void SetColor(const Color& color) { color_ = color; };
+  void SetColor(const Color& color) { color_ = color; }
   Color GetColor() { return color_; }
 
   virtual CollisionDescription Trace(const Ray& ray) const = 0;

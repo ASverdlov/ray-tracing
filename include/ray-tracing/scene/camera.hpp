@@ -16,6 +16,6 @@ class Camera : public Placeable {
   double frame_height_;
 };
 
-} // namespace rt
+}  // namespace rt
 
 #endif
