@@ -4,8 +4,8 @@
 
 namespace rt {
 
-CollisionDescription Renderer::FindClosestCollision(const Ray& ray) {
-  CollisionDescription nearest_collision;
+Collision Renderer::FindClosestCollision(const Ray& ray) {
+  Collision nearest_collision;
   for (const auto* model : scene_->GetModels()) {
     auto collision = model->Trace(ray);
     if (collision.Exists() && collision.IsCloserThan(nearest_collision)) {

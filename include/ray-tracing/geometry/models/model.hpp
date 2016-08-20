@@ -8,17 +8,17 @@
 
 namespace rt {
 
-struct CollisionDescription {
+struct Collision {
   static const double INFINITY = 1e300;
 
-  CollisionDescription() : trace_distance(INFINITY) {}
+  Collision() : trace_distance(INFINITY) {}
 
   double trace_distance;
   double cosinus;
   Vector touching;
   Color color;
 
-  bool IsCloserThan(const CollisionDescription& other_collision) const {
+  bool IsCloserThan(const Collision& other_collision) const {
     return other_collision.trace_distance < trace_distance;
   }
 
@@ -37,7 +37,7 @@ class Model : public Placeable {
   void SetColor(const Color& color) { color_ = color; }
   Color GetColor() { return color_; }
 
-  virtual CollisionDescription Trace(const Ray& ray) const = 0;
+  virtual Collision Trace(const Ray& ray) const = 0;
 
  private:
   Color color_;

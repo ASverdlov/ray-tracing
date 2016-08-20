@@ -13,7 +13,7 @@ class Sphere : public Model {
     radius_ = radius;
   }
 
-  CollisionDescription Trace(const Ray&) override;
+  Collision Trace(const Ray&) override;
 
  private:
   double radius_;

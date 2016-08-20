@@ -14,7 +14,7 @@ class Triangle : public Model {
                    double x2, double y2, double z2,
                    double x3, double y3, double z3);
 
-  CollisionDescription Trace(const Ray&) override;
+  Collision Trace(const Ray&) override;
 
  private:
   Vector vertices_[3];

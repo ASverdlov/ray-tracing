@@ -5,7 +5,7 @@
 
 namespace rt {
 
-CollisionDescription Sphere::Trace(const Ray& ray) {
+Collision Sphere::Trace(const Ray& ray) {
   /*
    * (x - center.x) ^ 2 + (y - center.y) ^ 2 + (z - center.z) ^ 2 = r ^ 2
    * x(t) = origin.x + direction.x * t
@@ -25,7 +25,7 @@ CollisionDescription Sphere::Trace(const Ray& ray) {
   vector<double> solutions;
   Solve(equation, back_inserter(solutions));
 
-  CollisionDescription collision;
+  Collision collision;
   for (double solution : solutions) {
       double trace_distance = solution * direction.GetLength();
       Vector touching = origin + direction * solution;
@@ -35,7 +35,7 @@ CollisionDescription Sphere::Trace(const Ray& ray) {
                        (radius * direction.GetLength());
 
       // TODO(asverdlov, fix till 30.08.16):
-      // Encapsulate following logic in CollisionDescription
+      // Encapsulate following logic in Collision
       if (trace_distance <= 0 ||
           trace_distance >= collision.distance ||
           cosinus <= 0) {
