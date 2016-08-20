@@ -1,0 +1,8 @@
+language: cpp
+
+compiler:
+  - gcc 
+  - clang
+
+before_script:
+  - ./scripts/check_syntax.sh
