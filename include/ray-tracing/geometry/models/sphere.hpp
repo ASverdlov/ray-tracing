@@ -1,19 +1,24 @@
 #ifndef SPHERE_HPP
 #define SPHERE_HPP
 
-#include <object.hpp>
-#include <utility.hpp>
+#include "geometry/models/model.hpp"
+#include "geometry/ray.hpp"
+#include "utility.hpp"
 
-class Sphere : public Object {
+namespace rt {
+
+class Sphere : public Model, public Placeable {
  public:
-  void SetRadius(double radius) { 
+  void SetRadius(double radius) {
     radius_ = radius;
-  };
+  }
 
-  CollisionDescription Trace(const Ray&) override;
+  Collision Trace(const Ray&) override;
 
  private:
   double radius_;
 };
+
+}  // namespace rt
 
 #endif

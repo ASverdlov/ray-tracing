@@ -1,4 +1,6 @@
-#include <application.hpp>
+#include "application.hpp"
+
+#include "geometry.hpp"
 
 namespace rt {
 
@@ -11,7 +13,7 @@ void Application::SetResolution(int width, int height) {
   SetResolution(Resolution(width, height));
 }
 
-void Application::SetResolution(const Reolution& resolution) {
+void Application::SetResolution(const Resolution& resolution) {
   window_.SetResolution(resolution);
 }
 

@@ -51,6 +51,6 @@ void Solve(const Equation& equation, OutputIterator output) {
   *output++ = (-B + determinant) * .5 / A;
 }
 
-} // namespace geom
+}  // namespace rt
 
 #endif

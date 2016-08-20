@@ -1,7 +1,7 @@
 #ifndef ALL_GEOMETRY_HPP
 #define ALL_GEOMETRY_HPP
 
-#include <geometry/models/object.hpp>
+#include <geometry/models/model.hpp>
 #include <geometry/models/sphere.hpp>
 #include <geometry/models/triangle.hpp>
 #include <geometry/vector.hpp>

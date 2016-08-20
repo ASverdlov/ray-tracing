@@ -1,7 +1,9 @@
 #ifndef RAY_HPP
 #define RAY_HPP
 
-#include <vector.hpp>
+#include "geometry/vector.hpp"
+
+namespace rt {
 
 class Ray {
  public:
@@ -10,12 +12,14 @@ class Ray {
     : origin_(origin), direction_(direction)
   {}
 
-  Vector GetOrigin() const { return origin_ };
-  Vector GetDirection() const { return direction_ };
+  Vector GetOrigin() const { return origin_; }
+  Vector GetDirection() const { return direction_; }
 
  private:
   Vector origin_;
   Vector direction_;
 };
+
+}  // namespace rt
 
 #endif

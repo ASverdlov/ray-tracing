@@ -24,6 +24,6 @@ struct Color {
 
 std::ostream& operator<<(std::ostream&, const Color& color);
 
-} // namespace rayt
+}  // namespace rt
 
 #endif
