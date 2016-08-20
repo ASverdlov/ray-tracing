@@ -24,25 +24,18 @@ class Application {
   Sphere* CreateSphere(const Label& label);
   Light* CreateLight(const Label& label);
 
-  bool RemoveModel(const Label& label);
-  bool RemoveLight(const Label& label);
+  bool RemoveEntity(const Label& label);
 
  private:
   Renderer renderer_;
   Window window_;
   Scene scene_;
 
-  typedef std::unordered_map<Label, std::unique_ptr<Model>> ModelStorage;
-  typedef std::unordered_map<Label, std::unique_ptr<Light>> LightStorage;
+  typedef std::unordered_map<Label, std::unique_ptr<Entity>> EntityStorage;
+  EntityStorage storage;
 
-  ModelStorage model_storage_;
-  LightStorage light_storage_;
-
-  template<typename Entity, typename Storage>
-  Entity* CreateEntity(Storage& storage, const Label& label);
-
-  template<typename Entity, typename Storage>
-  bool RemoveEntity(Storage& storage, const Label& label);
+  template<typename Entity>
+  Entity* CreateEntity(const Label& label);
 };
 
 } // namespace rt

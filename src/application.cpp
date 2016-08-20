@@ -16,19 +16,19 @@ void Application::SetResolution(const Reolution& resolution) {
 }
 
 Triangle* Application::CreateTriangle(const Label& label) {
-  return CreateEntity<Triangle, ModelStorage>(model_storage_, label);
+  return CreateEntity<Triangle>(label);
 }
 
 Sphere* Application::CreateSphere(const Label& label) {
-  return CreateEntity<Sphere, ModelStorage>(model_storage_, label);
+  return CreateEntity<Sphere>(label);
 }
 
 Light* Application::CreateLight(const Label& label) {
-  return CreateEntity<Light, LightStorage>(light_storage_, label);
+  return CreateEntity<Light>(label);
 }
 
-template<typename Entity, typename Storage>
-Entity* Application::CreateEntity(Storage& storage, const Label& label) {
+template<typename Entity>
+Entity* Application::CreateEntity(const Label& label) {
   auto entity = std::make_unique<Entity>();
   auto insertion_result = storage.emplace(label, std::move(entity));
 
@@ -38,16 +38,8 @@ Entity* Application::CreateEntity(Storage& storage, const Label& label) {
   return was_inserted ? iterator->get() : nullptr;
 }
 
-bool Application::RemoveModel(const Label& label) {
-  return RemoveEntity<Model, ModelStorage>(model_storage_, label);
-}
-
-bool Application::RemoveLight(const Label& label) {
-  return RemoveEntity<Light, LightStorage>(light_storage_, label);
-}
-
-template<typename Entity, typename Storage>
-bool Application::RemoveEntity(Storage& storage, const Label& label) {
+template<typename Entity>
+bool Application::RemoveEntity(const Label& label) {
   return storage.erase(label) > 0;
 }
 
