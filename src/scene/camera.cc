@@ -28,25 +28,30 @@ Ray Camera::GetRay(double x, double y) const {
 
 Vector Camera::Get3DPoint(const Vector2d& coordinate) const {
   // Take plane's basis
-  Plane plane = GetPlane();
   // And combinate these together
-  return plane.x * coordinate.x + plane.y * coordinate.y + plane.origin;
+  Vector plane_center = GetPlaneCenter();
+  Vector origin = plane_.x * (size_.width * -.5) +
+                  plane_.y * (size_.height * -.5) +
+                  plane_center;
+  return plane_.x * coordinate.x + plane_.y * coordinate.y + origin;
 }
 
 Plane Camera::GetPlane() const {
-  // Assume that camera stands in the world's origin
-  Vector direction = ...;
-  Vector plane_center = direction * distance;
+  Vector plane_center = GetPlaneCenter();
+  Vector plane_normal = plane_center.Normalize();
 
-  // Here is plane's basis's origin on the center
-  Vector x(1, direction.x / direction.y, 0);  // y basis vector
-  x /= x.GetLenght()  // Normalize
-
-  Vector y;  // y basis vector
-
-  return Plane();
+  // Here is orthonormal plane's basis
+  Vector x = Vector(0, 0, 1) % plane_normal;
+  Vector y = x % plane_center;
+  return Plane(x * (-1), y * (-1));
 }
 
+void UpdatePlane() {
+  plane_ = GetPlane();
+}
+
+Vector GetPlaneCenter() const {
+  return direction_ * distance_ + position_;
 }
 
 }  // namespace rt

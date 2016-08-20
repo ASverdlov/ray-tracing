@@ -23,6 +23,13 @@ class Camera : public Placeable {
     Vector y;
   }
 
+  Vector Get3DPoint(const Vector2d& coordinate) const;
+  Plane GetPlane() const;
+  void UpdatePlane();
+  Vector GetPlaneCenter() const;
+
+  Vector plane_center_;
+
   Vector direction_;
   Size size_;
 };
