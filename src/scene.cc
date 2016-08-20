@@ -2,6 +2,23 @@
 
 namespace rt {
 
+bool Scene::AttachModel(Model* model) {
+  return AttachEntity(model);
+}
+
+bool Scene::AttachLight(Light* light) {
+  return AttachEntity(light);
+}
+
+template<typename Entity>
+bool Scene::AttachEntity(Entity* entity) {
+  auto storage = GetEntities<Entity>(); 
+  auto insertion_result = storage.insert(entity);
+
+  bool was_inserted = insertion_result.second;
+  return was_inserted;
+}
+
 const typename Scene::Storage<Model*> GetModels() const {
   return GetEntities<Model>();
 }
