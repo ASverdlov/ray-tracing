@@ -11,6 +11,7 @@ class Camera : public Placeable {
   void SetSize(const Size& size);
   Size GetSize() const;
   void SetDistance(double distance);
+  void SetDirection(const Vector& direction);
   Ray GetRay(double x, double y) const;  // Physical coordinates
 
  private:
@@ -22,6 +23,7 @@ class Camera : public Placeable {
     Vector y;
   }
 
+  Vector direction_;
   Size size_;
 };
 

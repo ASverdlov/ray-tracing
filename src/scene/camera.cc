@@ -6,12 +6,17 @@ void Camera::SetSize(const Size& size) {
   size_ = size;
 }
 
+Size GetSize() const {
+  return size_;
+}
+
 void Camera::SetDistance(double distance) {
   distance_ = distance;
 }
 
-Size GetSize() const {
-  return size_;
+void Camera::SetDirection(const Vector& direction) {
+  direction_ = direction;
+  UpdatePlane();
 }
 
 Ray Camera::GetRay(double x, double y) const {
