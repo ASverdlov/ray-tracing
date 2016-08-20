@@ -12,6 +12,7 @@ Size GetSize() const {
 
 void Camera::SetDistance(double distance) {
   distance_ = distance;
+  UpdatePlane();
 }
 
 void Camera::SetDirection(const Vector& direction) {
