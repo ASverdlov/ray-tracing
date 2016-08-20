@@ -18,8 +18,8 @@ class Renderer {
  private:
   Color RenderPixel(size_t x, size_t y) const;
 
-  Scene* scene;
-  Resolution* resolution;
+  Scene* scene_;
+  Resolution* resolution_;
 
   DISABLE_COPYING(Renderer);
 };

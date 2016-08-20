@@ -29,10 +29,18 @@ class Scene {
   void SetCamera(Camera* camera) { camera_ = camera; }
   Camera* GetCamera() { return camera_; }
 
+  void SetAmbientLight(double brightness) {
+    ambient_light_brightness_ = brightness;
+  }
+  double GetAmbientLight() const {
+    return ambient_light_brightness_;
+  }
+
  private:
   Storage<Model*> models_;
   Storage<Light*> lights_;
   Camera* camera_;
+  double ambient_light_brightness_;
 
   template<typename Entity>
   bool AttachEntity(Entity* entity);
@@ -48,6 +56,21 @@ class Scene {
 
   DISABLE_COPYING(Scene);
 };
+
+template<typename Entity>
+bool Scene::AttachEntity(Entity* entity) {
+  auto storage = GetEntities<Entity>();
+  auto insertion_result = storage.insert(entity);
+
+  bool was_inserted = insertion_result.second;
+  return was_inserted;
+}
+
+template<typename Entity>
+bool DetachEntity(Entity* entity) {
+  auto storage = GetEntities<Entity>();
+  return storage.erase(entity) > 0;
+}
 
 }  // namespace rt
 
