@@ -38,6 +38,9 @@ class Scene {
   bool AttachEntity(Entity* entity);
 
   template<typename Entity>
+  bool DetachEntity(Entity* entity);
+
+  template<typename Entity>
   const Storage<Entity*>& GetEntities() const;
 
   DISABLE_COPYING(Scene);

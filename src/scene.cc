@@ -19,6 +19,20 @@ bool Scene::AttachEntity(Entity* entity) {
   return was_inserted;
 }
 
+bool Scene::DetachModel(Model* model) {
+  return DetachEntity(model);
+}
+
+bool Scene::DetachLight(Light* light) {
+  return DetachEntity(light);
+}
+
+template<typename Entity>
+bool DetachEntity(Entity* entity) {
+  auto storage = GetEntities<Entity>(); 
+  return storage.erase(entity) > 0;
+}
+
 const typename Scene::Storage<Model*> GetModels() const {
   return GetEntities<Model>();
 }
