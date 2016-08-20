@@ -1,7 +1,7 @@
 #ifndef SCENE_HPP
 #define SCENE_HPP
 
-#include <vector>
+#include <unordered_set>
 
 #include <geometry.hpp>
 #include <light.hpp>
@@ -10,7 +10,7 @@
 
 namespace rt {
 
-using std::vector;
+using std::unordered_set;
 
 class Scene {
  public:
@@ -20,16 +20,22 @@ class Scene {
   bool DetachModel(Model* model);
   bool DetachLight(Light* light);
 
-  const unordered_set<Model*>& GetModels() const;
-  const unordered_set<Light*>& GetLights() const;
+  template<typename Entity>
+  class SceneStorage: unordered_set<Entity> {};
+
+  const SceneStorage<Model*>& GetModels() const;
+  const SceneStorage<Light*>& GetLights() const;
 
   void SetCamera(Camera* camera) { camera_ = camera; }
   Camera* GetCamera() { return camera_; }
 
  private:
-  unordered_set<Model*> models_;
-  unordered_set<Light*> lights_;
+  SceneStorage<Model*> models_;
+  SceneStorage<Light*> lights_;
   Camera* camera_;
+
+  template<typename Entity>
+  bool AttachEntity(Entity* entity);
 
   DISABLE_COPYING(Scene);
 };
