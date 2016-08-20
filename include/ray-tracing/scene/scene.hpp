@@ -49,6 +49,21 @@ class Scene {
   DISABLE_COPYING(Scene);
 };
 
+template<typename Entity>
+bool Scene::AttachEntity(Entity* entity) {
+  auto storage = GetEntities<Entity>();
+  auto insertion_result = storage.insert(entity);
+
+  bool was_inserted = insertion_result.second;
+  return was_inserted;
+}
+
+template<typename Entity>
+bool DetachEntity(Entity* entity) {
+  auto storage = GetEntities<Entity>();
+  return storage.erase(entity) > 0;
+}
+
 }  // namespace rt
 
 #endif
