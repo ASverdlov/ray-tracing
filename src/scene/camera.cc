@@ -42,8 +42,6 @@ Plane Camera::GetPlane() const {
   return Plane();
 }
 
-void Camera::Rotate(const Transform& transform) {
-  transform_ = transform;
 }
 
 }  // namespace rt

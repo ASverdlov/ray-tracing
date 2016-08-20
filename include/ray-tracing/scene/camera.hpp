@@ -13,8 +13,6 @@ class Camera : public Placeable {
   void SetDistance(double distance);
   Ray GetRay(double x, double y) const;  // Physical coordinates
 
-  void Rotate(const Transform& transform) { transform_ = transform; }
-
  private:
   struct Plane {
     // Left up corner
@@ -24,8 +22,6 @@ class Camera : public Placeable {
     Vector y;
   }
 
-  Transform transform_;
-  double distance_;
   Size size_;
 };
 
