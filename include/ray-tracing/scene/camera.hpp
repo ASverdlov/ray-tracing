@@ -10,9 +10,7 @@ class Camera : public Placeable {
  public:
   void SetSize(const Size& size);
   Size GetSize() const;
-
   void SetDistance(double distance);
-
   Ray GetRay(double x, double y) const;  // Physical coordinates
 
   void Rotate(const Transform& transform) { transform_ = transform; }
