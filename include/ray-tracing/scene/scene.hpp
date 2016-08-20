@@ -20,18 +20,18 @@ class Scene {
   bool DetachModel(Model* model);
   bool DetachLight(Light* light);
 
-  template<typename Entity>
-  class SceneStorage: unordered_set<Entity> {};
+  template<typename T>
+  class Storage: unordered_set<T> {};
 
-  const SceneStorage<Model*>& GetModels() const;
-  const SceneStorage<Light*>& GetLights() const;
+  const Storage<Model*>& GetModels() const;
+  const Storage<Light*>& GetLights() const;
 
   void SetCamera(Camera* camera) { camera_ = camera; }
   Camera* GetCamera() { return camera_; }
 
  private:
-  SceneStorage<Model*> models_;
-  SceneStorage<Light*> lights_;
+  Storage<Model*> models_;
+  Storage<Light*> lights_;
   Camera* camera_;
 
   template<typename Entity>
