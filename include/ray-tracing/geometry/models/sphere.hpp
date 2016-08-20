@@ -5,6 +5,8 @@
 #include "geometry/ray.hpp"
 #include "utility.hpp"
 
+namespace rt {
+
 class Sphere : public Model {
  public:
   void SetRadius(double radius) {
@@ -16,5 +18,7 @@ class Sphere : public Model {
  private:
   double radius_;
 };
+
+}  // namespace rt
 
 #endif

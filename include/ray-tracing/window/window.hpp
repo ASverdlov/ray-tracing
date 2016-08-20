@@ -1,6 +1,8 @@
 #ifndef WINDOW_HPP
 #define WINDOW_HPP
 
+namespace rt {
+
 struct Resolution {
   Resolution() {}
   Resolution(int width, int height) {}
@@ -18,5 +20,7 @@ class Window {
  private:
   Resolution resolution_;
 };
+
+}  // namespace rt
 
 #endif

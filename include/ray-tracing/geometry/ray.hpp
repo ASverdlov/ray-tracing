@@ -3,6 +3,8 @@
 
 #include "geometry/vector.hpp"
 
+namespace rt {
+
 class Ray {
  public:
   Ray() {}
@@ -17,5 +19,7 @@ class Ray {
   Vector origin_;
   Vector direction_;
 };
+
+}  // namespace rt
 
 #endif

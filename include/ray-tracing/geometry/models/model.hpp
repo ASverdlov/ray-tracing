@@ -6,6 +6,8 @@
 #include "render/color.hpp"
 #include "utility.hpp"
 
+namespace rt {
+
 struct CollisionDescription {
   static const double INFINITY = 1e300;
 
@@ -40,5 +42,7 @@ class Model : public Placeable {
  private:
   Color color_;
 };
+
+}  // namespace rt
 
 #endif

@@ -2,7 +2,6 @@
 #define UTILITY_HPP
 
 #include <cstdlib>
-
 // For model's labeling
 #include <string>
 
@@ -20,10 +19,6 @@ typedef uint32_t ui32;
 #ifndef TEST_FRIENDS_DEFINITIONS
 #define TEST_FRIENDS_DEFINITIONS
 #endif
-
-typedef float ftype;
-
-const ftype EPS = 1e-5;
 
 #define DISABLE_COPYING(ClassName) \
     ClassName(const ClassName&); \

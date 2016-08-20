@@ -5,6 +5,8 @@
 #include "geometry/ray.hpp"
 #include "geometry/vector.hpp"
 
+namespace rt {
+
 class Triangle : public Model {
  public:
   void SetVertices(const Vector& v1, const Vector& v2, const Vector& v3);
@@ -17,5 +19,7 @@ class Triangle : public Model {
  private:
   Vector vertices_[3];
 };
+
+}  // namespace rt
 
 #endif
