@@ -29,10 +29,18 @@ class Scene {
   void SetCamera(Camera* camera) { camera_ = camera; }
   Camera* GetCamera() { return camera_; }
 
+  void SetAmbientLight(double brightness) {
+    ambient_light_brightness_ = brightness;
+  }
+  double GetAmbientLight() const {
+    return ambient_light_brightness_;
+  }
+
  private:
   Storage<Model*> models_;
   Storage<Light*> lights_;
   Camera* camera_;
+  double ambient_light_brightness_;
 
   template<typename Entity>
   bool AttachEntity(Entity* entity);

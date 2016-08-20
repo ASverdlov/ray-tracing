@@ -1,62 +1,65 @@
+#include <cmath>
+
 #include <renderer.hpp>
-#include <iostream>
 
 namespace rt {
 
-Color MainDisplayer::GetPixelColor(size_t x, size_t y) const {
-  auto ray = camera_->GetRay(x, y);
-
-  auto cameraIntersection = scene->pointsTo(ray);
-  if (cameraIntersection.object == nullptr) {
-    return Color::blue;
-  }
-
-  ftype brightness = Color::brightnessBorder * 0.20f; // initial brightness
-  for (const auto& light : scene->getLightSources()) {
-    Line<ftype> lightRay = {light.getPosition(), cameraIntersection.position - light.getPosition()};
-    auto lightIntersection = scene->pointsTo(lightRay);
-
-    if (lightIntersection.position == cameraIntersection.position /*&&
-                                                                    lightIntersection.cosinus > 0.0f*/) {
-      ftype squareDistance = lightIntersection.distance * lightIntersection.distance;
-
-#if 0
-      if (dynamic_cast<const Triangle<ftype>*>(cameraIntersection.object) != nullptr)
-        std::cout << "[Triangle] Brightness addition: " <<
-          std::fixed << 1.0f * lightIntersection.cosinus / squareDistance <<
-          ", lightIntersection.cosinus: " << lightIntersection.cosinus <<
-          std::endl;
-      else
-        std::cout << "[Sphere] Brightness addition: " <<
-          std::fixed << 1.0f * lightIntersection.cosinus / squareDistance <<
-          ", lightIntersection.cosinus: " << lightIntersection.cosinus <<
-          std::endl;
-#endif
-
-      brightness += 1.0f * fabs(lightIntersection.cosinus) / squareDistance;
+CollisionDescription Renderer::FindClosestCollision(const Ray& ray) {
+  CollisionDescription nearest_collision;
+  for (const auto* model : scene_->GetModels()) {
+    auto collision = model->Trace(ray);
+    if (collision.Exists() && collision.IsCloserThan(nearest_collision)) {
+      nearest_collision = collision;
     }
   }
-
-  Color color = cameraIntersection.object->getColor();
-  return color.applyBrightness(brightness);
+  return nearest_collision;
 }
 
-void MainDisplayer::Run() {
-  float* pixels = new ftype[windowWidth * windowHeight * 3];
-  memset(pixels, 0, sizeof(float) * windowHeight * windowWidth * 3);
+// Brightness of light is in proportion to cosinus and
+// inversely to distance ^ 2
+static double CalculateBrightness(double cosinus, double distance) {
+  return 1.0 * fabs(cosinus) / power(distance, 2.0);
+}
 
-  for (int x = 0; x < windowWidth; ++x) {
-    for (int y = 0; y < windowHeight; ++y) {
-      Color color = getPixelColor(x, y);
-      pixels[y * windowWidth * 3 + x * 3 + 0] = color.r;
-      pixels[y * windowWidth * 3 + x * 3 + 1] = color.g;
-      pixels[y * windowWidth * 3 + x * 3 + 2] = color.b;
+double Renderer::GetBrightness(Vector position) {
+  double total_brightness = scene_->GetAmbientLight();
+  for (const auto* light : scene_->GetLights()) {
+    Ray light_ray(light.GetPosition(), position - light.GetPosition());
+    auto light_collision = FindClosestCollision(light_ray);
+
+    if (light_collision.touching == position) {
+      total_brightness += CalculateBrightness(light_collision.cosinus,
+                                              light_collision.trace_distance);
     }
   }
-
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  glDrawPixels(windowWidth, windowHeight, GL_RGB, GL_FLOAT, pixels);
-  glutSwapBuffers();
+  return total_brightness;
 }
 
-} // namespace disp
+Color Renderer::RenderPixel(size_t x, size_t y) const {
+  auto camera_ray = scene_->GetCamera()->GetRay(x, y);
+  auto collision = FindClosestCollision(camera_ray);
+
+  if (!collision.Exists()) {
+    return Color::black;
+  }
+  double brightness = GetBrightness(collision.touching);
+  return collision.color.ApplyBrightness(brightness);
+}
+
+Frame Renderer::RenderScene() {
+  size_t height = resolution_.height;
+  size_t width = resolution_.width;
+
+  Frame bitmap(width * height * 3, 0);
+  for (size_t x = 0; x < width; ++x) {
+    for (size_t y = 0; y < height; ++y) {
+      Color pixel_color = RenderPixel(x, y);
+      bitmap[y * width * 3 + x * 3 + 0] = pixel_color.r;
+      bitmap[y * width * 3 + x * 3 + 1] = pixel_color.g;
+      bitmap[y * width * 3 + x * 3 + 2] = pixel_color.b;
+    }
+  }
+  return bitmap;
+}
+
+}  // namespace rt
