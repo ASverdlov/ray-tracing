@@ -6,3 +6,4 @@ tags
 .clang_complete
 trash/*
 googletest
+cpplint.py
