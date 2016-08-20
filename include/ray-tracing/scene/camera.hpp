@@ -8,8 +8,15 @@ namespace rt {
 
 class Camera : public Placeable {
  public:
-  Ray GetRay(double x, double y);  // physical coordinates
+  void SetSize(const Size& size);
+  Size GetSize() const;
+
+  void SetDistance(double distance);
+
+  Ray GetRay(double x, double y) const;  // Physical coordinates
+
   void Rotate(const Transform& transform) { transform_ = transform; }
+
  private:
   struct Plane {
     // Left up corner
@@ -20,19 +27,10 @@ class Camera : public Placeable {
   }
 
   Transform transform_;
-  double focus_distance_;
-  double frame_width_;
-  double frame_height_;
+  double distance_;
+  Size size_;
 };
 
-} // namespace rt
-
-struct Plane {
-  // Left up corner
-  Vector origin;
-  // That's a basis
-  Vector x;
-  Vector y;
-}
+}  // namespace rt
 
 #endif
