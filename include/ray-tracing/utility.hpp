@@ -2,7 +2,7 @@
 #define UTILITY_HPP
 
 #include <cstdlib>
-#include <Vector>
+#include <geometry/vector.hpp>
 
 // For model's labeling
 #include <string> 
