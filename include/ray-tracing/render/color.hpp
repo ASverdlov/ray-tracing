@@ -10,15 +10,14 @@ struct Color {
   static const Color green;
   static const Color blue;
   static const Color white;
-
-  static const float brightness_treshold;
+  static const Color black;
 
   Color() : Color(0, 0, 0) {}
   Color(float r, float g, float b)
     : r(r), g(g), b(b)
   {}
 
-  Color ApplyBrightness(float brightness) const;
+  Color& ApplyBrightness(float brightness);
 
   float r, g, b;
 };

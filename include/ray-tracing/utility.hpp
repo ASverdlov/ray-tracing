@@ -28,7 +28,9 @@ const ftype EPS = 1e-5;
 class Placeable {
  public:
   void SetPosition(const Vector& position) { position_ = position; }
-  void SetPosition(double x, double y, double z) { position_ = Vector(x, y, z); }
+  void SetPosition(double x, double y, double z) {
+    position_ = Vector(x, y, z);
+  }
  private:
   Vector position_;
 }

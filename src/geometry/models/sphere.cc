@@ -40,6 +40,7 @@ CollisionDescription Sphere::Trace(const Ray& ray) {
       collision.touching = touching;
       collision.trace_distance = trace_distance;
       collision.cosinus = cosinus;
+      collision.color = color_;
   }
   return collision; 
 }

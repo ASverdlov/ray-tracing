@@ -26,10 +26,18 @@ class Scene {
   void SetCamera(Camera* camera) { camera_ = camera; }
   Camera* GetCamera() { return camera_; }
 
+  void SetAmbientLight(double brightness) {
+    ambient_light_brightness_ = brightness;
+  }
+  double GetAmbientLight() const {
+    return ambient_light_brightness_;
+  }
+
  private:
   unordered_set<Model*> models_;
   unordered_set<Light*> lights_;
   Camera* camera_;
+  double ambient_light_brightness_;
 
   DISABLE_COPYING(Scene);
 };
