@@ -1,4 +1,5 @@
-#include <rendering.hpp>
+#include <application.hpp>
+#include <render.hpp>
 #include <geometry.hpp>
 
 int main(int argc, char** argv) {
