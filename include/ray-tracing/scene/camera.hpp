@@ -16,8 +16,6 @@ class Camera : public Placeable {
 
  private:
   struct Plane {
-    // Left up corner
-    Vector origin;
     // That's a basis
     Vector x;
     Vector y;
