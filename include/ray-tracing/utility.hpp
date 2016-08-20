@@ -46,6 +46,8 @@ struct Resolution {
   size_t height;
 };
 
+typedef Resolution Size;
+
 typedef std::string Label;
 
 }  // namespace rt
