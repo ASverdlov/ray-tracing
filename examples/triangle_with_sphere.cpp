@@ -1,6 +1,6 @@
-#include <application.hpp>
-#include <render.hpp>
-#include <geometry.hpp>
+#include <ray-tracing/application.hpp>
+#include <ray-tracing/render.hpp>
+#include <ray-tracing/geometry.hpp>
 
 int main(int argc, char** argv) {
   rt::Application app;
