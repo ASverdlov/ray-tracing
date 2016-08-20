@@ -30,7 +30,7 @@ struct Collision {
 // Every model has color
 // and can be attached to any position
 // in space.
-class Model : public Placeable {
+class Model {
  public:
   virtual ~Model() {}
 

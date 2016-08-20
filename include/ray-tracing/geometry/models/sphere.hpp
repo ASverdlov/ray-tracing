@@ -7,7 +7,7 @@
 
 namespace rt {
 
-class Sphere : public Model {
+class Sphere : public Model, public Placeable {
  public:
   void SetRadius(double radius) {
     radius_ = radius;
