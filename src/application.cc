@@ -43,4 +43,4 @@ bool Application::RemoveEntity(const Label& label) {
   return storage.erase(label) > 0;
 }
 
-} // namespace rt
+}  // namespace rt
