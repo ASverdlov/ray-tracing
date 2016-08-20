@@ -2,10 +2,11 @@
 #define UTILITY_HPP
 
 #include <cstdlib>
-#include <geometry/vector.hpp>
 
 // For model's labeling
 #include <string>
+
+#include "geometry/vector.hpp"
 
 typedef uint32_t ui32;
 
@@ -47,6 +48,6 @@ struct Resolution {
 
 typedef std::string Label;
 
-} // namespace rt
+}  // namespace rt
 
 #endif
