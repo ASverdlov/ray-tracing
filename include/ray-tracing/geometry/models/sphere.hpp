@@ -13,7 +13,7 @@ class Sphere : public Model, public Placeable {
     radius_ = radius;
   }
 
-  Collision Trace(const Ray&) override;
+  virtual Collision Trace(const Ray&);
 
  private:
   double radius_;
