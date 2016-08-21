@@ -3,8 +3,6 @@
 
 #include <cmath>
 
-#include "utility.hpp"
-
 namespace rt {
 
 struct Vector {

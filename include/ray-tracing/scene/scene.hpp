@@ -3,10 +3,10 @@
 
 #include <unordered_set>
 
-#include "geometry.hpp"
-#include "render/light.hpp"
-#include "scene/camera.hpp"
-#include "utility.hpp"
+#include "ray-tracing/geometry.hpp"
+#include "ray-tracing/render/light.hpp"
+#include "ray-tracing/scene/camera.hpp"
+#include "ray-tracing/utility.hpp"
 
 namespace rt {
 

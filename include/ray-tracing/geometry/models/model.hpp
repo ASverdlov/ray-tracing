@@ -1,10 +1,10 @@
 #ifndef MODEL_HPP
 #define MODEL_HPP
 
-#include "geometry/ray.hpp"
-#include "geometry/vector.hpp"
-#include "render/color.hpp"
-#include "utility.hpp"
+#include "ray-tracing/geometry/ray.hpp"
+#include "ray-tracing/geometry/vector.hpp"
+#include "ray-tracing/render/color.hpp"
+#include "ray-tracing/utility.hpp"
 
 namespace rt {
 

@@ -3,11 +3,11 @@
 
 #include <vector>
 
-#include "render/frame.hpp"
-#include "render/color.hpp"
-#include "scene/scene.hpp"
-#include "window/window.hpp"
-#include "utility.hpp"
+#include "ray-tracing/render/frame.hpp"
+#include "ray-tracing/render/color.hpp"
+#include "ray-tracing/scene/scene.hpp"
+#include "ray-tracing/window/window.hpp"
+#include "ray-tracing/utility.hpp"
 
 namespace rt {
 

@@ -1,7 +1,7 @@
 #ifndef RAY_HPP
 #define RAY_HPP
 
-#include "geometry/vector.hpp"
+#include "ray-tracing/geometry/vector.hpp"
 
 namespace rt {
 

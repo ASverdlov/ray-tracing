@@ -1,4 +1,4 @@
-#include "application.hpp"
+#include "ray-tracing/application.hpp"
 
 namespace rt {
 
