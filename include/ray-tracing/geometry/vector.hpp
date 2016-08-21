@@ -27,15 +27,19 @@ struct Vector {
 
   Vector& operator+=(const Vector& other) {
     *this = *this + other;
+    return *this;
   }
   Vector& operator-=(const Vector& other) {
     *this = *this - other;
+    return *this;
   }
   Vector& operator*=(double koefficient) {
     *this = *this * koefficient;
+    return *this;
   }
   Vector& operator/=(double koefficient) {
     *this = *this / koefficient;
+    return *this;
   }
 
   // Comparison operators
