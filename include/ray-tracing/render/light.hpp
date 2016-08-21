@@ -1,8 +1,8 @@
 #ifndef LIGHT_HPP
 #define LIGHT_HPP
 
-#include "geometry/vector.hpp"
-#include "utility.hpp"
+#include "ray-tracing/geometry/vector.hpp"
+#include "ray-tracing/utility.hpp"
 
 namespace rt {
 

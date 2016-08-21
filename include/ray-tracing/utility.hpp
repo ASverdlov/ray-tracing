@@ -34,7 +34,7 @@ class Placeable {
   }
  private:
   Vector position_;
-}
+};
 
 struct Resolution {
   size_t width;

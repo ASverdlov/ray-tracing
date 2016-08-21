@@ -1,8 +1,8 @@
 #ifndef CAMERA_HPP
 #define CAMERA_HPP
 
-#include "geometry/transform.hpp"
-#include "utility.hpp"
+#include "ray-tracing/algebra/transform.hpp"
+#include "ray-tracing/utility.hpp"
 
 namespace rt {
 

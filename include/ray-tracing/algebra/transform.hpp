@@ -1,7 +1,7 @@
 #ifndef TRANSFORM_HPP
 #define TRANSFORM_HPP
 
-#include "utility.hpp"
+#include "ray-tracing/utility.hpp"
 
 TEST_FRIENDS_DEFINITIONS;
 

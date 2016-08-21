@@ -1,9 +1,9 @@
 #ifndef SPHERE_HPP
 #define SPHERE_HPP
 
-#include "geometry/models/model.hpp"
-#include "geometry/ray.hpp"
-#include "utility.hpp"
+#include "ray-tracing/geometry/models/model.hpp"
+#include "ray-tracing/geometry/ray.hpp"
+#include "ray-tracing/utility.hpp"
 
 namespace rt {
 
@@ -13,7 +13,7 @@ class Sphere : public Model, public Placeable {
     radius_ = radius;
   }
 
-  virtual Collision Trace(const Ray&);
+  virtual Collision Trace(const Ray&) const;
 
  private:
   double radius_;
