@@ -17,8 +17,12 @@ class Application {
  public:
   void Run();
 
-  void SetResolution(int width, int height);
-  void SetResolution(const Resolution& resolution);
+  void SetWindowResolution(int width, int height);
+  void SetWindowResolution(const Resolution& resolution);
+  void SetCameraPosition(double x, double y, double z);
+  void SetCameraPosition(const Vector& position);
+  void SetCameraDistance(double distance);
+  void RotateCamera(const Vector& axe, double radian);
 
   Triangle* CreateTriangle(const Label& label);
   Sphere* CreateSphere(const Label& label);
