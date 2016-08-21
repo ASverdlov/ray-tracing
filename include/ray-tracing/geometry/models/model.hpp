@@ -9,9 +9,9 @@
 namespace rt {
 
 struct Collision {
-  static const double INFINITY = 1e300;
+  static const double HUGE_DISTANCE = 1e300;
 
-  Collision() : trace_distance(INFINITY) {}
+  Collision() : trace_distance(HUGE_DISTANCE) {}
 
   double trace_distance;
   double cosinus;
@@ -23,7 +23,7 @@ struct Collision {
   }
 
   bool Exists() const {
-    return trace_distance < INFINITY;
+    return trace_distance < HUGE_DISTANCE;
   }
 };
 
