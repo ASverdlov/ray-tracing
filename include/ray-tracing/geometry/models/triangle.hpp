@@ -1,9 +1,9 @@
 #ifndef TRIANGLE_HPP
 #define TRIANGLE_HPP
 
-#include "geometry/models/model.hpp"
-#include "geometry/ray.hpp"
-#include "geometry/vector.hpp"
+#include "ray-tracing/geometry/models/model.hpp"
+#include "ray-tracing/geometry/ray.hpp"
+#include "ray-tracing/geometry/vector.hpp"
 
 namespace rt {
 
@@ -14,7 +14,7 @@ class Triangle : public Model {
                    double x2, double y2, double z2,
                    double x3, double y3, double z3);
 
-  Collision Trace(const Ray&) override;
+  virtual Collision Trace(const Ray&) const;
 
  private:
   Vector vertices_[3];
