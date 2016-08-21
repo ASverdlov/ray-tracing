@@ -8,28 +8,28 @@ namespace rt {
 
 class Camera : public Placeable {
  public:
-  void SetSize(const Size& size);
-  Size GetSize() const;
+  void SetShape(const Shape& shape);
+  Shape GetShape() const;
   void SetDistance(double distance);
   void SetDirection(const Vector& direction);
   Ray GetRay(double x, double y) const;  // Physical coordinates
 
  private:
-  struct Plane {
+  struct Basis {
     // That's a basis
     Vector x;
     Vector y;
   }
 
   Vector Get3DPoint(const Vector2d& coordinate) const;
-  Plane GetPlane() const;
-  void UpdatePlane();
-  Vector GetPlaneCenter() const;
+  Basis GetBasis() const;
+  void UpdateBasis();
+  Vector GetBasisCenter() const;
 
   Vector plane_center_;
 
   Vector direction_;
-  Size size_;
+  Shape shape_;
   double distance_;
 };
 
