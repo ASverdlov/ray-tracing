@@ -67,7 +67,7 @@ bool Scene::AttachEntity(Entity* entity) {
 }
 
 template<typename Entity>
-bool DetachEntity(Entity* entity) {
+bool Scene::DetachEntity(Entity* entity) {
   auto storage = GetEntities<Entity>();
   return storage.erase(entity) > 0;
 }
