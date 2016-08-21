@@ -1,7 +1,5 @@
 #include "application.hpp"
 
-#include "geometry.hpp"
-
 namespace rt {
 
 void Application::Run() {
