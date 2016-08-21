@@ -9,7 +9,7 @@
 namespace rt {
 
 struct Collision {
-  static const double HUGE_DISTANCE = 1e300;
+  static constexpr double HUGE_DISTANCE = 1e300;
 
   Collision() : trace_distance(HUGE_DISTANCE) {}
 
