@@ -6,4 +6,4 @@ if [ ! -f cpplint.py ]; then
 fi
 
 FILES=$(find src include \( -name \*.hpp -o -name \*.cc \) -print | tr '\n' ' ')
-python cpplint.py --filter=-legal/copyright --extensions=hpp,cc $FILES 
+python cpplint.py --filter=-legal/copyright --extensions=hpp,cc $FILES
