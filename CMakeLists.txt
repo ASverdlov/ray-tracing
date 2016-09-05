@@ -19,4 +19,4 @@ else(OPENGL_FOUND AND GLUT_FOUND)
   message(WARNING "OpenGL or GLUT is not found")
 endif(OPENGL_FOUND AND GLUT_FOUND)
 
-add_subdirectory(doxygen)
+add_subdirectory(docs)
