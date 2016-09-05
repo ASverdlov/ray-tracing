@@ -1,11 +1,9 @@
 find_package(Doxygen)
 if(DOXYGEN_FOUND)
-  configure_file(Doxyfile
-    ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
-    COPYONLY)
+  set(DOXYFILE ${CMAKE_HOME_DIRECTORY}/docs/Doxyfile)
   add_custom_target(doc
-    ${DOXYGEN_EXECUTABLE} Doxyfile
-    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    ${DOXYGEN_EXECUTABLE} ${DOXYFILE}
+    WORKING_DIRECTORY ${CMAKE_HOME_DIRECTORY}
     COMMENT "Generating API documentation with Doxygen" VERBATIM
     )
 endif(DOXYGEN_FOUND)
