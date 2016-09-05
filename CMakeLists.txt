@@ -19,14 +19,4 @@ else(OPENGL_FOUND AND GLUT_FOUND)
   message(WARNING "OpenGL or GLUT is not found")
 endif(OPENGL_FOUND AND GLUT_FOUND)
 
-find_package(Doxygen)
-if(DOXYGEN_FOUND)
-  configure_file(doxygen/Doxyfile
-    ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
-    COPYONLY)
-  add_custom_target(doc
-    ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
-    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-    COMMENT "Generating API documentation with Doxygen" VERBATIM
-    )
-endif(DOXYGEN_FOUND)
+add_subdirectory(doxygen)
