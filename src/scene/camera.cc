@@ -20,7 +20,7 @@ float Camera::GetFieldOfView() const {
 
 Ray Camera::GetRay(int x, int y) const {
   Vector spot = CalculateSpot(x, y);
-  return Ray(poisiton_, spot - position_);
+  return Ray(position_, spot - position_);
 }
 
 Vector Camera::CalculateSpot(int x, int y) const {
