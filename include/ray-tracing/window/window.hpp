@@ -3,22 +3,21 @@
 
 namespace rt {
 
-struct Resolution {
-  Resolution() {}
-  Resolution(int width, int height) {}
-
-  int width;
-  int height;
-};
-
 class Window {
  public:
   Window() {}
-  Window(int width, int height) : resolution_(width, height) {}
-  explicit Window(const Resolution& resolution) : resolution_(resolution) {}
+  Window(int width, int height) : width(width_), height(height_) {}
+
+  void SetResolution(int width, int height) {
+    width = width_;
+    height = height_;
+  };
+
+  void Show(const Frame& frame);
 
  private:
-  Resolution resolution_;
+  int width_;
+  int height_;
 };
 
 }  // namespace rt

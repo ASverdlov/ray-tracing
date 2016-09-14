@@ -21,7 +21,6 @@ class Application {
   void Run();
 
   void SetWindowResolution(int width, int height);
-  void SetWindowResolution(const Resolution& resolution);
   void SetCameraPosition(double x, double y, double z);
   void SetCameraPosition(const Vector& position);
   void RotateCamera(const Vector& axis, double radian);

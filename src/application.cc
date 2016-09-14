@@ -8,11 +8,7 @@ void Application::Run() {
 }
 
 void Application::SetWindowResolution(int width, int height) {
-  SetResolution(Resolution(width, height));
-}
-
-void Application::SetWindowResolution(const Resolution& resolution) {
-  window_.SetResolution(resolution);
+  window_.SetResolution(width, height);
 }
 
 Triangle* Application::CreateTriangle(const Label& label) {
