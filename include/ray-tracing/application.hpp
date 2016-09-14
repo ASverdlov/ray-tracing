@@ -4,6 +4,7 @@
 #include <unordered_map>
 #include <memory>
 #include <utility>
+#include <string>
 
 #include "render.hpp"
 #include "scene.hpp"
@@ -23,7 +24,7 @@ class Application {
   void SetWindowResolution(const Resolution& resolution);
   void SetCameraPosition(double x, double y, double z);
   void SetCameraPosition(const Vector& position);
-  void RotateCamera(const Vector& axe, double radian);
+  void RotateCamera(const Vector& axis, double radian);
 
   Triangle* CreateTriangle(const Label& label);
   Sphere* CreateSphere(const Label& label);
