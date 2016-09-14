@@ -21,7 +21,6 @@ class Application {
   void SetWindowResolution(const Resolution& resolution);
   void SetCameraPosition(double x, double y, double z);
   void SetCameraPosition(const Vector& position);
-  void SetCameraDistance(double distance);
   void RotateCamera(const Vector& axe, double radian);
 
   Triangle* CreateTriangle(const Label& label);
