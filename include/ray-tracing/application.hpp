@@ -33,11 +33,12 @@ class Application {
   bool RemoveEntity(const Label& label);
 
  private:
+  typedef std::unordered_map<Label, std::unique_ptr<Entity>> EntityStorage;
+
   Renderer renderer_;
   Window window_;
   Scene scene_;
 
-  typedef std::unordered_map<Label, std::unique_ptr<Entity>> EntityStorage;
   EntityStorage storage;
 
   template<typename Entity>
