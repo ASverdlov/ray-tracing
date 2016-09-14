@@ -7,11 +7,11 @@ void Application::Run() {
   window_.Show(bitmask);
 }
 
-void Application::SetResolution(int width, int height) {
+void Application::SetWindowResolution(int width, int height) {
   SetResolution(Resolution(width, height));
 }
 
-void Application::SetResolution(const Resolution& resolution) {
+void Application::SetWindowResolution(const Resolution& resolution) {
   window_.SetResolution(resolution);
 }
 

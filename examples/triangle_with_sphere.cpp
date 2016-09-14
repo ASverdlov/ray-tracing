@@ -8,7 +8,6 @@ int main(int argc, char** argv) {
   //  Basic parameters
   app.SetWindowResolution(512, 512);
   app.SetCameraPosition(0, 0, 0);
-  app.SetCameraShape(512, 512);
 
   //  Add Sphere
   rt::Sphere *sphere = app.CreateSphere(170, -100, 0);
