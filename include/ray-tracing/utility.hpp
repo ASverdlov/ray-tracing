@@ -43,8 +43,6 @@ struct Resolution {
 
 typedef Resolution Size;
 
-typedef std::string Label;
-
 }  // namespace rt
 
 #endif

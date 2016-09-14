@@ -15,6 +15,8 @@ namespace rt {
 
 class Application {
  public:
+  typedef std::string Label;
+
   void Run();
 
   void SetWindowResolution(int width, int height);
