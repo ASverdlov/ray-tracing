@@ -7,6 +7,7 @@
 #include "ray-tracing/render/light.hpp"
 #include "ray-tracing/scene/camera.hpp"
 #include "ray-tracing/utility.hpp"
+#include "ray-tracing/entity.hpp"
 
 namespace rt {
 

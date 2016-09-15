@@ -6,11 +6,12 @@
 #include <utility>
 #include <string>
 
-#include "render.hpp"
-#include "scene.hpp"
-#include "geometry.hpp"
-#include "window.hpp"
-#include "utility.hpp"
+#include "ray-tracing/render.hpp"
+#include "ray-tracing/scene.hpp"
+#include "ray-tracing/geometry.hpp"
+#include "ray-tracing/window.hpp"
+#include "ray-tracing/utility.hpp"
+#include "ray-tracing/entity.hpp"
 
 namespace rt {
 
