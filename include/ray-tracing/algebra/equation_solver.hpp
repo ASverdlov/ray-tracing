@@ -5,14 +5,18 @@
 #include <cmath>
 #include <iostream>
 #include <exception>
+#include <cassert>
 
 namespace rt {
 
 struct Equation {
   double A, B, C;
 
-  static const Equation one(0, 0, 1);
-  static const Equation x(0, 1, 0);
+  Equation() {}
+  Equation(double A, double B, double C) : A(A), B(B), C(C) {}
+
+  static const Equation one;
+  static const Equation x;
 
   Equation operator+(const Equation& rhs) const {
     return Equation(A + rhs.A, B + rhs.B, C + rhs.C);
@@ -36,19 +40,20 @@ struct Equation {
 template<typename OutputIterator>
 void Solve(const Equation& equation, OutputIterator output) {
   static const double eps = 1e-13;
-  if (abs(equation.A) < eps) {
-    if (abs(equation.B) >= eps) {
+  if (std::abs(equation.A) < eps) {
+    if (std::abs(equation.B) >= eps) {
       *output++ = -equation.C / equation.B;
     }
     return;
   }
-  double square_determinant = B * B - 4.0 * A * C;
+  double square_determinant = equation.B * equation.B -
+                              4.0 * equation.A * equation.C;
   if (square_determinant < 0) {
     return;
   }
   double determinant = std::sqrt(square_determinant);
-  *output++ = (-B - determinant) * .5 / A;
-  *output++ = (-B + determinant) * .5 / A;
+  *output++ = (-equation.B - determinant) * .5 / equation.A;
+  *output++ = (-equation.B + determinant) * .5 / equation.A;
 }
 
 }  // namespace rt
