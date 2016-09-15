@@ -13,13 +13,11 @@ namespace rt {
 
 class Renderer {
  public:
-  Frame RenderScene(Scene* scene, Resolution* resolution);
+  Frame RenderScene(Scene* scene, const Resolution& resolution);
 
  private:
   Color RenderPixel(size_t x, size_t y) const;
-
   Scene* scene_;
-  Resolution* resolution_;
 
   DISABLE_COPYING(Renderer);
 };

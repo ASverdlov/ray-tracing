@@ -46,9 +46,10 @@ Color Renderer::RenderPixel(size_t x, size_t y) const {
   return collision.color.ApplyBrightness(brightness);
 }
 
-Frame Renderer::RenderScene() {
-  size_t height = resolution_.height;
-  size_t width = resolution_.width;
+Frame Renderer::RenderScene(Scene* scene, const Resolution& resolution) {
+  scene_ = scene;
+  size_t height = resolution.height;
+  size_t width = resolution.width;
 
   Frame bitmap(width * height * 3, 0);
   for (size_t x = 0; x < width; ++x) {

@@ -3,12 +3,16 @@
 namespace rt {
 
 void Application::Run() {
-  Frame bitmask = renderer_.RenderScene(scene_, resolution_);
+  Frame bitmask = renderer_.RenderScene(&scene_, window_.GetResolution());
   window_.Show(bitmask);
 }
 
 void Application::SetWindowResolution(int width, int height) {
   window_.SetResolution(width, height);
+}
+
+void Application::SetWindowResolution(const Resolution& resolution) {
+  window_.SetResolution(resolution);
 }
 
 Triangle* Application::CreateTriangle(const Label& label) {
