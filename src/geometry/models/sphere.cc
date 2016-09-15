@@ -1,7 +1,6 @@
-#include "geometry/models/sphere.hpp"
-
-#include "algebra/equation_solver.hpp"
-#include "geometry/ray.hpp"
+#include "ray-tracing/geometry/models/sphere.hpp"
+#include "ray-tracing/geometry/ray.hpp"
+#include "ray-tracing/algebra/equation_solver.hpp"
 
 namespace rt {
 
