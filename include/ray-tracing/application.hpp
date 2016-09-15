@@ -56,7 +56,6 @@ Entity* Application::CreateEntity(const Label& label) {
   return was_inserted ? static_cast<Entity*>(iterator) : nullptr;
 }
 
-template<typename Entity>
 bool Application::RemoveEntity(const Application::Label& label) {
   return storage.erase(label) > 0;
 }
