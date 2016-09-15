@@ -6,12 +6,12 @@ namespace rt {
 class Window {
  public:
   Window() {}
-  Window(int width, int height) : width(width_), height(height_) {}
+  Window(int width, int height) : width_(width), height_(height) {}
 
   void SetResolution(int width, int height) {
-    width = width_;
-    height = height_;
-  };
+    width_ = width;
+    height_ = height;
+  }
 
   void Show(const Frame& frame);
 
