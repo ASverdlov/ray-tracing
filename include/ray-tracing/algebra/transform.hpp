@@ -1,6 +1,7 @@
 #ifndef TRANSFORM_HPP
 #define TRANSFORM_HPP
 
+/*
 #include "ray-tracing/utility.hpp"
 
 TEST_FRIENDS_DEFINITIONS;
@@ -178,5 +179,6 @@ std::ostream& operator<<(std::ostream& os, const Transform& transform) {
 }
 
 }  // namespace rt
+*/
 
 #endif

@@ -3,7 +3,6 @@
 
 #include <cmath>
 
-#include "ray-tracing/algebra/transform.hpp"
 #include "ray-tracing/utility.hpp"
 
 namespace rt {
