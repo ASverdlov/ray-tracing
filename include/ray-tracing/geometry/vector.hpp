@@ -12,6 +12,9 @@ struct Vector {
   {}
 
   // Basic operations
+  Vector operator-() const {
+    return Vector(-x, -y, -z);
+  }
   Vector operator+(const Vector& other) const {
     return Vector(x + other.x, y + other.y, z + other.z);
   }

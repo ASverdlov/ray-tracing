@@ -41,7 +41,7 @@ class Model : public Entity {
 
   virtual Collision Trace(const Ray& ray) const = 0;
 
- private:
+ protected:
   Color color_;
 };
 
