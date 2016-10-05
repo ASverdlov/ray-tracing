@@ -1,6 +1,5 @@
-#include "geometry/models/triangle.hpp"
-
-#include "geometry/vector.hpp"
+#include "ray-tracing/geometry/models/triangle.hpp"
+#include "ray-tracing/geometry/vector.hpp"
 
 namespace rt {
 
