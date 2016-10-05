@@ -15,7 +15,11 @@ using std::unordered_set;
 
 class Scene {
  public:
+<<<<<<< HEAD
   Scene() { }
+=======
+  Scene(): { }
+>>>>>>> 1e58f6d694b64ecfb5eb1ecf8bc7d7b71eb55cd8
 
   bool AttachModel(Model* model);
   bool AttachLight(Light* light);
