@@ -18,7 +18,7 @@ Collision Renderer::FindClosestCollision(const Ray& ray) {
 // Brightness of light is in proportion to cosinus and
 // inversely to distance ^ 2
 double Renderer::CalculateBrightness(double cosinus, double distance) {
-  return 1.0 * fabs(cosinus) / power(distance, 2.0);
+  return 1.0 * fabs(cosinus) / std::pow(distance, 2.0);
 }
 
 double Renderer::GetBrightness(Vector position) {
