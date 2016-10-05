@@ -20,4 +20,3 @@ else(OPENGL_FOUND AND GLUT_FOUND)
 endif(OPENGL_FOUND AND GLUT_FOUND)
 
 add_subdirectory(docs)
-add_subdirectory(examples)
