@@ -22,6 +22,10 @@ class Camera : public Placeable {
   Ray GetRay(int x, int y) const;
 
  private:
+  Vector CalculateSpot(int x, int y) const;
+  float Height() const;
+  float Width() const;
+
   float field_of_view_;
   float ratio_;
 };
