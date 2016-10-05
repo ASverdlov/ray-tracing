@@ -13,6 +13,8 @@ namespace rt {
 
 class Renderer {
  public:
+  Renderer() { }
+
   Frame RenderScene(Scene* scene, const Resolution& resolution);
 
  private:
