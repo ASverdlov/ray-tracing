@@ -15,6 +15,8 @@ using std::unordered_set;
 
 class Scene {
  public:
+  Scene() { }
+
   bool AttachModel(Model* model);
   bool AttachLight(Light* light);
 
