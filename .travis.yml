@@ -5,7 +5,7 @@ compiler:
   - clang
 
 before_install:
-  - sudo apt-get -qq update
+  - ./scripts/build_cmake.sh
 
 script:
   - ./scripts/check_syntax.sh
