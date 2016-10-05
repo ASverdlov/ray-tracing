@@ -24,7 +24,7 @@ double Renderer::CalculateBrightness(double cosinus, double distance) {
 double Renderer::GetBrightness(Vector position) {
   double total_brightness = scene_->GetAmbientLight();
   for (const auto* light : scene_->GetLights()) {
-    Ray light_ray(light.GetPosition(), position - light.GetPosition());
+    Ray light_ray(light->GetPosition(), position - light->GetPosition());
     auto light_collision = FindClosestCollision(light_ray);
 
     if (light_collision.touching == position) {
