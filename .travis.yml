@@ -5,7 +5,7 @@ compiler:
   - clang
 
 before_install:
-  - ./scripts/build_cmake.sh
+  - ./scripts/install_cmake.sh
 
 script:
   - ./scripts/check_syntax.sh
