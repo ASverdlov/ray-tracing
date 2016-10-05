@@ -4,7 +4,7 @@
 
 namespace rt {
 
-Collision Renderer::FindClosestCollision(const Ray& ray) {
+Collision Renderer::FindClosestCollision(const Ray& ray) const {
   Collision nearest_collision;
   for (const auto* model : scene_->GetModels()) {
     auto collision = model->Trace(ray);
@@ -21,7 +21,7 @@ double Renderer::CalculateBrightness(double cosinus, double distance) {
   return 1.0 * fabs(cosinus) / std::pow(distance, 2.0);
 }
 
-double Renderer::GetBrightness(Vector position) {
+double Renderer::GetBrightness(Vector position) const {
   double total_brightness = scene_->GetAmbientLight();
   for (const auto* light : scene_->GetLights()) {
     Ray light_ray(light->GetPosition(), position - light->GetPosition());
