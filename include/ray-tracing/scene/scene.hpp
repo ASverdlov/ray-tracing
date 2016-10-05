@@ -22,7 +22,7 @@ class Scene {
   bool DetachLight(Light* light);
 
   template<typename T>
-  class Storage: unordered_set<T> {};
+  class Storage: public unordered_set<T> {};
 
   const Storage<Model*>& GetModels() const;
   const Storage<Light*>& GetLights() const;
