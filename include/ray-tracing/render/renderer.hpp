@@ -17,6 +17,10 @@ class Renderer {
 
  private:
   Color RenderPixel(size_t x, size_t y) const;
+  Collision FindClosestCollision(const Ray& ray);
+  double GetBrightness(Vector position);
+  static double CalculateBrightness(double cosinus, double distance);
+
   Scene* scene_;
 
   DISABLE_COPYING(Renderer);
