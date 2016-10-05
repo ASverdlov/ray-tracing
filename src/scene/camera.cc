@@ -1,4 +1,4 @@
-#include "scene/camera.hpp"
+#include "ray-tracing/scene/camera.hpp"
 
 namespace rt {
 
