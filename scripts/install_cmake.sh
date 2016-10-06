@@ -8,4 +8,6 @@ gzip -d cmake-3.7.0-rc1.tar.gz && \
 tar -xf cmake-3.7.0-rc1.tar && \
 mv cmake-3.7.0-rc1 cmake && \
 cd cmake && \
-./bootstrap && make && sudo make install
+./bootstrap > /dev/null && \
+make > /dev/null && \
+sudo make install
