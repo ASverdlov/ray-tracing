@@ -9,8 +9,8 @@ file(GLOB_RECURSE SOURCES "src/*.cc")
 add_compile_options(-std=c++14)
 add_library(ray-tracing ${HEADERS} ${SOURCES})
 
-find_package(OpenGL REQUIRED)
-find_package(GLUT REQUIRED)
+find_package(OpenGL)
+find_package(GLUT)
 
 if(OPENGL_FOUND AND GLUT_FOUND)
   include_directories(${OPENGL_INCLUDE_DIRS} ${GLUT_INCLUDE_DIRS})
