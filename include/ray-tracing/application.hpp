@@ -51,10 +51,10 @@ Entity* Application::CreateEntity(const Label& label) {
   auto entity = std::make_unique<Entity>();
   auto insertion_result = storage.emplace(label, std::move(entity));
 
-  auto iterator = insertion_result.first->second.get();
+  auto pointer_to_entity = insertion_result.first->second.get();
   bool was_inserted = insertion_result.second;
 
-  return was_inserted ? static_cast<Entity*>(iterator) : nullptr;
+  return was_inserted ? static_cast<Entity*>(pointer_to_entity) : nullptr;
 }
 
 bool Application::RemoveEntity(const Application::Label& label) {
