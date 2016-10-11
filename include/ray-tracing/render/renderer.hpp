@@ -13,10 +13,16 @@ namespace rt {
 
 class Renderer {
  public:
+  Renderer() { }
+
   Frame RenderScene(Scene* scene, const Resolution& resolution);
 
  private:
   Color RenderPixel(size_t x, size_t y) const;
+  Collision FindClosestCollision(const Ray& ray) const;
+  double GetBrightness(Vector position) const;
+  static double CalculateBrightness(double cosinus, double distance);
+
   Scene* scene_;
 
   DISABLE_COPYING(Renderer);

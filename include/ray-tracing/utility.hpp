@@ -32,6 +32,10 @@ class Placeable {
   void SetPosition(double x, double y, double z) {
     position_ = Vector(x, y, z);
   }
+
+  Vector GetPosition() const {
+    return position_;
+  }
  protected:
   Vector position_;
 };

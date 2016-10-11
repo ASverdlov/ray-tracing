@@ -1,10 +1,10 @@
-#include "render/renderer.hpp"
+#include "ray-tracing/render/renderer.hpp"
 
 #include <cmath>
 
 namespace rt {
 
-Collision Renderer::FindClosestCollision(const Ray& ray) {
+Collision Renderer::FindClosestCollision(const Ray& ray) const {
   Collision nearest_collision;
   for (const auto* model : scene_->GetModels()) {
     auto collision = model->Trace(ray);
@@ -17,14 +17,14 @@ Collision Renderer::FindClosestCollision(const Ray& ray) {
 
 // Brightness of light is in proportion to cosinus and
 // inversely to distance ^ 2
-static double CalculateBrightness(double cosinus, double distance) {
-  return 1.0 * fabs(cosinus) / power(distance, 2.0);
+double Renderer::CalculateBrightness(double cosinus, double distance) {
+  return 1.0 * fabs(cosinus) / std::pow(distance, 2.0);
 }
 
-double Renderer::GetBrightness(Vector position) {
+double Renderer::GetBrightness(Vector position) const {
   double total_brightness = scene_->GetAmbientLight();
   for (const auto* light : scene_->GetLights()) {
-    Ray light_ray(light.GetPosition(), position - light.GetPosition());
+    Ray light_ray(light->GetPosition(), position - light->GetPosition());
     auto light_collision = FindClosestCollision(light_ray);
 
     if (light_collision.touching == position) {

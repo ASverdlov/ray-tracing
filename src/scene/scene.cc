@@ -1,6 +1,5 @@
-#include "scene/scene.hpp"
-
-#include "geometry.hpp"
+#include "ray-tracing/scene/scene.hpp"
+#include "ray-tracing/geometry.hpp"
 
 namespace rt {
 
@@ -20,32 +19,32 @@ bool Scene::DetachLight(Light* light) {
   return DetachEntity(light);
 }
 
-const typename Scene::Storage<Model*> GetModels() const {
+template<>
+typename Scene::Storage<Model*>& Scene::GetEntities<Model>() {
+  return models_;
+}
+
+template<>
+typename Scene::Storage<Light*>& Scene::GetEntities<Light>() {
+  return lights_;
+}
+
+template<>
+const typename Scene::Storage<Model*>& Scene::GetEntities<Model>() const {
+  return models_;
+}
+
+template<>
+const typename Scene::Storage<Light*>& Scene::GetEntities<Light>() const {
+  return lights_;
+}
+
+const typename Scene::Storage<Model*>& Scene::GetModels() const {
   return GetEntities<Model>();
 }
 
-const typename Scene::Storage<Light*> GetLights() const {
+const typename Scene::Storage<Light*>& Scene::GetLights() const {
   return GetEntities<Light>();
-}
-
-template
-typename Scene::Storage<Model*> GetEntities<Model>() {
-  return models_;
-}
-
-template
-typename Scene::Storage<Light*> GetEntities<Light>() {
-  return lights_;
-}
-
-template
-const typename Scene::Storage<Model*> GetEntities<Model>() const {
-  return models_;
-}
-
-template
-const typename Scene::Storage<Light*> GetEntities<Light>() const {
-  return lights_;
 }
 
 }  // namespace rt

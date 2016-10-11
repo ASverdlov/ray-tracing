@@ -15,6 +15,8 @@ using std::unordered_set;
 
 class Scene {
  public:
+  Scene() { }
+
   bool AttachModel(Model* model);
   bool AttachLight(Light* light);
 
@@ -22,7 +24,7 @@ class Scene {
   bool DetachLight(Light* light);
 
   template<typename T>
-  class Storage: unordered_set<T> {};
+  class Storage: public unordered_set<T> {};
 
   const Storage<Model*>& GetModels() const;
   const Storage<Light*>& GetLights() const;

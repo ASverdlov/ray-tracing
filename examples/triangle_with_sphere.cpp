@@ -19,7 +19,7 @@ int main(int argc, char** argv) {
   triangle->SetVertices(170, -50, 50,
                         290,   0,  0,
                         290, 330, 10);
-  triangle->SetColor(Color::green);
+  triangle->SetColor(rt::Color::green);
 
   //  Add Light
   rt::Light *light = app.CreateLight(0, 0, 0);
