@@ -10,19 +10,21 @@ int main(int argc, char** argv) {
   app.SetCameraPosition(0, 0, 0);
 
   //  Add Sphere
-  rt::Sphere *sphere = app.CreateSphere(170, -100, 0);
+  rt::Sphere *sphere = app.CreateSphere("sphere");
+  sphere->SetPosition(170, -100, 0)
   sphere->SetRadius(58);
   sphere->SetColor(1, 0, 0);
 
   //  Add Triangle
-  rt::Triangle *triangle = app.CreateTriangle();
+  rt::Triangle *triangle = app.CreateTriangle("triangle");
   triangle->SetVertices(170, -50, 50,
                         290,   0,  0,
                         290, 330, 10);
   triangle->SetColor(rt::Color::green);
 
   //  Add Light
-  rt::Light *light = app.CreateLight(0, 0, 0);
+  rt::Light *light = app.CreateLight("light");
+  light->SetPosition(0, 0, 0);
 
   return app.Run();
 }
