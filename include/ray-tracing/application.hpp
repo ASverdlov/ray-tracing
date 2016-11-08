@@ -19,7 +19,7 @@ class Application {
  public:
   typedef std::string Label;
 
-  void Run();
+  int Run();
 
   void SetWindowResolution(int width, int height);
   void SetWindowResolution(const Resolution& resolution);

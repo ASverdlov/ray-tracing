@@ -2,9 +2,10 @@
 
 namespace rt {
 
-void Application::Run() {
+int Application::Run() {
   Frame bitmask = renderer_.RenderScene(&scene_, window_.GetResolution());
   window_.Show(bitmask);
+  return 0;
 }
 
 void Application::SetWindowResolution(int width, int height) {
