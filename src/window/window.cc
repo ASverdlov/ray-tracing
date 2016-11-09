@@ -10,7 +10,7 @@ namespace rt {
 
 void Window::Show(const Frame& frame) {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  glDrawPixels(resolution_.width, resolution_.height, 
+  glDrawPixels(resolution_.width, resolution_.height,
       GL_RGB, GL_FLOAT, frame.data());
   glutSwapBuffers();
 }
