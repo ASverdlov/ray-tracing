@@ -7,7 +7,7 @@
 #include "ray-tracing/render/light.hpp"
 #include "ray-tracing/scene/camera.hpp"
 #include "ray-tracing/utility.hpp"
-#include "ray-tracing/entity.hpp"
+#include "ray-tracing/object.hpp"
 
 namespace rt {
 
@@ -45,34 +45,34 @@ class Scene {
   Camera* camera_;
   double ambient_light_brightness_;
 
-  template<typename Entity>
-  bool AttachEntity(Entity* entity);
+  template<typename Object>
+  bool AttachObject(Object* object);
 
-  template<typename Entity>
-  bool DetachEntity(Entity* entity);
+  template<typename Object>
+  bool DetachObject(Object* object);
 
-  template<typename Entity>
-  Storage<Entity*>& GetEntities();
+  template<typename Object>
+  Storage<Object*>& GetObjects();
 
-  template<typename Entity>
-  const Storage<Entity*>& GetEntities() const;
+  template<typename Object>
+  const Storage<Object*>& GetObjects() const;
 
   DISABLE_COPYING(Scene);
 };
 
-template<typename Entity>
-bool Scene::AttachEntity(Entity* entity) {
-  auto storage = GetEntities<Entity>();
-  auto insertion_result = storage.insert(entity);
+template<typename Object>
+bool Scene::AttachObject(Object* object) {
+  auto storage = GetObjects<Object>();
+  auto insertion_result = storage.insert(object);
 
   bool was_inserted = insertion_result.second;
   return was_inserted;
 }
 
-template<typename Entity>
-bool Scene::DetachEntity(Entity* entity) {
-  auto storage = GetEntities<Entity>();
-  return storage.erase(entity) > 0;
+template<typename Object>
+bool Scene::DetachObject(Object* object) {
+  auto storage = GetObjects<Object>();
+  return storage.erase(object) > 0;
 }
 
 }  // namespace rt

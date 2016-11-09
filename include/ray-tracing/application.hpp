@@ -11,13 +11,13 @@
 #include "ray-tracing/geometry.hpp"
 #include "ray-tracing/window.hpp"
 #include "ray-tracing/utility.hpp"
-#include "ray-tracing/entity.hpp"
+#include "ray-tracing/object.hpp"
 
 namespace rt {
 
 class Application {
  public:
-  typedef std::string Label;
+  typedef std::string ID;
 
   int Run();
 
@@ -27,38 +27,38 @@ class Application {
   void SetCameraPosition(const Vector& position);
   void RotateCamera(const Vector& axis, double radian);
 
-  Triangle* CreateTriangle(const Label& label);
-  Sphere* CreateSphere(const Label& label);
-  Light* CreateLight(const Label& label);
+  Triangle* CreateTriangle(const ID& id);
+  Sphere* CreateSphere(const ID& id);
+  Light* CreateLight(const ID& id);
 
-  bool RemoveEntity(const Label& label);
+  bool RemoveObject(const ID& id);
 
  private:
-  typedef std::unordered_map<Label, std::unique_ptr<Entity>> EntityStorage;
+  typedef std::unordered_map<ID, std::unique_ptr<Object>> ObjectStorage;
 
   Renderer renderer_;
   Window window_;
   Scene scene_;
 
-  EntityStorage storage;
+  ObjectStorage objects;
 
-  template<typename Entity>
-  Entity* CreateEntity(const Label& label);
+  template<typename Object>
+  Object* CreateObject(const ID& id);
 };
 
-template<typename Entity>
-Entity* Application::CreateEntity(const Label& label) {
-  auto entity = std::make_unique<Entity>();
-  auto insertion_result = storage.emplace(label, std::move(entity));
+template<typename Object>
+Object* Application::CreateObject(const ID& id) {
+  auto object = std::make_unique<Object>();
+  auto insertion_result = objects.emplace(id, std::move(object));
 
-  auto pointer_to_entity = insertion_result.first->second.get();
+  auto pointer_to_object = insertion_result.first->second.get();
   bool was_inserted = insertion_result.second;
 
-  return was_inserted ? static_cast<Entity*>(pointer_to_entity) : nullptr;
+  return was_inserted ? static_cast<Object*>(pointer_to_object) : nullptr;
 }
 
-bool Application::RemoveEntity(const Application::Label& label) {
-  return storage.erase(label) > 0;
+bool Application::RemoveObject(const Application::ID& id) {
+  return objects.erase(id) > 0;
 }
 
 }  // namespace rt

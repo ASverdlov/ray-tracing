@@ -3,11 +3,11 @@
 
 #include "ray-tracing/geometry/vector.hpp"
 #include "ray-tracing/utility.hpp"
-#include "ray-tracing/entity.hpp"
+#include "ray-tracing/object.hpp"
 
 namespace rt {
 
-class Light : public Placeable, public Entity {
+class Light : public Placeable, public Object {
 };
 
 }  // namespace rt

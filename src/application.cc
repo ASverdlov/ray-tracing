@@ -16,16 +16,16 @@ void Application::SetWindowResolution(const Resolution& resolution) {
   window_.SetResolution(resolution);
 }
 
-Triangle* Application::CreateTriangle(const Label& label) {
-  return CreateEntity<Triangle>(label);
+Triangle* Application::CreateTriangle(const ID& id) {
+  return CreateObject<Triangle>(id);
 }
 
-Sphere* Application::CreateSphere(const Label& label) {
-  return CreateEntity<Sphere>(label);
+Sphere* Application::CreateSphere(const ID& id) {
+  return CreateObject<Sphere>(id);
 }
 
-Light* Application::CreateLight(const Label& label) {
-  return CreateEntity<Light>(label);
+Light* Application::CreateLight(const ID& id) {
+  return CreateObject<Light>(id);
 }
 
 }  // namespace rt
