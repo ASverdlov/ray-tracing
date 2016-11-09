@@ -11,7 +11,7 @@ int main(int argc, char** argv) {
 
   //  Add Sphere
   rt::Sphere *sphere = app.CreateSphere("sphere");
-  sphere->SetPosition(170, -100, 0)
+  sphere->SetPosition(170, -100, 0);
   sphere->SetRadius(58);
   sphere->SetColor(1, 0, 0);
 
