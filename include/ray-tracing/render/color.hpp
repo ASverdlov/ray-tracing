@@ -17,7 +17,7 @@ struct Color {
     : r(r), g(g), b(b)
   {}
 
-  Color& ApplyBrightness(float brightness);
+  Color& ApplyBrightness(float brightness) { return *this; };
 
   float r, g, b;
 };
