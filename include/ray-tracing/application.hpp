@@ -57,7 +57,7 @@ Object* Application::CreateObject(const ID& id) {
   return was_inserted ? static_cast<Object*>(pointer_to_object) : nullptr;
 }
 
-bool Application::RemoveObject(const Application::ID& id) {
+bool Application::RemoveObject(const ID& id) {
   return objects.erase(id) > 0;
 }
 
