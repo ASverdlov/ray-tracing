@@ -6,8 +6,6 @@ include_directories("include/")
 file(GLOB_RECURSE HEADERS "include/*.hpp")
 file(GLOB_RECURSE SOURCES "src/*.cc")
 
-# list(APPEND SOURCES "examples/triangle_with_sphere.cc")
-
 add_compile_options(-std=c++14)
 add_library(ray-tracing ${HEADERS} ${SOURCES})
 
@@ -22,3 +20,4 @@ else(OPENGL_FOUND AND GLUT_FOUND)
 endif(OPENGL_FOUND AND GLUT_FOUND)
 
 add_subdirectory(docs)
+# add_subdirectory(examples)
