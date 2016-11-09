@@ -3,6 +3,10 @@
 
 namespace rt {
 
+Collision Triangle::Trace(const Ray& ray) const {
+  return Collision();
+}
+
 void Triangle::SetVertices(const Vector& v1,
                            const Vector& v2,
                            const Vector& v3) {

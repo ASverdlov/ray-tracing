@@ -2,7 +2,7 @@
 
 namespace rt {
 
-const Equation one(0, 0, 1);
-const Equation x(0, 1, 0);
+const Equation Equation::one(0, 0, 1);
+const Equation Equation::x(0, 1, 0);
 
 }  // namespace rt

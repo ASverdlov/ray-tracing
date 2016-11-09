@@ -7,11 +7,11 @@ int main(int argc, char** argv) {
 
   //  Basic parameters
   app.SetWindowResolution(512, 512);
-  app.SetCameraPosition(0, 0, 0);
+  // app.SetCameraPosition(0, 0, 0);
 
   //  Add Sphere
   rt::Sphere *sphere = app.CreateSphere("sphere");
-  sphere->SetPosition(170, -100, 0)
+  sphere->SetPosition(170, -100, 0);
   sphere->SetRadius(58);
   sphere->SetColor(1, 0, 0);
 

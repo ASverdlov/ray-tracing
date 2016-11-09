@@ -1,6 +1,7 @@
 #ifndef WINDOW_HPP
 #define WINDOW_HPP
 
+#include "ray-tracing/render/frame.hpp"
 #include "ray-tracing/utility.hpp"
 
 namespace rt {

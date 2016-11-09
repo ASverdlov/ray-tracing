@@ -5,7 +5,7 @@
 #include "ray-tracing/geometry/vector.hpp"
 #include "ray-tracing/render/color.hpp"
 #include "ray-tracing/utility.hpp"
-#include "ray-tracing/entity.hpp"
+#include "ray-tracing/object.hpp"
 
 
 namespace rt {
@@ -29,14 +29,12 @@ struct Collision {
   }
 };
 
-// Every model has color
-// and can be attached to any position
-// in space.
-class Model : public Entity {
+class Model : public Object {
  public:
   virtual ~Model() {}
 
   void SetColor(const Color& color) { color_ = color; }
+  void SetColor(float r, float g, float b) { color_ = Color(r, g, b); }
   Color GetColor() { return color_; }
 
   virtual Collision Trace(const Ray& ray) const = 0;
