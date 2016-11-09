@@ -18,7 +18,6 @@ before_install:
 
 script:
   - ./scripts/check_syntax.sh
-  - ./scripts/build.sh
 
 notifications:
     email:
