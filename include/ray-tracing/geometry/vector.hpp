@@ -7,6 +7,9 @@ namespace rt {
 
 struct Vector {
   Vector() {}
+  Vector(const Vector& rhs)
+    : x(rhs.x), y(rhs.y), z(rhs.z)
+  {}
   Vector(double x, double y, double z)
     : x(x), y(y), z(z)
   {}
