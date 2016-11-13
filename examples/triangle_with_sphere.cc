@@ -2,7 +2,7 @@
 #include <ray-tracing/render.hpp>
 #include <ray-tracing/geometry.hpp>
 
-int main(int argc, char** argv) {
+int main(int argc, char **argv) {
   rt::Application app;
 
   //  Basic parameters
