@@ -21,6 +21,11 @@ class Application {
  public:
   typedef std::string ID;
 
+ public:
+  Application() {
+    scene_.SetCamera(&camera_);
+  }
+
   int Run();
 
   void SetWindowResolution(int width, int height);
@@ -41,6 +46,7 @@ class Application {
   Renderer renderer_;
   Window window_;
   Scene scene_;
+  Camera camera_;
 
   ObjectStorage objects;
 
