@@ -7,17 +7,17 @@ file(GLOB_RECURSE HEADERS "include/*.hpp")
 file(GLOB_RECURSE SOURCES "src/*.cc")
 
 add_compile_options(-std=c++14)
+
 add_library(ray-tracing ${HEADERS} ${SOURCES})
 
-find_package(OpenGL)
-find_package(GLUT)
+find_package(ImageMagick COMPONENTS Magick++)
+if(ImageMagick_FOUND)
+  include_directories(${ImageMagick_INCLUDE_DIRS})
+  target_link_libraries(ray-tracing ${ImageMagick_LIBRARIES})
+else()
+  message(WARNING "ImageMagick is not found!")
+endif()
 
-if(OPENGL_FOUND AND GLUT_FOUND)
-  include_directories(${OPENGL_INCLUDE_DIRS} ${GLUT_INCLUDE_DIRS})
-  target_link_libraries(ray-tracing ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} )
-else(OPENGL_FOUND AND GLUT_FOUND)
-  message(WARNING "OpenGL or GLUT is not found")
-endif(OPENGL_FOUND AND GLUT_FOUND)
 
 add_subdirectory(docs)
 add_subdirectory(examples)
