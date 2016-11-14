@@ -5,4 +5,10 @@ cd $PROJECT_ROOT
 
 mkdir -p build
 cd build
-cmake .. && make
+
+CMAKE_FLAGS=""
+if [ "$1" == "-g" ]
+then
+  CMAKE_FLAGS="-DCMAKE_BUILD_TYPE=Debug"
+fi
+cmake "${CMAKE_FLAGS}" ..  && make
