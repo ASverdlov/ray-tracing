@@ -11,7 +11,8 @@ namespace rt {
 
 class Camera : public Placeable {
  public:
-  Camera(): field_of_view_(M_PI / 3.0)
+  Camera() 
+    : field_of_view_(M_PI / 3.0)
   {}
 
   void SetAspectRatio(float ratio);
