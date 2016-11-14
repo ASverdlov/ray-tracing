@@ -15,7 +15,7 @@ if(ImageMagick_FOUND)
   include_directories(${ImageMagick_INCLUDE_DIRS})
   target_link_libraries(ray-tracing ${ImageMagick_LIBRARIES})
 else()
-  message(WARNING "ImageMagick is not found!")
+  message(FATAL_ERROR "ImageMagick is not found!")
 endif()
 
 option(ENABLE_EXAMPLES "Enable examples" ON)
