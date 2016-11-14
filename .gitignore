@@ -8,3 +8,4 @@ tags
 .clang_complete
 trash/*
 cpplint.py
+.DS_Store
