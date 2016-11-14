@@ -21,7 +21,7 @@ struct Collision {
   Color color;
 
   bool IsCloserThan(const Collision& other_collision) const {
-    return other_collision.trace_distance < trace_distance;
+    return trace_distance < other_collision.trace_distance;
   }
 
   bool Exists() const {
