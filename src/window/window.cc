@@ -10,7 +10,7 @@ void Window::Show(const Frame& frame) {
                       "white");
   for (size_t x = 0; x < resolution_.width; ++x)
     for (size_t y = 0; y < resolution_.height; ++y)
-      image.pixelColor(x, y, 
+      image.pixelColor(x, y,
                        Magick::Color(
                          65000 * frame[y * resolution_.width * 3 + x * 3 + 0],
                          65000 * frame[y * resolution_.width * 3 + x * 3 + 1],
