@@ -25,6 +25,7 @@ int Application::Run() {
 
 void Application::SetWindowResolution(int width, int height) {
   window_.SetResolution(width, height);
+  scene_.GetCamera()->SetAspectRatio(1.0f * width / height);
 }
 
 void Application::SetWindowResolution(const Resolution& resolution) {
