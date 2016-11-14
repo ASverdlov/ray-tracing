@@ -2,6 +2,7 @@ build
 docs/html
 *.swp
 *.swo
+*.png
 tags
 .atom-build.json
 .clang_complete
