@@ -20,19 +20,19 @@ float Camera::GetFieldOfView() const {
   return field_of_view_;
 }
 
-Ray Camera::GetRay(int x, int y) const {
+Ray Camera::GetRay(double x, double y) const {
   Vector spot = CalculateSpot(x, y);
   return Ray(position_, spot - position_);
 }
 
-Vector Camera::CalculateSpot(int x, int y) const {
+Vector Camera::CalculateSpot(double x, double y) const {
   Vector x_axis(1, 0, 0),
          y_axis(0, 1, 0),
          z_axis(0, 0, 1);
   Vector center = position_ + x_axis;
   return center +
-         z_axis * (Height() / 2 - x) +
-         y_axis * (Width() / 2 - y);
+         z_axis * (Height() / 2 - x * Height()) +
+         y_axis * (Width() / 2 - y * Height());
 }
 
 float Camera::Height() const {

@@ -35,13 +35,14 @@ double Renderer::GetBrightness(Vector position) const {
   return total_brightness;
 }
 
-Color Renderer::RenderPixel(size_t x, size_t y) const {
+Color Renderer::RenderPixel(double x, double y) const {
   auto camera_ray = scene_->GetCamera()->GetRay(x, y);
   auto collision = FindClosestCollision(camera_ray);
 
   if (!collision.Exists()) {
     return Color::black;
   }
+
   double brightness = GetBrightness(collision.touching);
   return collision.color.ApplyBrightness(brightness);
 }
@@ -52,12 +53,13 @@ Frame Renderer::RenderScene(Scene* scene, const Resolution& resolution) {
   size_t width = resolution.width;
 
   Frame bitmap(width * height * 3, 0);
-  for (size_t x = 0; x < width; ++x) {
-    for (size_t y = 0; y < height; ++y) {
-      Color pixel_color = RenderPixel(x, y);
-      bitmap[y * width * 3 + x * 3 + 0] = pixel_color.r;
-      bitmap[y * width * 3 + x * 3 + 1] = pixel_color.g;
-      bitmap[y * width * 3 + x * 3 + 2] = pixel_color.b;
+  for (size_t x = 0; x < height; ++x) {
+    for (size_t y = 0; y < width; ++y) {
+      Color pixel_color = RenderPixel(static_cast<float>(x) / height, 
+                                      static_cast<float>(y) / width);
+      bitmap[y * height * 3 + x * 3 + 0] = pixel_color.r;
+      bitmap[y * height * 3 + x * 3 + 1] = pixel_color.g;
+      bitmap[y * height * 3 + x * 3 + 2] = pixel_color.b;
     }
   }
   return bitmap;

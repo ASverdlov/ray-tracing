@@ -24,7 +24,7 @@ class Scene {
   bool DetachLight(Light* light);
 
   template<typename T>
-  class Storage: public unordered_set<T> {};
+  class Storage : public unordered_set<T> {};
 
   const Storage<Model*>& GetModels() const;
   const Storage<Light*>& GetLights() const;
@@ -62,7 +62,7 @@ class Scene {
 
 template<typename Object>
 bool Scene::AttachObject(Object* object) {
-  auto storage = GetObjects<Object>();
+  auto& storage = GetObjects<Object>();
   auto insertion_result = storage.insert(object);
 
   bool was_inserted = insertion_result.second;
@@ -71,7 +71,7 @@ bool Scene::AttachObject(Object* object) {
 
 template<typename Object>
 bool Scene::DetachObject(Object* object) {
-  auto storage = GetObjects<Object>();
+  auto& storage = GetObjects<Object>();
   return storage.erase(object) > 0;
 }
 

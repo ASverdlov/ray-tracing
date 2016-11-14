@@ -21,10 +21,10 @@ class Camera : public Placeable {
   void SetFieldOfView(float radians);
   float GetFieldOfView() const;
 
-  Ray GetRay(int x, int y) const;
+  Ray GetRay(double x, double y) const;
 
  private:
-  Vector CalculateSpot(int x, int y) const;
+  Vector CalculateSpot(double x, double y) const;
   float Height() const;
   float Width() const;
 
