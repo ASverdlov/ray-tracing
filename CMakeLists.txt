@@ -18,6 +18,9 @@ else()
   message(WARNING "ImageMagick is not found!")
 endif()
 
+option(ENABLE_EXAMPLES "Enable examples" ON)
+if(ENABLE_EXAMPLES)
+  add_subdirectory(examples)
+endif()
 
 add_subdirectory(docs)
-add_subdirectory(examples)
