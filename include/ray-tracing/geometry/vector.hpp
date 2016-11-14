@@ -24,7 +24,7 @@ struct Vector {
     return Vector(x + other.x, y + other.y, z + other.z);
   }
   Vector operator-(const Vector& other) const {
-    return Vector(x - other.y, y - other.y, z - other.z);
+    return Vector(x - other.x, y - other.y, z - other.z);
   }
   Vector operator*(double koefficient) const {
     return Vector(x * koefficient, y * koefficient, z * koefficient);
