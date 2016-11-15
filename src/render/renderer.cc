@@ -52,12 +52,12 @@ Frame Renderer::RenderScene(Scene* scene, const Resolution& resolution) {
   size_t height = resolution.height;
   size_t width = resolution.width;
 
-  Frame bitmap(width * height, Color());
+  Frame bitmap(width, std::vector<Color>(height, Color()));
   for (size_t x = 0; x < height; ++x) {
     for (size_t y = 0; y < width; ++y) {
       Color pixel_color = RenderPixel(static_cast<float>(x) / height,
                                       static_cast<float>(y) / width);
-      bitmap[y * height + x] = pixel_color;
+      bitmap[y][x] = pixel_color;
     }
   }
   return bitmap;

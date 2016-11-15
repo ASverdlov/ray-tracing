@@ -12,9 +12,9 @@ void Window::Show(const Frame& frame) {
     for (size_t y = 0; y < resolution_.height; ++y)
       image.pixelColor(x, y,
                        Magick::Color(
-                         65000 * frame[y * resolution_.height + x].r,
-                         65000 * frame[y * resolution_.height + x].g,
-                         65000 * frame[y * resolution_.height + x].b));
+                         65000 * frame[y][x].r,
+                         65000 * frame[y][x].g,
+                         65000 * frame[y][x].b));
   image.write("rendered_picture.png");
 }
 

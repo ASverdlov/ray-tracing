@@ -7,7 +7,7 @@
 
 namespace rt {
 
-typedef std::vector<Color> Frame;
+typedef std::vector<std::vector<Color>> Frame;
 
 }  // namespace rt
 
