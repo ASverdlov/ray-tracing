@@ -55,7 +55,7 @@ Frame Renderer::RenderScene(Scene* scene, const Resolution& resolution) {
   Frame bitmap(width * height * 3, 0);
   for (size_t x = 0; x < height; ++x) {
     for (size_t y = 0; y < width; ++y) {
-      Color pixel_color = RenderPixel(static_cast<float>(x) / height, 
+      Color pixel_color = RenderPixel(static_cast<float>(x) / height,
                                       static_cast<float>(y) / width);
       bitmap[y * height * 3 + x * 3 + 0] = pixel_color.r;
       bitmap[y * height * 3 + x * 3 + 1] = pixel_color.g;
