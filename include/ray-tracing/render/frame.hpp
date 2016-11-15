@@ -3,9 +3,11 @@
 
 #include <vector>
 
+#include "ray-tracing/render/color.hpp"
+
 namespace rt {
 
-typedef std::vector<float> Frame;
+typedef std::vector<Color> Frame;
 
 }  // namespace rt
 
