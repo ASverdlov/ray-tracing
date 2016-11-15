@@ -16,7 +16,7 @@ compiler:
 before_install:
   - ./scripts/install_cmake.sh
   - sudo apt-get -qq update
-  - sudo apt-get install imagemagick
+  - sudo apt-get install imagemagick libmagick++-dev
 
 script:
   - ./scripts/check_syntax.sh
