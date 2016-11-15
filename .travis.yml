@@ -20,6 +20,8 @@ before_install:
 
 script:
   - ./scripts/check_syntax.sh
+  - ./scripts/build.sh
+  - ./build/examples/triangle_with_sphere
 
 notifications:
     email:
