@@ -26,7 +26,7 @@ class Frame {
   size_t Width() const { return data_[0].size(); }
 
  private:
- std::vector<std::vector<Color>> data_;
+  std::vector<std::vector<Color>> data_;
 };
 
 }  // namespace rt
