@@ -17,18 +17,17 @@ bool Application::RemoveObject(const ID& id) {
 }
 
 int Application::Run() {
-  Frame bitmask = renderer_.RenderScene(&scene_, window_.GetResolution());
-  window_.Show(bitmask);
+  renderer_.Render(&scene_, &image_);
   return 0;
 }
 
-void Application::SetWindowResolution(int width, int height) {
-  window_.SetResolution(width, height);
+void Application::SetResolution(size_t width, size_t height) {
+  image_.SetResolution(width, height);
   scene_.GetCamera()->SetAspectRatio(1.0f * width / height);
 }
 
-void Application::SetWindowResolution(const Resolution& resolution) {
-  window_.SetResolution(resolution);
+void Application::SetResolution(const Resolution& resolution) {
+  image_.SetResolution(resolution);
 }
 
 Triangle* Application::CreateTriangle(const ID& id) {

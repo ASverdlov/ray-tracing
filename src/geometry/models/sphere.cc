@@ -3,7 +3,7 @@
 #include "ray-tracing/geometry/models/sphere.hpp"
 #include "ray-tracing/geometry/ray.hpp"
 #include "ray-tracing/geometry/vector.hpp"
-#include "ray-tracing/algebra/equation_solver.hpp"
+#include "ray-tracing/geometry/equation_solver.hpp"
 
 namespace rt {
 

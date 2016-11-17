@@ -9,13 +9,10 @@
 #include "ray-tracing/render.hpp"
 #include "ray-tracing/scene.hpp"
 #include "ray-tracing/geometry.hpp"
-#include "ray-tracing/window.hpp"
 #include "ray-tracing/utility.hpp"
 #include "ray-tracing/object.hpp"
 
 namespace rt {
-
-
 
 class Application {
  public:
@@ -28,8 +25,8 @@ class Application {
 
   int Run();
 
-  void SetWindowResolution(int width, int height);
-  void SetWindowResolution(const Resolution& resolution);
+  void SetResolution(size_t width, size_t height);
+  void SetResolution(const Resolution& resolution);
   void SetCameraPosition(double x, double y, double z);
   void SetCameraPosition(const Vector& position);
   void RotateCamera(const Vector& axis, double radian);
@@ -44,7 +41,7 @@ class Application {
   typedef std::unordered_map<ID, std::unique_ptr<Object>> ObjectStorage;
 
   Renderer renderer_;
-  Window window_;
+  Image image_;
   Scene scene_;
   Camera camera_;
 

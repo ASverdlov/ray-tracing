@@ -6,16 +6,16 @@
 #include "ray-tracing/render/frame.hpp"
 #include "ray-tracing/render/color.hpp"
 #include "ray-tracing/scene/scene.hpp"
-#include "ray-tracing/window/window.hpp"
+#include "ray-tracing/render/render_target.hpp"
 #include "ray-tracing/utility.hpp"
 
 namespace rt {
 
 class Renderer {
  public:
-  Renderer() { }
+  Renderer() {}
 
-  Frame RenderScene(Scene* scene, const Resolution& resolution);
+  void Render(Scene* scene, const RenderTarget* target);
 
  private:
   Color RenderPixel(double x, double y) const;

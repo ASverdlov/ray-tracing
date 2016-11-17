@@ -3,5 +3,6 @@
 
 #include "ray-tracing/render/renderer.hpp"
 #include "ray-tracing/render/color.hpp"
+#include "ray-tracing/render/image.hpp"
 
 #endif

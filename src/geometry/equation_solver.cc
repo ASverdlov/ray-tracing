@@ -1,4 +1,4 @@
-#include "ray-tracing/algebra/equation_solver.hpp"
+#include "ray-tracing/geometry/equation_solver.hpp"
 
 namespace rt {
 
