@@ -9,9 +9,9 @@ namespace rt {
 
 class Frame {
  public:
-   Frame(size_t width, size_t height)
-     : data_(width, std::vector<Color>(height))
-   {}
+  Frame(size_t width, size_t height)
+    : data_(width, std::vector<Color>(height))
+  {}
 
   Color& operator()(size_t i, size_t j) {
     return data_[i][j];
