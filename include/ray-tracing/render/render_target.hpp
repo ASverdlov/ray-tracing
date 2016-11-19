@@ -1,14 +1,14 @@
 #ifndef RENDER_TARGET_HPP
 #define RENDER_TARGET_HPP
 
-#include "ray-tracing/render/frame.hpp"
+#include "ray-tracing/render/bitmap.hpp"
 #include "ray-tracing/utility.hpp"
 
 namespace rt {
 
 class RenderTarget {
  public:
-  virtual void Draw(const Frame& frame) const = 0;
+  virtual void Draw(const Bitmap& bitmap) const = 0;
   virtual void SetResolution(const Resolution& resolution);
   virtual void SetResolution(float width, float height);
   virtual size_t Width() const;

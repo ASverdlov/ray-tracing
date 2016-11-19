@@ -1,5 +1,5 @@
-#ifndef FRAME_HPP
-#define FRAME_HPP
+#ifndef BITMAP_HPP
+#define BITMAP_HPP
 
 #include <vector>
 
@@ -7,9 +7,9 @@
 
 namespace rt {
 
-class Frame {
+class Bitmap {
  public:
-  Frame(size_t width, size_t height)
+  Bitmap(size_t width, size_t height)
     : data_(width, std::vector<Color>(height))
   {}
 

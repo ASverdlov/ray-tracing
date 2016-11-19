@@ -3,7 +3,6 @@
 
 #include <vector>
 
-#include "ray-tracing/render/frame.hpp"
 #include "ray-tracing/render/color.hpp"
 #include "ray-tracing/scene/scene.hpp"
 #include "ray-tracing/render/render_target.hpp"
