@@ -28,7 +28,7 @@ void Application::SetResolution(size_t width, size_t height) {
 
 void Application::SetResolution(const Resolution& resolution) {
   image_.SetResolution(resolution);
-  scene_.GetCamera()->SetAspectRatio(1.0f * resolution.width / 
+  scene_.GetCamera()->SetAspectRatio(1.0f * resolution.width /
                                      resolution.height);
 }
 

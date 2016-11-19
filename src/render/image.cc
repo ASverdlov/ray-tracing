@@ -5,7 +5,8 @@
 namespace rt {
 
 void Image::Draw(const Bitmap& bitmap) const {
-  Magick::Image image(Magick::Geometry(bitmap.Width(), bitmap.Height()), "white");
+  Magick::Image image(Magick::Geometry(bitmap.Width(), bitmap.Height()),
+                      "black");
   for (size_t x = 0; x < bitmap.Width(); ++x) {
     for (size_t y = 0; y < bitmap.Height(); ++y) {
       image.pixelColor(x, y, Magick::Color(65000 * bitmap(x, y).r,
