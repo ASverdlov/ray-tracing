@@ -54,10 +54,10 @@ void Renderer::Render(Scene* scene, const RenderTarget* target) {
   size_t height = target->Height();
 
   Bitmap bitmap(width, height);
-  for (size_t x = 0; x < height; ++x) {
-    for (size_t y = 0; y < width; ++y) {
-      bitmap(y, x) = RenderPixel(static_cast<float>(x) / height,
-                                 static_cast<float>(y) / width);
+  for (size_t x = 0; x < width; ++x) {
+    for (size_t y = 0; y < height; ++y) {
+      bitmap(x, y) = RenderPixel(static_cast<float>(x) / width,
+                                 static_cast<float>(y) / height);
     }
   }
   target->Draw(bitmap);

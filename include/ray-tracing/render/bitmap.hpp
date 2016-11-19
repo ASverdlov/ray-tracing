@@ -22,8 +22,8 @@ class Bitmap {
   }
 
   //  Accessors
-  size_t Height() const { return data_.size(); }
-  size_t Width() const { return data_[0].size(); }
+  size_t Width() const { return data_.size(); }
+  size_t Height() const { return data_[0].size(); }
 
  private:
   std::vector<std::vector<Color>> data_;

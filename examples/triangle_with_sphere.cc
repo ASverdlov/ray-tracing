@@ -6,7 +6,7 @@ int main(int argc, char **argv) {
   rt::Application app;
 
   //  Basic parameters
-  app.SetResolution(64, 64);
+  app.SetResolution(64, 256);
   // app.SetCameraPosition(0, 0, 0);
 
   //  Add Sphere

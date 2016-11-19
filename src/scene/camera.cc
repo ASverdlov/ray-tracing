@@ -1,6 +1,5 @@
-#include <cmath>
-
 #include "ray-tracing/scene/camera.hpp"
+#include <cmath>
 
 namespace rt {
 
@@ -31,8 +30,8 @@ Vector Camera::CalculateSpot(double x, double y) const {
          z_axis(0, 0, 1);
   Vector center = position_ + x_axis;
   return center +
-         z_axis * (Height() / 2 - x * Height()) +
-         y_axis * (Width() / 2 - y * Height());
+         z_axis * (Height() / 2 - y * Height()) +
+         y_axis * (Width() / 2 - x * Width());
 }
 
 float Camera::Height() const {
