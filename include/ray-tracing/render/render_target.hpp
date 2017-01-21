@@ -3,6 +3,7 @@
 
 #include "ray-tracing/render/bitmap.hpp"
 #include "ray-tracing/utility.hpp"
+#include "ray-tracing/resolution.hpp"
 
 namespace rt {
 

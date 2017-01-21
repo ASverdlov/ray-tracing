@@ -1,13 +1,13 @@
 #ifndef SCENE_HPP
 #define SCENE_HPP
 
-#include <unordered_set>
-
-#include "ray-tracing/geometry.hpp"
+#include "ray-tracing/geometry/models/model.hpp"
 #include "ray-tracing/render/light.hpp"
 #include "ray-tracing/scene/camera.hpp"
 #include "ray-tracing/utility.hpp"
 #include "ray-tracing/object.hpp"
+
+#include <unordered_set>
 
 namespace rt {
 

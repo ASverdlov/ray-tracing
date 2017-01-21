@@ -1,20 +1,16 @@
 #include "ray-tracing/application.hpp"
 
+#include "ray-tracing/render/image.hpp"
+#include "ray-tracing/object_factory.hpp"
+#include "ray-tracing/geometry/models/triangle.hpp"
+#include "ray-tracing/geometry/models/sphere.hpp"
+
 namespace rt {
 
-template<typename Object>
-Object* Application::CreateObject(const ID& id) {
-  auto object = std::make_unique<Object>();
-  auto insertion_result = objects.emplace(id, std::move(object));
-
-  auto* pointer_to_object = insertion_result.first->second.get();
-  bool was_inserted = insertion_result.second;
-  return was_inserted ? static_cast<Object*>(pointer_to_object) : nullptr;
+Application::Application() {
+  scene_.SetCamera(&camera_);
 }
 
-bool Application::RemoveObject(const ID& id) {
-  return objects.erase(id) > 0;
-}
 
 int Application::Run() {
   renderer_.Render(&scene_, &image_);
@@ -23,37 +19,40 @@ int Application::Run() {
 
 void Application::SetResolution(size_t width, size_t height) {
   image_.SetResolution(width, height);
-  scene_.GetCamera()->SetAspectRatio(1.0f * width / height);
+  camera_.SetAspectRatio(1.0f * width / height);
 }
 
 void Application::SetResolution(const Resolution& resolution) {
   image_.SetResolution(resolution);
-  scene_.GetCamera()->SetAspectRatio(1.0f * resolution.width /
-                                     resolution.height);
+  camera_.SetAspectRatio(1.0f * resolution.width / resolution.height);
 }
 
-Triangle* Application::CreateTriangle(const ID& id) {
-  Triangle* triangle = CreateObject<Triangle>(id);
-  if (triangle != nullptr) {
+Triangle* Application::CreateTriangle(const std::string& id) {
+	auto* triangle = ObjectFactory::Create<Triangle>(id);
+  if (triangle) {
     scene_.AttachModel(triangle);
   }
   return triangle;
 }
 
-Sphere* Application::CreateSphere(const ID& id) {
-  Sphere* sphere = CreateObject<Sphere>(id);
-  if (sphere != nullptr) {
+Sphere* Application::CreateSphere(const std::string& id) {
+  auto* sphere = ObjectFactory::Create<Sphere>(id);
+  if (sphere) {
     scene_.AttachModel(sphere);
   }
   return sphere;
 }
 
-Light* Application::CreateLight(const ID& id) {
-  Light* light = CreateObject<Light>(id);
-  if (light != nullptr) {
-    scene_.AttachLight(light);
+Light* Application::CreateLight(const std::string& id) {
+  auto* light = ObjectFactory::Create<Light>(id);
+  if (light) {
+  	scene_.AttachLight(light);
   }
   return light;
+}
+
+bool Application::RemoveObject(const std::string& id) {
+  return ObjectFactory::Remove(id);
 }
 
 }  // namespace rt

@@ -2,6 +2,7 @@
 #define LIGHT_HPP
 
 #include "ray-tracing/geometry/vector.hpp"
+#include "ray-tracing/placeable.hpp"
 #include "ray-tracing/utility.hpp"
 #include "ray-tracing/object.hpp"
 
