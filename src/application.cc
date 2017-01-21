@@ -28,7 +28,7 @@ void Application::SetResolution(const Resolution& resolution) {
 }
 
 Triangle* Application::CreateTriangle(const std::string& id) {
-	auto* triangle = ObjectFactory::Create<Triangle>(id);
+  auto* triangle = ObjectFactory::Create<Triangle>(id);
   if (triangle) {
     scene_.AttachModel(triangle);
   }
@@ -46,7 +46,7 @@ Sphere* Application::CreateSphere(const std::string& id) {
 Light* Application::CreateLight(const std::string& id) {
   auto* light = ObjectFactory::Create<Light>(id);
   if (light) {
-  	scene_.AttachLight(light);
+    scene_.AttachLight(light);
   }
   return light;
 }
