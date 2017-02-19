@@ -1,5 +1,4 @@
 #include "ray-tracing/scene/scene.hpp"
-#include "ray-tracing/geometry.hpp"
 
 namespace rt {
 
