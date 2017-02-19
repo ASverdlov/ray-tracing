@@ -4,6 +4,7 @@
 #include <cmath>
 
 #include "ray-tracing/utility.hpp"
+#include "ray-tracing/placeable.hpp"
 #include "ray-tracing/geometry/vector.hpp"
 #include "ray-tracing/geometry/ray.hpp"
 
