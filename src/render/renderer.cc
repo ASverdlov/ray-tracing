@@ -18,7 +18,7 @@ Collision Renderer::FindClosestCollision(const Ray& ray) const {
 // Brightness of light is in proportion to cosinus and
 // inversely to distance ^ 2
 double Renderer::CalculateBrightness(double cosinus, double distance) {
-  return 70.0 * fabs(cosinus) / distance * 70. / distance;
+  return fabs(cosinus) / distance / distance;
 }
 
 double Renderer::GetBrightness(Vector position) const {
@@ -31,7 +31,6 @@ double Renderer::GetBrightness(Vector position) const {
       double add = CalculateBrightness(light_collision.cosinus,
                                        light_collision.trace_distance);
       total_brightness += add;
-      std::cout << "Light reaches it: " << add << "\n";
     }
   }
   return total_brightness;
@@ -42,8 +41,6 @@ Color Renderer::RenderPixel(double x, double y) const {
   auto collision = FindClosestCollision(camera_ray);
   if (!collision.Exists())
     return Color::black;
-  else
-    std::cout << "Hit!\n";
   double brightness = GetBrightness(collision.touching);
   return collision.color.ApplyBrightness(brightness);
 }
