@@ -8,8 +8,7 @@
 namespace rt {
 
 Collision Sphere::Trace(const Ray& ray) const {
-  /*
-   * (x - center.x) ^ 2 + (y - center.y) ^ 2 + (z - center.z) ^ 2 = r ^ 2
+  /* (x - center.x) ^ 2 + (y - center.y) ^ 2 + (z - center.z) ^ 2 = r ^ 2
    * x(t) = origin.x + direction.x * t
    * y(t) = origin.y + direction.y * t
    * z(t) = origin.z + direction.z * t
@@ -31,11 +30,9 @@ Collision Sphere::Trace(const Ray& ray) const {
   for (double solution : solutions) {
       double trace_distance = solution * direction.GetLength();
       Vector touching = origin + direction * solution;
-
       Vector radius_vector = touching - position_;
       double cosinus = (radius_vector * -direction) /
                        (radius_ * direction.GetLength());
-
       // TODO(asverdlov, fix till 30.08.16):
       // Encapsulate following logic in Collision
       if (trace_distance <= 0 ||

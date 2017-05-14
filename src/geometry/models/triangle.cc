@@ -4,6 +4,7 @@
 namespace rt {
 
 Collision Triangle::Trace(const Ray& ray) const {
+  
   return Collision();
 }
 

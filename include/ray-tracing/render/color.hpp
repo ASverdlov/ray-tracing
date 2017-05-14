@@ -2,6 +2,7 @@
 #define COLOR_HPP
 
 #include <iostream>
+#include <cmath>
 
 namespace rt {
 
@@ -17,7 +18,12 @@ struct Color {
     : r(r), g(g), b(b)
   {}
 
-  Color& ApplyBrightness(float brightness) { return *this; }
+  Color& ApplyBrightness(float brightness) {
+    r = fmin(1., r * brightness);
+    g = fmin(1., g * brightness);
+    b = fmin(1., b * brightness);
+    return *this;
+  }
 
   float r, g, b;
 };

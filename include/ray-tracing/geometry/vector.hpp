@@ -16,6 +16,10 @@ struct Vector {
     : x(x), y(y), z(z)
   {}
 
+  bool IsNear(const Vector& other, double accuracy = 1e-9) const {
+    return (x - other.x) <= accuracy && (y - other.y) <= accuracy && (z - other.z) <= accuracy;
+  }
+
   // Basic operations
   Vector operator-() const {
     return Vector(-x, -y, -z);
