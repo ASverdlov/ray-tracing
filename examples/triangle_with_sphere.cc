@@ -7,8 +7,7 @@ int main(int argc, char **argv) {
   Application app;
 
   //  Basic parameters
-  //app.SetResolution(1440, 900);
-  app.SetResolution(2500, 2000);
+  app.SetResolution(1440, 900);
   // app.SetCameraPosition(0, 0, 0);
 
   //  Add Sphere
@@ -19,9 +18,9 @@ int main(int argc, char **argv) {
 
   //  Add Triangle
   Triangle *triangle = app.CreateTriangle("triangle");
-  triangle->SetVertices(170, -50, 50,
-                        290,   0,  0,
-                        290, 330, 10);
+  triangle->SetVertices(370, -30, 30,
+                        390,   0,  0,
+                        390, 30, 10);
   triangle->SetColor(Color::green);
 
   //  Add Light

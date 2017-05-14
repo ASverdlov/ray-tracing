@@ -35,7 +35,7 @@ class Model : public Object {
 
   void SetColor(const Color& color) { color_ = color; }
   void SetColor(float r, float g, float b) { color_ = Color(r, g, b); }
-  Color GetColor() { return color_; }
+  Color GetColor() const { return color_; }
 
   virtual Collision Trace(const Ray& ray) const = 0;
 

@@ -42,6 +42,8 @@ Color Renderer::RenderPixel(double x, double y) const {
   auto collision = FindClosestCollision(camera_ray);
   if (!collision.Exists())
     return Color::black;
+  else
+    std::cout << "Hit!\n";
   double brightness = GetBrightness(collision.touching);
   return collision.color.ApplyBrightness(brightness);
 }

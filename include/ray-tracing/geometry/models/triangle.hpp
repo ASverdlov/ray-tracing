@@ -9,7 +9,7 @@ namespace rt {
 
 class Triangle : public Model {
  public:
-  void SetVertices(const Vector& v1, const Vector& v2, const Vector& v3);
+  void SetVertices(const Vector& vertex1, const Vector& vertex2, const Vector& vertex3);
   void SetVertices(double x1, double y1, double z1,
                    double x2, double y2, double z2,
                    double x3, double y3, double z3);
@@ -17,7 +17,9 @@ class Triangle : public Model {
   virtual Collision Trace(const Ray&) const;
 
  private:
-  Vector vertices_[3];
+  Vector v1;
+  Vector v2;
+  Vector v3;
 };
 
 }  // namespace rt
