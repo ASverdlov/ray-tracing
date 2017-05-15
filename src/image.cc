@@ -1,5 +1,7 @@
-#include "ray-tracing/render/image.hpp"
-#include "ray-tracing/render/bitmap.hpp"
+#include "ray-tracing/image.hpp"
+
+#include "ray-tracing/bitmap.hpp"
+
 #include <Magick++.h>
 
 namespace rt {
@@ -17,6 +19,22 @@ void Image::Draw(const Bitmap& bitmap) const {
     }
   }
   image.write("rendered_picture.png");
+}
+
+void Image::SetResolution(const Resolution& resolution) {
+  resolution_ = resolution;
+}
+
+void Image::SetResolution(float width, float height) {
+  resolution_ = Resolution(width, height);
+}
+
+size_t Image::Width() const {
+  return resolution_.width;
+}
+
+size_t Image::Height() const {
+  return resolution_.height;
 }
 
 }  // namespace rt

@@ -1,16 +1,18 @@
 #ifndef CAMERA_HPP
 #define CAMERA_HPP
 
+#include "ray-tracing/math/vector.hpp"
+#include "ray-tracing/math/ray.hpp"
+
+#include "ray-tracing/macroses.hpp"
+#include "ray-tracing/placeable_mixin.hpp"
+
 #include <cmath>
 
-#include "ray-tracing/utility.hpp"
-#include "ray-tracing/placeable.hpp"
-#include "ray-tracing/geometry/vector.hpp"
-#include "ray-tracing/geometry/ray.hpp"
 
 namespace rt {
 
-class Camera : public Placeable {
+class Camera : public PlaceableMixin {
  public:
   Camera()
     : field_of_view_(M_PI / 3.0)

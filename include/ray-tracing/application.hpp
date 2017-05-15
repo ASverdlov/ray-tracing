@@ -1,19 +1,17 @@
 #ifndef APPLICATION_HPP
 #define APPLICATION_HPP
 
-#include "ray-tracing/geometry/models/triangle.hpp"
-#include "ray-tracing/geometry/models/sphere.hpp"
+#include "ray-tracing/models/triangle.hpp"
+#include "ray-tracing/models/sphere.hpp"
 
-#include "ray-tracing/render/renderer.hpp"
-#include "ray-tracing/render/image.hpp"
-#include "ray-tracing/render/light.hpp"
-
-#include "ray-tracing/scene/scene.hpp"
-#include "ray-tracing/scene/camera.hpp"
-
-#include "ray-tracing/object.hpp"
-#include "ray-tracing/utility.hpp"
+#include "ray-tracing/renderer.hpp"
+#include "ray-tracing/image.hpp"
+#include "ray-tracing/light.hpp"
+#include "ray-tracing/camera.hpp"
+#include "ray-tracing/scene.hpp"
+#include "ray-tracing/scene_object.hpp"
 #include "ray-tracing/resolution.hpp"
+#include "ray-tracing/macroses.hpp"
 
 #include <unordered_map>
 #include <memory>

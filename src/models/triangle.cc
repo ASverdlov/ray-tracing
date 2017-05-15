@@ -1,5 +1,6 @@
-#include "ray-tracing/geometry/models/triangle.hpp"
-#include "ray-tracing/geometry/vector.hpp"
+#include "ray-tracing/models/triangle.hpp"
+
+#include "ray-tracing/math/vector.hpp"
 
 namespace rt {
 
@@ -22,7 +23,7 @@ Collision Triangle::Trace(const Ray& ray) const {
     Collision collision;
     collision.trace_distance = t * ray.GetDirection().GetLength();
     collision.touching = hit_on_plane;
-    collision.cosinus = ray.GetDirection() * norm / ray.GetDirection().GetLength() / norm.GetLength();
+    collision.cosine = ray.GetDirection() * norm / ray.GetDirection().GetLength() / norm.GetLength();
     collision.color = GetColor();
     return collision;
   } else {

@@ -1,16 +1,16 @@
 #include "ray-tracing/application.hpp"
 
-#include "ray-tracing/render/image.hpp"
-#include "ray-tracing/object_factory.hpp"
-#include "ray-tracing/geometry/models/triangle.hpp"
-#include "ray-tracing/geometry/models/sphere.hpp"
+#include "ray-tracing/models/triangle.hpp"
+#include "ray-tracing/models/sphere.hpp"
+
+#include "ray-tracing/scene_object_manager.hpp"
+
 
 namespace rt {
 
 Application::Application() {
   scene_.SetCamera(&camera_);
 }
-
 
 int Application::Run() {
   renderer_.Render(&scene_, &image_);
@@ -28,7 +28,7 @@ void Application::SetResolution(const Resolution& resolution) {
 }
 
 Triangle* Application::CreateTriangle(const std::string& id) {
-  auto* triangle = ObjectFactory::Create<Triangle>(id);
+  auto* triangle = SceneObjectManager::Create<Triangle>(id);
   if (triangle) {
     scene_.AttachModel(triangle);
   }
@@ -36,7 +36,7 @@ Triangle* Application::CreateTriangle(const std::string& id) {
 }
 
 Sphere* Application::CreateSphere(const std::string& id) {
-  auto* sphere = ObjectFactory::Create<Sphere>(id);
+  auto* sphere = SceneObjectManager::Create<Sphere>(id);
   if (sphere) {
     scene_.AttachModel(sphere);
   }
@@ -44,7 +44,7 @@ Sphere* Application::CreateSphere(const std::string& id) {
 }
 
 Light* Application::CreateLight(const std::string& id) {
-  auto* light = ObjectFactory::Create<Light>(id);
+  auto* light = SceneObjectManager::Create<Light>(id);
   if (light) {
     scene_.AttachLight(light);
   }
@@ -52,7 +52,7 @@ Light* Application::CreateLight(const std::string& id) {
 }
 
 bool Application::RemoveObject(const std::string& id) {
-  return ObjectFactory::Remove(id);
+  return SceneObjectManager::Remove(id);
 }
 
 }  // namespace rt

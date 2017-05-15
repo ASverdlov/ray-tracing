@@ -1,9 +1,12 @@
 #ifndef BITMAP_HPP
 #define BITMAP_HPP
 
+#include "ray-tracing/color.hpp"
+
 #include <vector>
 
-#include "ray-tracing/render/color.hpp"
+using std::vector;
+
 
 namespace rt {
 
@@ -21,12 +24,16 @@ class Bitmap {
     return data_[i][j];
   }
 
-  //  Accessors
-  size_t Width() const { return data_.size(); }
-  size_t Height() const { return data_[0].size(); }
+  size_t Width() const {
+    return data_.size();
+  }
+
+  size_t Height() const {
+    return data_[0].size();
+  }
 
  private:
-  std::vector<std::vector<Color>> data_;
+  vector<vector<Color>> data_;
 };
 
 }  // namespace rt

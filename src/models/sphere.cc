@@ -1,9 +1,10 @@
-#include <vector>
+#include "ray-tracing/models/sphere.hpp"
 
-#include "ray-tracing/geometry/models/sphere.hpp"
-#include "ray-tracing/geometry/ray.hpp"
-#include "ray-tracing/geometry/vector.hpp"
-#include "ray-tracing/geometry/equation_solver.hpp"
+#include "ray-tracing/math/ray.hpp"
+#include "ray-tracing/math/vector.hpp"
+#include "ray-tracing/math/equation_solver.hpp"
+
+#include <vector>
 
 namespace rt {
 
@@ -31,18 +32,18 @@ Collision Sphere::Trace(const Ray& ray) const {
       double trace_distance = solution * direction.GetLength();
       Vector touching = origin + direction * solution;
       Vector radius_vector = touching - position_;
-      double cosinus = (radius_vector * -direction) /
+      double cosine = (radius_vector * -direction) /
                        (radius_ * direction.GetLength());
       // TODO(asverdlov, fix till 30.08.16):
       // Encapsulate following logic in Collision
       if (trace_distance <= 0 ||
           trace_distance >= collision.trace_distance ||
-          cosinus <= 0) {
+          cosine <= 0) {
           continue;
       }
       collision.touching = touching;
       collision.trace_distance = trace_distance;
-      collision.cosinus = cosinus;
+      collision.cosine = cosine;
       collision.color = color_;
   }
   return collision;

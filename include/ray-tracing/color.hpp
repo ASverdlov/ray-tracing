@@ -7,14 +7,9 @@
 namespace rt {
 
 struct Color {
-  static const Color red;
-  static const Color green;
-  static const Color blue;
-  static const Color white;
-  static const Color black;
-
   Color() : Color(0, 0, 0) {}
-  Color(float r, float g, float b)
+
+  constexpr Color(float r, float g, float b)
     : r(r), g(g), b(b)
   {}
 
@@ -27,6 +22,13 @@ struct Color {
 
   float r, g, b;
 };
+
+/* Basic colors */
+static constexpr Color RED(1., 0., 0.);
+static constexpr Color GREEN(0., 1., 0.);
+static constexpr Color BLUE(0., 0., 1.);
+static constexpr Color WHITE(1., 1., 1.);
+static constexpr Color BLACK(0., 0., 0.);
 
 std::ostream& operator<<(std::ostream&, const Color& color);
 

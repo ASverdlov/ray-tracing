@@ -1,13 +1,16 @@
-#ifndef PLACEABLE_HPP
-#define PLACEABLE_HPP
+#ifndef PLACEABLE_MIXIN_HPP
+#define PLACEABLE_MIXIN_HPP
 
-#include "ray-tracing/geometry/vector.hpp"
+#include "ray-tracing/math/vector.hpp"
 
 namespace rt {
 
-class Placeable {
+class PlaceableMixin {
  public:
-  void SetPosition(const Vector& position) { position_ = position; }
+  void SetPosition(const Vector& position) {
+    position_ = position;
+  }
+
   void SetPosition(double x, double y, double z) {
     position_ = Vector(x, y, z);
   }
@@ -15,6 +18,7 @@ class Placeable {
   Vector GetPosition() const {
     return position_;
   }
+
  protected:
   Vector position_;
 };

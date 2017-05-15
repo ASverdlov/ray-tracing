@@ -1,4 +1,12 @@
-#include "ray-tracing/render/renderer.hpp"
+#include "ray-tracing/renderer.hpp"
+
+#include "ray-tracing/math/ray.hpp"
+#include "ray-tracing/math/vector.hpp"
+
+#include "ray-tracing/color.hpp"
+#include "ray-tracing/image.hpp"
+#include "ray-tracing/scene.hpp"
+#include "ray-tracing/bitmap.hpp"
 
 #include <cmath>
 
@@ -6,7 +14,7 @@ namespace rt {
 
 Collision Renderer::FindClosestCollision(const Ray& ray) const {
   Collision nearest_collision;
-  for (const auto* model : scene_->GetModels()) {
+  for (const auto* model : scene_->Models()) {
     auto collision = model->Trace(ray);
     if (collision.Exists() && collision.IsCloserThan(nearest_collision)) {
       nearest_collision = collision;
@@ -17,18 +25,18 @@ Collision Renderer::FindClosestCollision(const Ray& ray) const {
 
 // Brightness of light is in proportion to cosinus and
 // inversely to distance ^ 2
-double Renderer::CalculateBrightness(double cosinus, double distance) {
-  return fabs(cosinus) / distance / distance;
+double Renderer::CalculateBrightness(double cosine, double distance) {
+  return fabs(cosine) / distance / distance;
 }
 
 double Renderer::GetBrightness(Vector position) const {
   double total_brightness = scene_->GetAmbientLight();
   total_brightness = .1;
-  for (const auto* light : scene_->GetLights()) {
+  for (const auto* light : scene_->Lights()) {
     Ray light_ray(light->GetPosition(), position - light->GetPosition());
     auto light_collision = FindClosestCollision(light_ray);
     if (light_collision.touching.IsNear(position)) {
-      double add = CalculateBrightness(light_collision.cosinus,
+      double add = CalculateBrightness(light_collision.cosine,
                                        light_collision.trace_distance);
       total_brightness += add;
     }
@@ -40,21 +48,22 @@ Color Renderer::RenderPixel(double x, double y) const {
   auto camera_ray = scene_->GetCamera()->GetRay(x, y);
   auto collision = FindClosestCollision(camera_ray);
   if (!collision.Exists())
-    return Color::black;
+    return BLACK;
   double brightness = GetBrightness(collision.touching);
   return collision.color.ApplyBrightness(brightness);
 }
 
-void Renderer::Render(Scene* scene, const RenderTarget* target) {
+void Renderer::Render(Scene* scene, const Image* image) {
   scene_ = scene;
-  size_t width = target->Width();
-  size_t height = target->Height();
+  size_t width = image->Width();
+  size_t height = image->Height();
   Bitmap bitmap(width, height);
+
   for (size_t x = 0; x < width; ++x)
     for (size_t y = 0; y < height; ++y)
       bitmap(x, y) = RenderPixel(static_cast<float>(x) / width,
                                  static_cast<float>(y) / height);
-  target->Draw(bitmap);
+  image->Draw(bitmap);
 }
 
 }  // namespace rt

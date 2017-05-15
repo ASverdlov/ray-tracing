@@ -1,5 +1,4 @@
 #include <ray-tracing/application.hpp>
-#include <ray-tracing/render/renderer.hpp>
 
 using namespace rt;
 
@@ -21,7 +20,7 @@ int main(int argc, char **argv) {
   triangle->SetVertices(370, -30, 30,
                         390,   0,  0,
                         390, 30, 10);
-  triangle->SetColor(Color::green);
+  triangle->SetColor(GREEN);
 
   //  Add Light
   Light *light = app.CreateLight("light");

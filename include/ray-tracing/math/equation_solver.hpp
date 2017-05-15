@@ -10,20 +10,17 @@
 namespace rt {
 
 struct Equation {
-  double A, B, C;
-
   Equation() {}
-  Equation(double A, double B, double C) : A(A), B(B), C(C) {}
-
-  static const Equation one;
-  static const Equation x;
+  constexpr Equation(double A, double B, double C) : A(A), B(B), C(C) {}
 
   Equation operator+(const Equation& rhs) const {
     return Equation(A + rhs.A, B + rhs.B, C + rhs.C);
   }
+
   Equation operator-(const Equation& rhs) const {
     return Equation(A - rhs.A, B - rhs.A, C - rhs.C);
   }
+
   Equation operator*(const Equation& rhs) const {
     return Equation(A * rhs.C + B * rhs.B + C * rhs.A,
                     B * rhs.C + C * rhs.B,
@@ -31,10 +28,15 @@ struct Equation {
   }
   Equation operator^(int n) const {
     assert(n >= 0 && "Can't exponentiate in negative power");
-    if (n == 0) return one;
-    if (n == 1) return *this;
-    return *this * (*this ^ (n - 1));
+    if (n == 0)
+      return Equation{0., 0., 1.};
+    else if (n == 1)
+      return *this;
+    else
+      return *this * (*this ^ (n - 1));
   }
+
+  double A, B, C;
 };
 
 template<typename OutputIterator>
@@ -46,8 +48,7 @@ void Solve(const Equation& equation, OutputIterator output) {
     }
     return;
   }
-  double square_determinant = equation.B * equation.B -
-                              4.0 * equation.A * equation.C;
+  double square_determinant = equation.B * equation.B - 4.0 * equation.A * equation.C;
   if (square_determinant < 0) {
     return;
   }

@@ -5,4 +5,6 @@
     ClassName(const ClassName&); \
     void operator=(const ClassName&);
 
+#define UNUSED(x) (void)(x)
+
 #endif
