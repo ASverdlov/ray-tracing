@@ -45,13 +45,13 @@ double Renderer::GetBrightness(Vector position) const {
   return total_brightness;
 }
 
-Color Renderer::RenderPixel(double x, double y, double contribution_weight) const {
+Color Renderer::RenderPixel(double x, double y) const {
   auto camera_ray = scene_->GetCamera()->GetRay(x, y);
   auto collision = FindClosestCollision(camera_ray);
   if (!collision.Exists())
     return BLACK;
   double brightness = GetBrightness(collision.touching);
-  return collision.color.ApplyBrightness(brightness * contribution_weight);
+  return collision.color.ApplyBrightness(brightness);
 }
 
 void Renderer::Render(Scene* scene, const Image* image) {
@@ -63,13 +63,13 @@ void Renderer::Render(Scene* scene, const Image* image) {
   for (size_t x = 0; x < width; ++x)
   for (size_t y = 0; y < height; ++y) {
     bitmap(x, y) = BLACK;
+
+    /* Supersampling with 4 points around (x, y) */
     for (float dx = -.5; dx <= .5; ++dx)
     for (float dy = -.5; dy <= .5; ++dy)
-      bitmap(x, y) += RenderPixel(
-          (static_cast<float>(x) + dx) / width,
-          (static_cast<float>(y) + dy) / height,
-          .25
-      );
+      bitmap(x, y) += RenderPixel((static_cast<float>(x) + dx) / width,
+                                  (static_cast<float>(y) + dy) / height);
+    bitmap(x, y) *= .25;
   }
   image->Draw(bitmap);
 }

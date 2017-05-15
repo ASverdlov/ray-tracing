@@ -26,6 +26,12 @@ struct Color {
     b += other.b;
   }
 
+  void operator*=(double x) {
+    r *= x;
+    g *= x;
+    b *= x;
+  }
+
   float r, g, b;
 };
 
