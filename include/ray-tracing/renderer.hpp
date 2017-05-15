@@ -20,7 +20,7 @@ class Renderer {
   void Render(Scene* scene, const Image* target);
 
  private:
-  Color RenderPixel(double x, double y) const;
+  Color RenderPixel(double x, double y, double contribution_weight) const;
   Collision FindClosestCollision(const Ray& ray) const;
   double GetBrightness(Vector position) const;
   static double CalculateBrightness(double cosine, double distance);

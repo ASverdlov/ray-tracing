@@ -20,6 +20,12 @@ struct Color {
     return *this;
   }
 
+  void operator+=(const Color& other) {
+    r += other.r;
+    g += other.g;
+    b += other.b;
+  }
+
   float r, g, b;
 };
 

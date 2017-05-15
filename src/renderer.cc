@@ -26,7 +26,8 @@ Collision Renderer::FindClosestCollision(const Ray& ray) const {
 // Brightness of light is in proportion to cosinus and
 // inversely to distance ^ 2
 double Renderer::CalculateBrightness(double cosine, double distance) {
-  return fabs(cosine) / distance / distance;
+  static constexpr double BRIGHTNESS_BASE = 5000.;
+  return BRIGHTNESS_BASE * fabs(cosine) / distance / distance;
 }
 
 double Renderer::GetBrightness(Vector position) const {
@@ -44,13 +45,13 @@ double Renderer::GetBrightness(Vector position) const {
   return total_brightness;
 }
 
-Color Renderer::RenderPixel(double x, double y) const {
+Color Renderer::RenderPixel(double x, double y, double contribution_weight) const {
   auto camera_ray = scene_->GetCamera()->GetRay(x, y);
   auto collision = FindClosestCollision(camera_ray);
   if (!collision.Exists())
     return BLACK;
   double brightness = GetBrightness(collision.touching);
-  return collision.color.ApplyBrightness(brightness);
+  return collision.color.ApplyBrightness(brightness * contribution_weight);
 }
 
 void Renderer::Render(Scene* scene, const Image* image) {
@@ -60,9 +61,16 @@ void Renderer::Render(Scene* scene, const Image* image) {
   Bitmap bitmap(width, height);
 
   for (size_t x = 0; x < width; ++x)
-    for (size_t y = 0; y < height; ++y)
-      bitmap(x, y) = RenderPixel(static_cast<float>(x) / width,
-                                 static_cast<float>(y) / height);
+  for (size_t y = 0; y < height; ++y) {
+    bitmap(x, y) = BLACK;
+    for (float dx = -.5; dx <= .5; ++dx)
+    for (float dy = -.5; dy <= .5; ++dy)
+      bitmap(x, y) += RenderPixel(
+          (static_cast<float>(x) + dx) / width,
+          (static_cast<float>(y) + dy) / height,
+          .25
+      );
+  }
   image->Draw(bitmap);
 }
 
