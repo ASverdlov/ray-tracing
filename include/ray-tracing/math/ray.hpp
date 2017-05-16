@@ -12,8 +12,8 @@ class Ray {
     : origin_(origin), direction_(direction)
   {}
 
-  Vector GetOrigin() const { return origin_; }
-  Vector GetDirection() const { return direction_; }
+  Vector Origin() const { return origin_; }
+  Vector Direction() const { return direction_; }
 
  private:
   Vector origin_;

@@ -21,9 +21,8 @@ class Renderer {
 
  private:
   Color RenderPixel(double x, double y) const;
+  Color PhongLight(const Collision& on_surface_hit, const Vector& camera_direction) const;
   Collision FindClosestCollision(const Ray& ray) const;
-  double GetBrightness(Vector position) const;
-  static double CalculateBrightness(double cosine, double distance);
 
   Scene* scene_;
 

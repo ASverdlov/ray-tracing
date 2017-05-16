@@ -15,7 +15,7 @@ class PlaceableMixin {
     position_ = Vector(x, y, z);
   }
 
-  Vector GetPosition() const {
+  Vector Position() const {
     return position_;
   }
 

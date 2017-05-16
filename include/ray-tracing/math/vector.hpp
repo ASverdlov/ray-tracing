@@ -5,13 +5,16 @@
 
 namespace rt {
 
-struct Vector {
+class Vector {
+ public:
   Vector()
     : x(0), y(0), z(0)
   {}
+
   Vector(const Vector& rhs)
     : x(rhs.x), y(rhs.y), z(rhs.z)
   {}
+
   Vector(double x, double y, double z)
     : x(x), y(y), z(z)
   {}
@@ -20,68 +23,55 @@ struct Vector {
     return (x - other.x) <= accuracy && (y - other.y) <= accuracy && (z - other.z) <= accuracy;
   }
 
-  // Basic operations
-  Vector operator-() const {
-    return Vector(-x, -y, -z);
-  }
-  Vector operator+(const Vector& other) const {
-    return Vector(x + other.x, y + other.y, z + other.z);
-  }
-  Vector operator-(const Vector& other) const {
-    return Vector(x - other.x, y - other.y, z - other.z);
-  }
-  Vector operator*(double koefficient) const {
-    return Vector(x * koefficient, y * koefficient, z * koefficient);
-  }
-  Vector operator/(double koefficient) const {
-    return Vector(x / koefficient, y / koefficient, z / koefficient);
-  }
-
-  Vector& operator+=(const Vector& other) {
-    *this = *this + other;
-    return *this;
-  }
-  Vector& operator-=(const Vector& other) {
-    *this = *this - other;
-    return *this;
-  }
-  Vector& operator*=(double koefficient) {
-    *this = *this * koefficient;
-    return *this;
-  }
-  Vector& operator/=(double koefficient) {
-    *this = *this / koefficient;
-    return *this;
-  }
-
-  // Comparison operators
-  bool operator==(const Vector& other) const {
-    return x == other.x && y == other.y && z == other.z;
-  }
-  bool operator!=(const Vector& other) const {
-    return !(*this == other);
-  }
-
-  // Scalar product
-  double operator*(const Vector& other) const {
-    return x * other.x + y * other.y + z * other.z;
-  }
-
-  // Cross product
-  Vector operator%(const Vector& other) const {
-    return Vector(y * other.z - other.y * z,
-                  x * other.z - other.x * z,
-                  x * other.y - other.x * y);
+  Vector Normalize() const {
+    double k = Length();
+    return Vector(x / k, y / k, z / k);
   }
 
   // Length
-  double GetLength() const {
+  double Length() const {
     return sqrt(x * x + y * y + z * z);
   }
 
-  // Data
+ public:
   double x, y, z;
 };
+
+/* vector-double operations */
+Vector operator*(const Vector& a, double k);
+
+Vector operator*(double k, const Vector& a);
+
+Vector operator/(const Vector& a, double k);
+
+/* vector-vector operations */
+Vector operator+(const Vector& a, const Vector& b);
+
+Vector operator-(const Vector& a, const Vector& b);
+
+
+/* Comparison operators */
+bool operator==(const Vector& a, const Vector& b);
+
+bool operator!=(const Vector& a, const Vector& b);
+
+
+/* Dot product */
+double operator*(const Vector& a, const Vector& b);
+
+/* Cross product */
+Vector operator%(const Vector& a, const Vector& b);
+
+/* Self operations */
+Vector operator-(const Vector& a);
+
+Vector& operator+=(Vector& a, const Vector& b);
+
+Vector& operator-=(Vector& a, const Vector& b);
+
+Vector& operator*=(Vector& a, double k);
+
+Vector& operator/=(Vector& a, double k);
 
 }  // namespace rt
 

@@ -19,12 +19,12 @@ class Camera : public PlaceableMixin {
   {}
 
   void SetAspectRatio(float ratio);
-  float GetAspectRatio() const;
+  float AspectRatio() const;
 
   void SetFieldOfView(float radians);
-  float GetFieldOfView() const;
+  float FieldOfView() const;
 
-  Ray GetRay(double x, double y) const;
+  Ray ViewRay(double x, double y) const;
 
  private:
   Vector CalculateSpot(double x, double y) const;

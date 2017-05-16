@@ -7,8 +7,8 @@ namespace rt {
 Collision Triangle::Trace(const Ray& ray) const {
   /* Project ray on plane */
   auto norm = (v2 - v1) % (v3 - v1);
-  double t = (v1 * norm - ray.GetOrigin() * norm) / (ray.GetDirection() * norm);
-  auto hit_on_plane = ray.GetOrigin() + ray.GetDirection() * t;
+  double t = (v1 * norm - ray.Origin() * norm) / (ray.Direction() * norm);
+  auto hit_on_plane = ray.Origin() + ray.Direction() * t;
 
   /* Check if it's inside our triangle */
   auto GetSign = [](double x) {
@@ -21,10 +21,10 @@ Collision Triangle::Trace(const Ray& ray) const {
 
   if (hit_is_inside_triangle) {
     Collision collision;
-    collision.trace_distance = t * ray.GetDirection().GetLength();
+    collision.trace_distance = t * ray.Direction().Length();
     collision.touching = hit_on_plane;
-    collision.cosine = ray.GetDirection() * norm / ray.GetDirection().GetLength() / norm.GetLength();
-    collision.color = GetColor();
+    collision.cosine = ray.Direction() * norm / ray.Direction().Length() / norm.Length();
+    collision.color = Color();
     return collision;
   } else {
     return Collision(); // no collision

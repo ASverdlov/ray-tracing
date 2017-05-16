@@ -8,7 +8,7 @@ void Camera::SetAspectRatio(float ratio) {
   ratio_ = ratio;
 }
 
-float Camera::GetAspectRatio() const {
+float Camera::AspectRatio() const {
   return ratio_;
 }
 
@@ -16,13 +16,13 @@ void Camera::SetFieldOfView(float radians) {
   field_of_view_ = radians;
 }
 
-float Camera::GetFieldOfView() const {
+float Camera::FieldOfView() const {
   return field_of_view_;
 }
 
-Ray Camera::GetRay(double x, double y) const {
+Ray Camera::ViewRay(double x, double y) const {
   Vector spot = CalculateSpot(x, y);
-  return Ray(position_, spot - position_);
+  return {position_, spot - position_};
 }
 
 Vector Camera::CalculateSpot(double x, double y) const {

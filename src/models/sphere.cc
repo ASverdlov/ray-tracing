@@ -17,8 +17,8 @@ Collision Sphere::Trace(const Ray& ray) const {
    *    (origin.y + direction.y * t - center.y) ^ 2 +
    *    (origin.z + direction.z * t - center.z) ^ 2 = r ^ 2
    */
-  const Vector& origin = ray.GetOrigin();
-  const Vector& direction = ray.GetDirection();
+  const Vector& origin = ray.Origin();
+  const Vector& direction = ray.Direction();
   Equation equation = (Equation(0.0, direction.x, origin.x - position_.x) ^ 2) +
                       (Equation(0.0, direction.y, origin.y - position_.y) ^ 2) +
                       (Equation(0.0, direction.z, origin.z - position_.z) ^ 2) +
@@ -29,11 +29,11 @@ Collision Sphere::Trace(const Ray& ray) const {
 
   Collision collision;
   for (double solution : solutions) {
-      double trace_distance = solution * direction.GetLength();
+      double trace_distance = solution * direction.Length();
       Vector touching = origin + direction * solution;
       Vector radius_vector = touching - position_;
       double cosine = (radius_vector * -direction) /
-                       (radius_ * direction.GetLength());
+                       (radius_ * direction.Length());
       // TODO(asverdlov, fix till 30.08.16):
       // Encapsulate following logic in Collision
       if (trace_distance <= 0 ||
@@ -45,6 +45,7 @@ Collision Sphere::Trace(const Ray& ray) const {
       collision.trace_distance = trace_distance;
       collision.cosine = cosine;
       collision.color = color_;
+      collision.normal = radius_vector.Normalize();
   }
   return collision;
 }

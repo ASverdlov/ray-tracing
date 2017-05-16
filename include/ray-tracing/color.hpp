@@ -13,13 +13,6 @@ struct Color {
     : r(r), g(g), b(b)
   {}
 
-  Color& ApplyBrightness(float brightness) {
-    r = fmin(1., r * brightness);
-    g = fmin(1., g * brightness);
-    b = fmin(1., b * brightness);
-    return *this;
-  }
-
   void operator+=(const Color& other) {
     r += other.r;
     g += other.g;
@@ -42,7 +35,28 @@ static constexpr Color BLUE(0., 0., 1.);
 static constexpr Color WHITE(1., 1., 1.);
 static constexpr Color BLACK(0., 0., 0.);
 
-std::ostream& operator<<(std::ostream&, const Color& color);
+/* Unimplemented */
+inline std::ostream& operator<<(std::ostream&, const Color& color);
+
+inline Color operator*(const Color& color, double k) {
+  Color new_color;
+  new_color.r = fmin(1., color.r * k);
+  new_color.g = fmin(1., color.g * k);
+  new_color.b = fmin(1., color.b * k);
+  return new_color;
+}
+
+inline Color operator*(double k, const Color& color) {
+  return color * k;
+}
+
+inline Color operator+(const Color& a, const Color& b) {
+  Color new_color;
+  new_color.r = fmin(1., a.r + b.r);
+  new_color.g = fmin(1., a.g + b.g);
+  new_color.b = fmin(1., a.b + b.b);
+  return new_color;
+}
 
 }  // namespace rt
 

@@ -32,14 +32,14 @@ class Scene {
   void SetCamera(Camera* camera) {
     camera_ = camera;
   }
-  Camera* GetCamera() {
+  Camera* Camera() {
     return camera_;
   }
 
   void SetAmbientLight(double brightness) {
     ambient_light_brightness_ = brightness;
   }
-  double GetAmbientLight() const {
+  double AmbientLight() const {
     return ambient_light_brightness_;
   }
 
@@ -60,7 +60,7 @@ class Scene {
   Objects<IModel*> models_;
   Objects<Light*> lights_;
 
-  Camera* camera_;
+  class Camera* camera_;
   double ambient_light_brightness_;
 
   DISABLE_COPYING(Scene);

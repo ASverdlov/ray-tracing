@@ -18,16 +18,21 @@ struct Collision {
     : trace_distance(HUGE_DISTANCE)
   {}
 
-  bool IsCloserThan(const Collision& other_collision) const {
-    return trace_distance < other_collision.trace_distance;
+  bool IsNear(const Collision& other) const {
+    return touching.IsNear(other.touching);
   }
 
-  bool Exists() const {
-    return trace_distance < HUGE_DISTANCE;
+  bool IsCloserThan(const Collision& other) const {
+    return trace_distance < other.trace_distance;
+  }
+
+  bool IsEmpty() const {
+    return trace_distance >= HUGE_DISTANCE;
   }
 
   double trace_distance;
   double cosine;
+  Vector normal;
   Vector touching;
   Color color;
 };

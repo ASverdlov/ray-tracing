@@ -19,12 +19,12 @@ int Application::Run() {
 
 void Application::SetResolution(size_t width, size_t height) {
   image_.SetResolution(width, height);
-  camera_.SetAspectRatio(1.0f * width / height);
+  camera_.SetAspectRatio(1.f * width / height);
 }
 
 void Application::SetResolution(const Resolution& resolution) {
   image_.SetResolution(resolution);
-  camera_.SetAspectRatio(1.0f * resolution.width / resolution.height);
+  camera_.SetAspectRatio(1.f * resolution.width / resolution.height);
 }
 
 Triangle* Application::CreateTriangle(const std::string& id) {
