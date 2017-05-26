@@ -15,16 +15,16 @@ int main(int argc, char **argv) {
   sphere->SetRadius(28);
   sphere->SetColor(1, 0, 0);
 
-  //  Add Triangle
+  /*//  Add Triangle
   Triangle *triangle = app.CreateTriangle("triangle");
-  triangle->SetVertices(370, -30, 30,
-                        390,   0,  0,
+  triangle->SetVertices(370, -30, -30,
+                        390, 0, 0,
                         390, 30, 10);
-  triangle->SetColor(GREEN);
+  triangle->SetColor(GREEN);*/
 
   //  Add Light
   Light *light = app.CreateLight("light");
-  light->SetPosition(0, 0, 0);
+  light->SetPosition(0, -50, -50);
 
   return app.Run();
 }

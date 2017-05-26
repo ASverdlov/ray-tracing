@@ -13,6 +13,12 @@ struct Color {
     : r(r), g(g), b(b)
   {}
 
+  void CutExceeding() {
+    r = fmin(1., r);
+    g = fmin(1., g);
+    b = fmin(1., b);
+  }
+
   void operator+=(const Color& other) {
     r += other.r;
     g += other.g;
@@ -40,9 +46,9 @@ inline std::ostream& operator<<(std::ostream&, const Color& color);
 
 inline Color operator*(const Color& color, double k) {
   Color new_color;
-  new_color.r = fmin(1., color.r * k);
-  new_color.g = fmin(1., color.g * k);
-  new_color.b = fmin(1., color.b * k);
+  new_color.r = color.r * k;
+  new_color.g = color.g * k;
+  new_color.b = color.b * k;
   return new_color;
 }
 
@@ -52,9 +58,9 @@ inline Color operator*(double k, const Color& color) {
 
 inline Color operator+(const Color& a, const Color& b) {
   Color new_color;
-  new_color.r = fmin(1., a.r + b.r);
-  new_color.g = fmin(1., a.g + b.g);
-  new_color.b = fmin(1., a.b + b.b);
+  new_color.r = a.r + b.r;
+  new_color.g = a.g + b.g;
+  new_color.b = a.b + b.b;
   return new_color;
 }
 

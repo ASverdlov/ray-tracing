@@ -1,14 +1,16 @@
 #ifndef SCENE_HPP
 #define SCENE_HPP
 
-#include "ray-tracing/models/model.hpp"
-
-#include "ray-tracing/camera.hpp"
-#include "ray-tracing/light.hpp"
 #include "ray-tracing/macroses.hpp"
-#include "ray-tracing/scene_object.hpp"
 
 #include <unordered_set>
+
+namespace rt {
+  class IModel;
+
+  class Camera;
+  class Light;
+}
 
 namespace rt {
 

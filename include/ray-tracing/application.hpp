@@ -24,6 +24,7 @@ class Application {
  public:
   Application();
 
+ public:
   int Run();
 
   void SetResolution(size_t width, size_t height);
@@ -38,10 +39,15 @@ class Application {
   bool RemoveObject(const std::string& id);
 
  private:
-  Renderer renderer_;
+  DISABLE_COPYING(Application);
+
   Image image_;
   Scene scene_;
   Camera camera_;
+
+  /* The order of members matters.
+   * renderer_ constructs on image_ and scene_ */
+  Renderer renderer_;
 };
 
 }  // namespace rt

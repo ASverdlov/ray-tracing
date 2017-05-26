@@ -1,32 +1,44 @@
 #ifndef RENDERER_HPP
 #define RENDERER_HPP
 
-#include "ray-tracing/math/ray.hpp"
-#include "ray-tracing/math/vector.hpp"
-
+#include "ray-tracing/collision.hpp"
 #include "ray-tracing/color.hpp"
-#include "ray-tracing/scene.hpp"
-#include "ray-tracing/image.hpp"
 #include "ray-tracing/macroses.hpp"
 
 #include <vector>
 
 namespace rt {
+class Ray;
+class Vector;
+class Scene;
+class Image;
+}
+
+namespace rt {
 
 class Renderer {
  public:
-  Renderer() {}
+  Renderer(Scene* scene, Image* image)
+    : scene_(scene)
+    , image_(image)
+  {
+  }
 
-  void Render(Scene* scene, const Image* target);
+ public:
+  void Render();
 
  private:
   Color RenderPixel(double x, double y) const;
+
   Color PhongLight(const Collision& on_surface_hit, const Vector& camera_direction) const;
+
   Collision FindClosestCollision(const Ray& ray) const;
 
-  Scene* scene_;
-
+ private:
   DISABLE_COPYING(Renderer);
+
+  Scene* scene_;
+  Image* image_;
 };
 
 }  // namespace rt

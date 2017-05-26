@@ -1,6 +1,8 @@
 #ifndef RESOLUTION_HPP
 #define RESOLUTION_HPP
 
+#include <cstring>
+
 namespace rt {
 
 struct Resolution {

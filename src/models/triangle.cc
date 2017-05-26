@@ -2,12 +2,14 @@
 
 #include "ray-tracing/math/vector.hpp"
 
+#include <cmath>
+
 namespace rt {
 
 Collision Triangle::Trace(const Ray& ray) const {
   /* Project ray on plane */
-  auto norm = (v2 - v1) % (v3 - v1);
-  double t = (v1 * norm - ray.Origin() * norm) / (ray.Direction() * norm);
+  auto normal = (v2 - v1) % (v3 - v1);
+  double t = (v1 * normal - ray.Origin() * normal) / (ray.Direction() * normal);
   auto hit_on_plane = ray.Origin() + ray.Direction() * t;
 
   /* Check if it's inside our triangle */
@@ -19,16 +21,15 @@ Collision Triangle::Trace(const Ray& ray) const {
   int v31_sign = GetSign((v1 - v3) * (v3 - hit_on_plane));
   bool hit_is_inside_triangle = v12_sign == v23_sign && v23_sign == v31_sign;
 
+  Collision collision;
   if (hit_is_inside_triangle) {
-    Collision collision;
     collision.trace_distance = t * ray.Direction().Length();
     collision.touching = hit_on_plane;
-    collision.cosine = ray.Direction() * norm / ray.Direction().Length() / norm.Length();
-    collision.color = Color();
-    return collision;
-  } else {
-    return Collision(); // no collision
+    collision.cosine = fabs(ray.Direction() * normal / ray.Direction().Length() / normal.Length());
+    collision.color = GetColor();
+    collision.normal = normal;
   }
+  return collision;
 }
 
 void Triangle::SetVertices(const Vector& vertex1,

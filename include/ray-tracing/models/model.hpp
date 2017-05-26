@@ -1,6 +1,8 @@
 #ifndef MODEL_HPP
 #define MODEL_HPP
 
+#include "ray-tracing/collision.hpp"
+
 #include "ray-tracing/math/ray.hpp"
 #include "ray-tracing/math/vector.hpp"
 
@@ -10,32 +12,6 @@
 
 
 namespace rt {
-
-struct Collision {
-  static constexpr double HUGE_DISTANCE = 1e300;
-
-  Collision()
-    : trace_distance(HUGE_DISTANCE)
-  {}
-
-  bool IsNear(const Collision& other) const {
-    return touching.IsNear(other.touching);
-  }
-
-  bool IsCloserThan(const Collision& other) const {
-    return trace_distance < other.trace_distance;
-  }
-
-  bool IsEmpty() const {
-    return trace_distance >= HUGE_DISTANCE;
-  }
-
-  double trace_distance;
-  double cosine;
-  Vector normal;
-  Vector touching;
-  Color color;
-};
 
 class IModel : public ISceneObject {
  public:

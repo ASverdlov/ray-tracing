@@ -8,12 +8,18 @@
 
 namespace rt {
 
-Application::Application() {
+Application::Application()
+  : image_()
+  , scene_()
+  , camera_()
+  , renderer_(&scene_, &image_)
+{
   scene_.SetCamera(&camera_);
+  scene_.SetAmbientLight(2.3);
 }
 
 int Application::Run() {
-  renderer_.Render(&scene_, &image_);
+  renderer_.Render();
   return 0;
 }
 

@@ -19,8 +19,9 @@ class Vector {
     : x(x), y(y), z(z)
   {}
 
+ public:
   bool IsNear(const Vector& other, double accuracy = 1e-9) const {
-    return (x - other.x) <= accuracy && (y - other.y) <= accuracy && (z - other.z) <= accuracy;
+    return fabs(x - other.x) <= accuracy && fabs(y - other.y) <= accuracy && fabs(z - other.z) <= accuracy;
   }
 
   Vector Normalize() const {

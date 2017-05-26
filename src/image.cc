@@ -18,14 +18,16 @@ void Image::Draw(const Bitmap& bitmap) const {
       image.pixelColor(x, y, color);
     }
   }
+  std::cout << "Image rendered successfully.\nSaving...";
   image.write("rendered_picture.png");
+  std::cout << "OK!\n";
 }
 
 void Image::SetResolution(const Resolution& resolution) {
   resolution_ = resolution;
 }
 
-void Image::SetResolution(float width, float height) {
+void Image::SetResolution(size_t width, size_t height) {
   resolution_ = Resolution(width, height);
 }
 
